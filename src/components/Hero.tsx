@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div className="hero-section container-center flex flex-col md:flex-row items-center justify-between">
       <div className="text-wrapper space-y-3 max-w-96">
-        <h2 className="text-5xl font-bold">
+        <h2 className="text-5xl font-bold leading-snug">
           I am <span className="text-primary">Developer</span> Mezbah Uddin
         </h2>
         <p></p>

@@ -8,6 +8,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin 9s linear infinite;
+}
+
 @layer utilities {
   .container-center {
     @apply w-[93%] max-w-screen-xl mx-auto;

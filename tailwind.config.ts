@@ -14,6 +14,7 @@ const config: Config = {
           ...require("daisyui/src/theming/themes")["dim"],
           primary: "#2eb2d3",
           "primary-content": "#fff",
+          secondary: "#8121D0",
         },
       },
     ],
