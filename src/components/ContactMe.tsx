@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const ContactMe = () => {
@@ -12,16 +13,32 @@ const ContactMe = () => {
 
         <div className="flex flex-col items-center space-y-4">
           {/* Phone Number */}
-          <a href="tel:+8801521377999" className="text-xl font-semibold">
-            <i className="fas fa-phone-alt mr-2"></i>+8801521377999
+          <a
+            href="tel:+8801521377999"
+            className="text-xl font-semibold flex items-center gap-2"
+          >
+            <Image
+              src="/phone.svg"
+              alt=""
+              height={25}
+              width={25}
+              className=""
+            />
+            +8801521377999
           </a>
 
           {/* Email Address */}
           <a
             href="mailto:extraordinarymisbah@gmail.com"
-            className="text-xl font-semibold"
+            className="text-xl font-semibold flex items-center gap-2"
           >
-            <i className="fas fa-envelope mr-2"></i>
+            <Image
+              src="/gmail.svg"
+              alt=""
+              height={25}
+              width={25}
+              className=""
+            />
             extraordinarymisbah@gmail.com
           </a>
         </div>
