@@ -1,3 +1,3 @@
 export default function Home() {
-  return <h2 className="">Working</h2>;
+  return <main className="text-base-content"></main>;
 }
