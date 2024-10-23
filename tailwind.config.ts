@@ -10,6 +10,12 @@ const config: Config = {
   daisyui: {
     themes: [
       {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "#B26DEB",
+          "primary-content": "#fff",
+          secondary: "#8121D0",
+        },
         dim: {
           ...require("daisyui/src/theming/themes")["dim"],
           primary: "#2eb2d3",
