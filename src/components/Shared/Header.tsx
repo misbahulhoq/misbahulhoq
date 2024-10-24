@@ -5,10 +5,19 @@ import { useEffect } from "react";
 
 const Header = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [showBlur, setShowBlur] = useState(false);
   console.log("component rerenders", theme);
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.getElementById("html")?.setAttribute("data-theme", theme);
+    window.addEventListener("scroll", () => {
+      console.log(window.scrollY);
+      if (window.scrollY > 500) {
+        setShowBlur(true);
+      } else {
+        setShowBlur(false);
+      }
+    });
   }, [theme]);
 
   const handleThemeChange = () => {
@@ -18,10 +27,19 @@ const Header = () => {
     } else {
       setTheme("light");
     }
-    // currentTheme === "light" ? setTheme("dim") : "light";
   };
   return (
-    <nav className="py-3">
+    <nav
+      className={`py-3 sticky top-0 z-10 ${
+        showBlur ? "bg-base-100" : "bg-base-200"
+      } ${showBlur ? "bg-opacity-65" : "bg-opacity-100"} ${
+        showBlur &&
+        "backdrop-blur-md border-b-[.5px] border-base-content border-opacity-70"
+      } ${
+        showBlur &&
+        "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+      }`}
+    >
       <div className="container-center flex justify-between items-center gap-5">
         <Link href="/" className="btn btn-outline rounded-full btn-sm">
           Home
