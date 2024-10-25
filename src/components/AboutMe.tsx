@@ -1,9 +1,10 @@
 import React from "react";
+import SectionHeading from "./Shared/SectionHeading";
 
 const AboutMe = () => {
   return (
     <div className="container-center">
-      <h2 className="text-center text-5xl font-bold">About Me</h2>
+      <SectionHeading sectionHeadingProps={{ heading: "About Me" }} />
       <p className="mt-7">
         Hi! I&apos;m a passionate front-end developer with a keen eye for design
         and user experience. I specialize in building responsive, dynamic

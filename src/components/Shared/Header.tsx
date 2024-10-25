@@ -30,7 +30,7 @@ const Header = () => {
   };
   return (
     <nav
-      className={`sticky top-0 z-10 py-3 ${
+      className={`sticky top-0 z-20 py-3 ${
         showBlur ? "bg-base-100" : "bg-base-200"
       } ${showBlur ? "bg-opacity-65" : "bg-opacity-100"} ${
         showBlur &&

@@ -6,7 +6,7 @@ import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
-    <main className="space-y-10 text-base-content lg:space-y-24">
+    <main className="space-y-10 text-base-content md:text-lg lg:space-y-24">
       <Hero />
       <AboutMe />
       <Skills />

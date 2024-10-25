@@ -9,6 +9,11 @@ const skillImages = [
     tooltip: "JavaScript",
   },
   {
+    img: "/mezbah-skills/typescript.svg",
+    alt: "TypeScript",
+    tooltip: "TypeScript",
+  },
+  {
     img: "/mezbah-skills/react.svg",
     alt: "React",
     tooltip: "React",
@@ -60,7 +65,11 @@ const Hero = () => {
             here.
           </h2>
 
-          <p className="">Passionate about web development.</p>
+          <p className="">
+            I am a front end developer. Creating front end web applications
+            using React, Next.JS, TypeScript, Firebase, TailwindCSS since the
+            last 1 year. I am currently interested to learn backend development.
+          </p>
 
           {/* Icons wrapper */}
           <div className="grid grid-cols-3 gap-y-4 md:grid-cols-5">
@@ -91,7 +100,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="image-wrapper">
+        <div className="image-wrapper relative z-10">
           <Image
             src="/mezbah-photo.png"
             height={100}
@@ -99,6 +108,7 @@ const Hero = () => {
             alt="Mezbah's Photo"
             className=""
           />
+          <div className="bg-lines"></div>
         </div>
       </div>
     </section>
