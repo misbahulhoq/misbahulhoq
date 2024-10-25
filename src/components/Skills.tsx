@@ -39,6 +39,7 @@ const skillImages = [
     alt: "Linux",
   },
 ];
+
 const Skills = () => {
   return (
     <div className="container-center">

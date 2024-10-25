@@ -41,10 +41,10 @@ const Header = () => {
       }`}
     >
       <div className="container-center flex justify-between items-center gap-5">
-        <Link href="/" className="btn btn-outline rounded-full btn-sm">
+        <Link href="/" className="">
           Home
         </Link>
-        <Link href="/contact" className="btn btn-primary rounded-full btn-sm">
+        <Link href="/contact" className="">
           Contact Me
         </Link>
 

@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en" id="html">
       <link rel="icon" href="/icon.svg" type="image/svg" sizes="42x32" />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-secondary selection:text-secondary-content`}
       >
         {/* <Header /> */}
         <HeaderClient />
