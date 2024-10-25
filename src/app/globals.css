@@ -33,7 +33,7 @@ body {
 
 @layer utilities {
   .container-center {
-    @apply w-[93%] max-w-screen-xl mx-auto;
+    @apply mx-auto w-[93%] max-w-screen-xl;
   }
 }
 

@@ -3,10 +3,10 @@ import React from "react";
 const HireMe = () => {
   return (
     <div className="container-center">
-      <h2 className="text-5xl text-center font-bold">
+      <h2 className="text-center text-5xl font-bold">
         Why Should You <span className="text-accent">Hire</span> Me?
       </h2>
-      <div className="max-w-[900px] mx-auto space-y-4 mt-7">
+      <div className="mx-auto mt-7 max-w-[900px] space-y-4">
         <p>
           You should hire me because I bring a unique blend of technical
           expertise and creativity to every project. As a front-end developer, I

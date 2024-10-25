@@ -3,10 +3,10 @@ import React from "react";
 
 const ContactMe = () => {
   return (
-    <section className="py-12 ">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4">Contact Me</h2>
-        <p className="text-lg mb-8">
+    <section className="py-12">
+      <div className="mx-auto max-w-3xl text-center">
+        <h2 className="mb-4 text-4xl font-bold">Contact Me</h2>
+        <p className="mb-8 text-lg">
           Feel free to reach out via phone or email. I&apos;d love to connect
           with you!
         </p>
@@ -15,7 +15,7 @@ const ContactMe = () => {
           {/* Phone Number */}
           <a
             href="tel:+8801521377999"
-            className="text-xl font-semibold flex items-center gap-2"
+            className="flex items-center gap-2 text-xl font-semibold"
           >
             <Image
               src="/phone.svg"
@@ -30,7 +30,7 @@ const ContactMe = () => {
           {/* Email Address */}
           <a
             href="mailto:extraordinarymisbah@gmail.com"
-            className="text-xl font-semibold flex items-center gap-2"
+            className="flex items-center gap-2 text-xl font-semibold"
           >
             <Image
               src="/gmail.svg"

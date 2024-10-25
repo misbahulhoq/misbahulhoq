@@ -3,7 +3,7 @@ import React from "react";
 const AboutMe = () => {
   return (
     <div className="container-center">
-      <h2 className="text-5xl text-center font-bold">About Me</h2>
+      <h2 className="text-center text-5xl font-bold">About Me</h2>
       <p className="mt-7">
         Hi! I&apos;m a passionate front-end developer with a keen eye for design
         and user experience. I specialize in building responsive, dynamic

@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="px-4 py-9 bg-base-200 text-base-content mt-10">
+    <footer className="mt-10 bg-base-200 px-4 py-9 text-base-content">
       <div className="text-center">
         <p className="text-center">
           © {new Date().getFullYear()} Created by Md Mezbah Uddin. All rights

@@ -43,10 +43,10 @@ const skillImages = [
 const Skills = () => {
   return (
     <div className="container-center">
-      <h2 className="text-5xl font-bold text-center mb-8">
+      <h2 className="mb-8 text-center text-5xl font-bold">
         My <span className="text-secondary">Skills</span>
       </h2>
-      <div className="max-w-[500px] mx-auto grid grid-cols-6 gap-6 pb-11">
+      <div className="mx-auto grid max-w-[500px] grid-cols-6 gap-6 pb-11">
         {skillImages.map((item) => (
           <Image
             key={item.img}

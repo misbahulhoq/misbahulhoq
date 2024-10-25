@@ -52,10 +52,10 @@ const skillImages = [
 
 const Hero = () => {
   return (
-    <section className="hero-section bg-base-200 min-h-[calc(100vh-64px)] pt-12 lg:pt-0">
-      <div className="container-center flex flex-col md:flex-row items-center justify-between ">
-        <div className="left-content text-wrapper space-y-5 max-w-[450px]">
-          <h2 className="text-5xl font-bold ">
+    <section className="hero-section min-h-[calc(100vh-64px)] bg-base-200 pt-12 lg:pt-0">
+      <div className="container-center flex flex-col items-center justify-between md:flex-row">
+        <div className="left-content text-wrapper max-w-[450px] space-y-5">
+          <h2 className="text-5xl font-bold">
             Developer <br /> <span className="">Mezbah Uddin </span>
             here.
           </h2>
@@ -63,7 +63,7 @@ const Hero = () => {
           <p className="">Passionate about web development.</p>
 
           {/* Icons wrapper */}
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-y-4">
+          <div className="grid grid-cols-3 gap-y-4 md:grid-cols-5">
             {skillImages.map((item) => (
               <div key={item.img} className="tooltip" data-tip={item.tooltip}>
                 <Image
@@ -71,8 +71,8 @@ const Hero = () => {
                   alt={item.alt}
                   height={100}
                   width={100}
-                  style={{ backgroundColor: "transparent" }}
-                  className={` bg-transparent border-none shadow-none select-none h-[60px] w-[60px] cursor-pointer ${
+                  // style={{ backgroundColor: "transparent" }}
+                  className={`h-[60px] w-[60px] cursor-pointer select-none ${
                     item.img === "/mezbah-skills/react.svg" && "spin-slow"
                   }`}
                 />
@@ -80,11 +80,11 @@ const Hero = () => {
             ))}
           </div>
 
-          <div className="buttons flex flex-col sm:flex-row sm:items-center gap-4">
+          <div className="buttons flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link href="" className="btn btn-outline btn-primary">
               Learn More
             </Link>
-            <button className="btn btn-primary rounded-full ">
+            <button className="btn btn-primary rounded-full">
               Download Resume
             </button>
             {/* <Link className="btn btn-outline btn-primary"></Link> */}

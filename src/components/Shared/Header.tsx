@@ -30,17 +30,17 @@ const Header = () => {
   };
   return (
     <nav
-      className={`py-3 sticky top-0 z-10 ${
+      className={`sticky top-0 z-10 py-3 ${
         showBlur ? "bg-base-100" : "bg-base-200"
       } ${showBlur ? "bg-opacity-65" : "bg-opacity-100"} ${
         showBlur &&
-        "backdrop-blur-md border-b-[.5px] border-base-content border-opacity-70"
+        "border-b-[.5px] border-base-content border-opacity-70 backdrop-blur-md"
       } ${
         showBlur &&
         "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
       }`}
     >
-      <div className="container-center flex justify-between items-center gap-5">
+      <div className="container-center flex items-center justify-between gap-5">
         <Link href="/" className="">
           Home
         </Link>
