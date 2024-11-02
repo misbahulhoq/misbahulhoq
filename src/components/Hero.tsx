@@ -58,8 +58,8 @@ const skillImages = [
 const Hero = () => {
   return (
     <section className="hero-section min-h-[calc(100vh-64px)] bg-base-200 pt-12 lg:pt-0">
-      <div className="container-center flex flex-col items-center justify-between md:flex-row">
-        <div className="left-content text-wrapper max-w-[450px] space-y-5">
+      <div className="container-center items- flex flex-col justify-between lg:flex-row">
+        <div className="left-content text-wrapper max-w-[450px] space-y-5 self-center">
           <h2 className="text-5xl font-bold">
             Developer <br /> <span className="">Mezbah Uddin </span>
             here.
@@ -100,15 +100,18 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="image-wrapper relative z-10">
-          <Image
-            src="/mezbah-photo.png"
-            height={100}
-            width={300}
-            alt="Mezbah's Photo"
-            className=""
-          />
-          <div className="bg-lines"></div>
+        <div className="image-wrapper lg:overflow-x- relative z-10 flex h-fit flex-grow justify-center overflow-y-hidden lg:justify-end">
+          <div>
+            <div className="absolute -bottom-16 left-1/2 right-0 z-[1] h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-primary sm:h-96 sm:w-96 lg:static lg:h-[420px] lg:w-[420px] lg:translate-x-0"></div>
+            <Image
+              src="/mezbah-photo.png"
+              height={100}
+              width={300}
+              alt="Mezbah's Photo"
+              className="relative z-10 lg:right-16"
+            />
+            <div className="bg-lines"></div>
+          </div>
         </div>
       </div>
     </section>
