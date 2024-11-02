@@ -100,9 +100,9 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="image-wrapper lg:overflow-x- relative z-10 flex h-fit flex-grow justify-center overflow-y-hidden lg:justify-end">
-          <div>
-            <div className="absolute -bottom-16 left-1/2 right-0 z-[1] h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-primary sm:h-96 sm:w-96 lg:static lg:h-[420px] lg:w-[420px] lg:translate-x-0"></div>
+        <div className="image-wrapper relative z-10 flex h-fit flex-grow justify-center overflow-y-hidden lg:justify-end lg:overflow-x-auto">
+          <div className="">
+            <div className="absolute -bottom-16 left-1/2 right-0 z-[1] h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-primary sm:h-96 sm:w-96 lg:left-auto lg:h-[420px] lg:w-[420px] lg:translate-x-0"></div>
             <Image
               src="/mezbah-photo.png"
               height={100}
