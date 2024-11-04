@@ -1,27 +1,44 @@
 import React from "react";
 import SectionHeading from "./Shared/SectionHeading";
 import { PiDotsNine } from "react-icons/pi";
+import Image from "next/image";
 
 const AboutMe = () => {
   return (
-    <section className="about-me-section relative bg-neutral py-12 text-neutral-content lg:py-16">
-      <div className="container-center relative">
-        <SectionHeading sectionHeadingProps={{ heading: "About Me" }} />
-        <p className="mt-7">
-          Hi! I&apos;m a passionate front-end developer with a keen eye for
-          design and user experience. I specialize in building responsive,
-          dynamic websites and applications using modern technologies like
-          React, Tailwind CSS, and JavaScript. My focus is on creating clean,
-          efficient code while delivering seamless, user-friendly interfaces. I
-          enjoy working with tools like React Hook Form, Axios, and Firebase,
-          and I&apos;m always eager to learn and implement the latest trends in
-          web development. When I&apos;m not coding, I&apos;m exploring new
-          problem-solving techniques and enhancing my skills in data structures
-          and algorithms.
-        </p>
-        <div className="absolute -top-12 right-20 h-64 w-64 rounded-full bg-secondary opacity-30 blur-xl"></div>
+    <section className="about-me-section relative overflow-hidden bg-neutral py-12 text-neutral-content lg:py-16">
+      <div className="container-center relative z-10 min-h-fit">
+        <div className="left-and-right-wrapper items-center justify-between lg:grid lg:grid-cols-2 lg:gap-5">
+          <div className="left-content image-wrapper hidden lg:block">
+            <Image
+              src="/ilustrations/using-laptop-two.webp"
+              alt="Computer Illustration"
+              height={500}
+              width={500}
+              className="h-[350px] w-[350px] rounded-full object-cover"
+            />
+          </div>
+
+          <div className="right-content">
+            <SectionHeading sectionHeadingProps={{ heading: "About Me" }} />
+            <p className="mt-7">
+              I am a self taught front end developer working with some of the
+              most popular front end development tools mentoined above.Currently
+              I am a student of B.Sc(Honors) Fourth Year at National University.
+              Having passion in web development has moved me from being a Soil
+              Science specialist to a web developer. Addiction to develop eye
+              cathing and user friendly web applications may make me a better
+              developer.Currently I am working at TechJoule, a web and mobile
+              application development company.I have been working here for the
+              last 6 months. I have a deeper interest in back end development as
+              well as data structures and algorithms. My next plan is to play
+              the role of a full stack developer.
+            </p>
+          </div>
+        </div>
+        <div className="absolute -top-12 right-20 h-56 w-56 rounded-full bg-purple-600 opacity-20 blur-xl"></div>
       </div>
-      <div className="dots-wrapper flex items-center space-x-[-7px] text-4xl">
+
+      <div className="dots-wrapper absolute right-0 z-[1] flex items-center space-x-[-7px] text-4xl text-primary text-opacity-60">
         <div className="space-y-[-7px]">
           <PiDotsNine />
           <PiDotsNine />

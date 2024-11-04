@@ -14,10 +14,6 @@ body {
   width: 200px;
 }
 
-.btn-wide {
-  /* width: 200px; */
-}
-
 @keyframes spin {
   from {
     transform: rotate(0deg);
