@@ -109,7 +109,7 @@ const Skills = () => {
         {skills.map((skill) => {
           return (
             <div key={skill.title} className="relative">
-              <div className="flex items-center justify-between">
+              <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-lg font-semibold">{skill.title}</h3>
                 <p className="">
                   {skill.percentage}
