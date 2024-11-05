@@ -6,7 +6,7 @@ import { useEffect } from "react";
 const Header = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [showBlur, setShowBlur] = useState(false);
-  console.log("component rerenders", theme);
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.getElementById("html")?.setAttribute("data-theme", theme);
@@ -33,8 +33,7 @@ const Header = () => {
       className={`sticky top-0 z-20 py-3 ${
         showBlur ? "bg-base-100" : "bg-base-200"
       } ${showBlur ? "bg-opacity-65" : "bg-opacity-100"} ${
-        showBlur &&
-        "border-b-[.5px] border-base-content border-opacity-70 backdrop-blur-md"
+        showBlur && "shadow-[0_4px_10px_rgba(128,0,128,0.5) backdrop-blur-md"
       } ${
         showBlur &&
         "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"

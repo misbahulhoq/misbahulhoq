@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import DownloadButton from "./DownloadButton";
 
 const skillImages = [
   {
@@ -93,9 +94,7 @@ const Hero = () => {
             <Link href="" className="btn btn-outline btn-primary">
               Learn More
             </Link>
-            <button className="btn btn-primary rounded-full">
-              Download Resume
-            </button>
+            <DownloadButton />
             {/* <Link className="btn btn-outline btn-primary"></Link> */}
           </div>
         </div>
