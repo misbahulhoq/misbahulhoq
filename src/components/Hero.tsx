@@ -91,8 +91,8 @@ const Hero = () => {
           </div>
 
           <div className="buttons flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link href="" className="btn btn-outline btn-primary">
-              Learn More
+            <Link href="/contact" className="btn btn-outline btn-primary">
+              Contact Me
             </Link>
             <DownloadButton />
             {/* <Link className="btn btn-outline btn-primary"></Link> */}

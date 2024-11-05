@@ -5,7 +5,10 @@ import Image from "next/image";
 
 const AboutMe = () => {
   return (
-    <section className="about-me-section relative overflow-hidden bg-neutral py-12 text-neutral-content lg:py-16">
+    <section
+      id="about-me"
+      className="about-me-section relative overflow-hidden bg-neutral py-12 text-neutral-content lg:py-16"
+    >
       <div className="container-center relative z-10 min-h-fit">
         <div className="left-and-right-wrapper items-center justify-between lg:grid lg:grid-cols-2 lg:gap-5">
           <div className="left-content image-wrapper hidden lg:block">

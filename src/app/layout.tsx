@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" id="html">
+    <html lang="en" id="html" className="scroll-smooth">
       <link rel="icon" href="/icon.svg" type="image/svg" sizes="42x32" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-secondary selection:text-secondary-content`}
