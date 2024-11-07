@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import DownloadButton from "./DownloadButton";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { RxSlash } from "react-icons/rx";
+import { MdOutlineChevronLeft } from "react-icons/md";
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 const skillImages = [
   {
@@ -61,7 +65,22 @@ const Hero = () => {
     <section className="hero-section min-h-[calc(100vh-64px)] bg-base-200 pt-12 lg:pt-0">
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
         <div className="left-content text-wrapper max-w-[450px] space-y-5 self-center">
-          <h2 className="text-5xl font-bold">
+          <h2 className="text-4xl font-bold lg:text-5xl">
+            <span className="-ml-4 flex items-center justify-start">
+              <span className="-mr-3 inline-block text-5xl font-normal text-primary">
+                {/* <FaChevronLeft className="font-normal" /> */}
+                {/* <MdOutlineChevronLeft /> */}
+                <GoChevronLeft />
+              </span>
+              Frontend
+              <span className="font-blackbold -ml-1 inline-block text-4xl text-primary">
+                <RxSlash />
+              </span>
+              <span className="-ml-6 inline-block text-5xl text-primary">
+                {/* <FaChevronRight /> */}
+                <GoChevronRight />
+              </span>{" "}
+            </span>
             Developer <br /> <span className="">Mezbah Uddin </span>
             here.
           </h2>
