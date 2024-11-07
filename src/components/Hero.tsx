@@ -2,9 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import DownloadButton from "./DownloadButton";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { RxSlash } from "react-icons/rx";
-import { MdOutlineChevronLeft } from "react-icons/md";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 const skillImages = [
