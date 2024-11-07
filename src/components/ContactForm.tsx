@@ -9,7 +9,7 @@ type FormData = {
 };
 
 const ContactForm = () => {
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData: FormData = {
       name: (e.currentTarget.elements.namedItem("name") as HTMLInputElement)
@@ -24,6 +24,25 @@ const ContactForm = () => {
       ).value,
     };
     console.log(formData);
+
+    try {
+      const response = await fetch("http://localhost:8080/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      const result = await response.json();
+      console.log("Message sent successfully:", result);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
   return (
     <div className="">
