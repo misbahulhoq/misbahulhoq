@@ -11,7 +11,7 @@ const Header = () => {
     localStorage.setItem("theme", theme);
     document.getElementById("html")?.setAttribute("data-theme", theme);
     window.addEventListener("scroll", () => {
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
       if (window.scrollY > 500) {
         setShowBlur(true);
       } else {
