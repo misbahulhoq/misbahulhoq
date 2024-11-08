@@ -1,4 +1,5 @@
 "use client";
+import { baseUrl } from "@/api/api";
 import React, { FormEvent } from "react";
 
 type FormData = {
@@ -26,7 +27,7 @@ const ContactForm = () => {
     console.log(formData);
 
     try {
-      const response = await fetch("http://localhost:8080/api/email", {
+      const response = await fetch(`${baseUrl}/api/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +42,7 @@ const ContactForm = () => {
       const result = await response.json();
       console.log("Message sent successfully:", result);
     } catch (error) {
-      console.error("Error:", error);
+      console.log("Error:", error);
     }
   };
   return (
