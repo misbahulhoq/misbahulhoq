@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+// import { birthStone } from "@/app/layout";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -40,8 +42,14 @@ const Header = () => {
       }`}
     >
       <div className="container-center flex items-center justify-between gap-5">
-        <Link href="/" className="">
-          Home
+        <Link href="/" className={``}>
+          <Image
+            src={`${theme === "light" ? "/logos/logo-light.svg" : "/logos/logo-dark.svg"}`}
+            alt="Logo"
+            height={30}
+            width={75}
+            className=""
+          />
         </Link>
         <Link href="/contact" className="">
           Contact Me

@@ -16,6 +16,12 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+export const birthStone = localFont({
+  src: "./fonts/BirthstoneBounce-Medium.ttf",
+  variable: "--font-birthstone",
+  weight: "500",
+});
+
 export const metadata: Metadata = {
   title: "Md Mezbah Uddin",
   description: "Portfolio of Md Mezbah Uddin",
