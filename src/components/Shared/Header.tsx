@@ -1,12 +1,59 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { AiOutlineMenuFold } from "react-icons/ai";
+import NavLink from "./NavLink";
 
 const Header = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [showBlur, setShowBlur] = useState(false);
+
+  const navLinksPc = (
+    <>
+      <NavLink activeClassName="text-primary" href="/contact">
+        Contact
+      </NavLink>
+      <NavLink activeClassName="text-primary" href="/about">
+        About
+      </NavLink>
+      <NavLink activeClassName="text-primary" href="/skills">
+        Skills
+      </NavLink>
+    </>
+  );
+
+  const navLinksMobile = (
+    <>
+      <NavLink
+        className="block rounded-xl py-3 text-center"
+        activeClassName="text-primary-content bg-primary "
+        href="/contact"
+      >
+        Contact
+      </NavLink>
+      <NavLink
+        className="block rounded-xl py-3 text-center"
+        activeClassName="text-primary-content bg-primary"
+        href="/about"
+      >
+        About
+      </NavLink>
+      <NavLink
+        className="block rounded-xl py-3 text-center"
+        activeClassName="text-primary-content bg-primary"
+        href="/skills"
+      >
+        Skills
+      </NavLink>
+    </>
+  );
+
+  const pathName = usePathname();
+
+  console.log(pathName);
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -41,6 +88,20 @@ const Header = () => {
       }`}
     >
       <div className="container-center flex items-center justify-between gap-5">
+        {/* dropdown menu-- visible only on small devices and hidden on large devices */}
+        <details className="dropdown lg:hidden">
+          <summary className="btn btn-outline -ml-2 w-fit max-w-fit border-none text-3xl">
+            <AiOutlineMenuFold />
+          </summary>
+          <ul className="menu dropdown-content z-[1] w-52 space-y-1 rounded-box bg-base-200 p-2 shadow">
+            {navLinksMobile}
+          </ul>
+        </details>
+
+        <div className="links order-1 hidden items-center gap-3 lg:flex">
+          {navLinksPc}
+        </div>
+
         <Link href="/" className={``}>
           <Image
             src={`${theme === "light" ? "/logos/logo-light.svg" : "/logos/logo-dark.svg"}`}
@@ -50,12 +111,9 @@ const Header = () => {
             className=""
           />
         </Link>
-        <Link href="/contact" className="">
-          Contact Me
-        </Link>
 
         {/* theme changer */}
-        <label className="swap swap-rotate">
+        <label className="swap swap-rotate order-2">
           {/* this hidden checkbox controls the state */}
           <input
             type="checkbox"
