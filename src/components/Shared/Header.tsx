@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-// import { birthStone } from "@/app/layout";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useEffect } from "react";
