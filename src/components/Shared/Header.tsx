@@ -13,6 +13,9 @@ const Header = () => {
 
   const navLinksPc = (
     <>
+      <NavLink activeClassName="text-primary" href="/">
+        Home
+      </NavLink>
       <NavLink activeClassName="text-primary" href="/contact">
         Contact
       </NavLink>
@@ -27,6 +30,13 @@ const Header = () => {
 
   const navLinksMobile = (
     <>
+      <NavLink
+        className="block rounded-xl py-3 text-center"
+        activeClassName="text-primary-content bg-primary "
+        href="/"
+      >
+        Home
+      </NavLink>
       <NavLink
         className="block rounded-xl py-3 text-center"
         activeClassName="text-primary-content bg-primary "
@@ -80,7 +90,7 @@ const Header = () => {
     <nav
       className={`sticky top-0 z-20 py-3 ${
         showBlur ? "bg-base-100" : "bg-base-200"
-      } ${showBlur ? "bg-opacity-65" : "bg-opacity-100"} ${
+      } ${showBlur ? "bg-opacity-75" : "bg-opacity-100"} ${
         showBlur && "shadow-[0_4px_10px_rgba(128,0,128,0.5) backdrop-blur-md"
       } ${
         showBlur &&
@@ -98,7 +108,7 @@ const Header = () => {
           </ul>
         </details>
 
-        <div className="links order-1 hidden items-center gap-3 lg:flex">
+        <div className="links order-1 hidden items-center gap-5 font-medium lg:flex">
           {navLinksPc}
         </div>
 
