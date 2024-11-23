@@ -60,7 +60,7 @@ const skillImages = [
 
 const Hero = () => {
   return (
-    <section className="hero-section min-h-[calc(100vh-64px)] bg-base-200 pt-12 lg:pt-0">
+    <section className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6">
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
         <div className="left-content text-wrapper max-w-[450px] space-y-5 self-center">
           <h2 className="text-4xl font-bold lg:text-5xl">

@@ -10,7 +10,7 @@ const AboutMe = () => {
       className="about-me-section relative overflow-hidden bg-neutral py-12 text-neutral-content lg:py-16"
     >
       <div className="container-center relative z-10 min-h-fit">
-        <div className="left-and-right-wrapper items-center justify-between lg:grid lg:grid-cols-2 lg:gap-5">
+        <div className="left-and-right-wrapper items-center justify-between py-6 lg:grid lg:grid-cols-2 lg:gap-5 lg:py-0">
           <div className="left-content image-wrapper hidden lg:block">
             <Image
               src="/ilustrations/using-laptop-two.webp"
@@ -41,7 +41,30 @@ const AboutMe = () => {
         <div className="absolute -top-12 right-20 h-56 w-56 rounded-full bg-purple-600 opacity-20 blur-xl"></div>
       </div>
 
-      <div className="dots-wrapper absolute right-0 z-[1] flex items-center space-x-[-7px] text-4xl text-primary text-opacity-60">
+      <div className="bottom-right-dots-wrapper absolute -bottom-5 right-0 z-[1] flex items-center space-x-[-7px] text-4xl text-primary text-opacity-60">
+        <div className="space-y-[-7px]">
+          <PiDotsNine />
+          <PiDotsNine />
+          {/* <PiDotsNine /> */}
+        </div>
+        <div className="space-y-[-7px]">
+          <PiDotsNine />
+          <PiDotsNine />
+          {/* <PiDotsNine /> */}
+        </div>
+        <div className="space-y-[-7px]">
+          <PiDotsNine />
+          <PiDotsNine />
+          {/* <PiDotsNine /> */}
+        </div>
+        <div className="space-y-[-7px]">
+          <PiDotsNine />
+          <PiDotsNine />
+          {/* <PiDotsNine /> */}
+        </div>
+      </div>
+
+      <div className="top-left-dots-wrapper absolute -top-5 left-0 z-[1] flex items-center space-x-[-7px] text-4xl text-primary text-opacity-60">
         <div className="space-y-[-7px]">
           <PiDotsNine />
           <PiDotsNine />
