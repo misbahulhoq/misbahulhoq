@@ -16,14 +16,14 @@ const Header = () => {
       <NavLink activeClassName="text-primary" href="/">
         Home
       </NavLink>
-      <NavLink activeClassName="text-primary" href="/contact">
-        Contact
-      </NavLink>
       <NavLink activeClassName="text-primary" href="/about">
         About
       </NavLink>
       <NavLink activeClassName="text-primary" href="/skills">
         Skills
+      </NavLink>
+      <NavLink activeClassName="text-primary" href="/contact">
+        Contact
       </NavLink>
     </>
   );
@@ -39,13 +39,6 @@ const Header = () => {
       </NavLink>
       <NavLink
         className="block rounded-xl py-3 text-center"
-        activeClassName="text-primary-content bg-primary "
-        href="/contact"
-      >
-        Contact
-      </NavLink>
-      <NavLink
-        className="block rounded-xl py-3 text-center"
         activeClassName="text-primary-content bg-primary"
         href="/about"
       >
@@ -57,6 +50,13 @@ const Header = () => {
         href="/skills"
       >
         Skills
+      </NavLink>
+      <NavLink
+        className="block rounded-xl py-3 text-center"
+        activeClassName="text-primary-content bg-primary "
+        href="/contact"
+      >
+        Contact
       </NavLink>
     </>
   );
