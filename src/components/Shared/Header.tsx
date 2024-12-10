@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { AiOutlineMenuFold } from "react-icons/ai";
@@ -61,15 +60,10 @@ const Header = () => {
     </>
   );
 
-  const pathName = usePathname();
-
-  console.log(pathName);
-
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.getElementById("html")?.setAttribute("data-theme", theme);
     window.addEventListener("scroll", () => {
-      // console.log(window.scrollY);
       if (window.scrollY > 500) {
         setShowBlur(true);
       } else {
