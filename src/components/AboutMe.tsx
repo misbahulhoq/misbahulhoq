@@ -21,20 +21,20 @@ const AboutMe = () => {
             />
           </div>
 
-          <div className="right-content">
+          <div className="right-content about-me-text">
             <SectionHeading sectionHeadingProps={{ heading: "About Me" }} />
             <p className="mt-7">
-              I am a self taught front end developer working with some of the
-              most popular front end development tools mentoined above.Currently
-              I am a student of B.Sc(Honors) Fourth Year at National University.
-              Having passion in web development has moved me from being a Soil
-              Science specialist to a web developer. Addiction to develop eye
-              cathing and user friendly web applications may make me a better
-              developer.Currently I am working at TechJoule, a web and mobile
-              application development company.I have been working here for the
-              last 6 months. I have a deeper interest in back end development as
-              well as data structures and algorithms. My next plan is to play
-              the role of a full stack developer.
+              I am a self taught MERN stack developer. I have a deep interest in
+              full stack development. I have built some projects using MERN
+              stack, where I have also used TypeScript (in both front-end and
+              back-end), Nextjs, Redux toolkit, Mongoose. My next target is to
+              learn DevOps and Mobile App Development. As I am dedicated to
+              learn new Technologies, I believe that, hiring me will be a good
+              choice for any company. I am working as a part time (4 pm to 9 pm)
+              front-end developer at Techjoule from June 2024. Currently I am a
+              student of B.Sc(Honors) Fourth Year at National University. Having
+              passion in web development has moved me from being a Soil Science
+              specialist to a web developer.
             </p>
           </div>
         </div>

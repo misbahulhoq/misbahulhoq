@@ -82,7 +82,7 @@ const Header = () => {
   };
   return (
     <nav
-      className={`sticky top-0 z-20 py-3 ${
+      className={`sticky top-0 z-20 py-2 lg:py-3 ${
         showBlur ? "bg-base-100" : "bg-base-200"
       } ${showBlur ? "bg-opacity-75" : "bg-opacity-100"} ${
         showBlur && "shadow-[0_4px_10px_rgba(128,0,128,0.5) backdrop-blur-md"
@@ -127,7 +127,7 @@ const Header = () => {
 
           {/* sun icon */}
           <svg
-            className="swap-on h-10 w-10 fill-current"
+            className="swap-on h-9 w-9 fill-current lg:h-10 lg:w-10"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
@@ -136,7 +136,7 @@ const Header = () => {
 
           {/* moon icon */}
           <svg
-            className="swap-off h-10 w-10 fill-current"
+            className="swap-off h-9 w-9 fill-current lg:h-10 lg:w-10"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
