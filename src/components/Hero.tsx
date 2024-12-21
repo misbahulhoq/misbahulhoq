@@ -12,19 +12,34 @@ const skillImages = [
     tooltip: "JavaScript",
   },
   {
-    img: "/mezbah-skills/typescript.svg",
-    alt: "TypeScript",
-    tooltip: "TypeScript",
-  },
-  {
     img: "/mezbah-skills/react.svg",
     alt: "React",
     tooltip: "React",
   },
   {
+    img: "/mezbah-skills/node.svg",
+    alt: "NodeJS",
+    tooltip: "NodeJS",
+  },
+  {
+    img: "/mezbah-skills/express.png",
+    alt: "ExpressJS",
+    tooltip: "ExpressJS",
+  },
+  {
+    img: "/mezbah-skills/mongodb.svg",
+    alt: "MongoDB",
+    tooltip: "MongoDB",
+  },
+  {
     img: "/mezbah-skills/next.svg",
     alt: "Next.Js",
     tooltip: "Next.JS",
+  },
+  {
+    img: "/mezbah-skills/typescript.svg",
+    alt: "TypeScript",
+    tooltip: "TypeScript",
   },
   {
     img: "/mezbah-skills/css.svg",
@@ -37,21 +52,6 @@ const skillImages = [
     tooltip: "Tailwind CSS",
   },
   {
-    img: "/mezbah-skills/html.svg",
-    alt: "HTML",
-    tooltip: "HTML",
-  },
-  {
-    img: "/mezbah-skills/node.svg",
-    alt: "NodeJS",
-    tooltip: "NodeJS",
-  },
-  {
-    img: "/mezbah-skills/firebase.svg",
-    alt: "Firebase Auth",
-    tooltip: "Firebase Auth",
-  },
-  {
     img: "/mezbah-skills/linux.svg",
     alt: "Linux",
     tooltip: "Linux",
@@ -62,7 +62,7 @@ const Hero = () => {
   return (
     <section className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6">
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
-        <div className="left-content text-wrapper max-w-[450px] space-y-5 self-center">
+        <div className="left-content text-wrapper max-w-[450px] space-y-6 self-center">
           <h2 className="text-4xl font-bold lg:text-5xl">
             <span className="-ml-4 flex items-center justify-start">
               <span className="-mr-3 inline-block text-5xl font-normal text-primary">
@@ -70,7 +70,7 @@ const Hero = () => {
                 {/* <MdOutlineChevronLeft /> */}
                 <GoChevronLeft />
               </span>
-              Frontend
+              MERN
               <span className="font-blackbold -ml-1 inline-block text-4xl text-primary">
                 <RxSlash />
               </span>
@@ -79,14 +79,15 @@ const Hero = () => {
                 <GoChevronRight />
               </span>{" "}
             </span>
-            Developer <br /> <span className="">Mezbah Uddin </span>
+            Stack Developer <br /> <span className="">Mezbah Uddin </span>
             here.
           </h2>
 
           <p className="">
-            I am a front end developer. Creating front end web applications
-            using React, Next.JS, TypeScript, Firebase, TailwindCSS since the
-            last 1 year. I am currently interested to learn backend development.
+            I am a MERN stack developer, creating functional web applications
+            using React, Next.JS, NodeJS, ExpressJS, MongoDB, TypeScript,
+            Firebase, TailwindCSS, DaisyUI. My next target is to learn DevOps
+            and Mobile App development.
           </p>
 
           {/* Icons wrapper */}
@@ -99,7 +100,7 @@ const Hero = () => {
                   height={100}
                   width={100}
                   // style={{ backgroundColor: "transparent" }}
-                  className={`h-[60px] w-[60px] cursor-pointer select-none ${
+                  className={`h-[60px] w-[60px] cursor-pointer select-none object-cover ${
                     item.img === "/mezbah-skills/react.svg" && "spin-slow"
                   }`}
                 />
@@ -107,7 +108,7 @@ const Hero = () => {
             ))}
           </div>
 
-          <div className="buttons flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div className="buttons flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
             <Link href="/contact" className="btn btn-outline btn-primary">
               Contact Me
             </Link>

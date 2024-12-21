@@ -16,7 +16,7 @@ body {
 
 p {
   opacity: 0.8;
-  /* line-height: 1.6; */
+  line-height: 1.6;
 }
 
 @keyframes spin {
