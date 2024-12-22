@@ -102,7 +102,7 @@ const Hero = () => {
                   // style={{ backgroundColor: "transparent" }}
                   className={`h-[60px] w-[60px] cursor-pointer select-none object-cover ${
                     item.img === "/mezbah-skills/react.svg" && "spin-slow"
-                  }`}
+                  } ${item.alt === "MongoDB" && "object-fill"}`}
                 />
               </div>
             ))}
