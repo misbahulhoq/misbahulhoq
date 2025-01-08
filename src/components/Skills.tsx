@@ -134,7 +134,7 @@ const Skills = () => {
           return (
             <div
               key={skill.title}
-              className="skill-box relative z-[10] cursor-pointer rounded-lg border p-4 transition-all duration-300 hover:border-primary hover:bg-base-200"
+              className="skill-box relative z-[10] cursor-pointer rounded-lg border p-6 transition-all duration-300 hover:border-primary hover:bg-base-200"
             >
               <div className="mb-3 flex flex-col justify-between gap-5">
                 <Image
