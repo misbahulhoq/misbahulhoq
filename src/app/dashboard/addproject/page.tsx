@@ -1,4 +1,5 @@
 "use client";
+import { baseUrl } from "@/api/api";
 import "./styles.css";
 
 import { Color } from "@tiptap/extension-color";
@@ -6,7 +7,7 @@ import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
 import { EditorContent, generateHTML, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import React from "react";
+import React, { useState } from "react";
 
 const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
   if (!editor) {
@@ -224,20 +225,81 @@ let content = `
 `;
 content = "Start Writing..";
 
+interface ProjectDetails {
+  title?: string;
+  slug?: string;
+  html?: string;
+}
 const AddProjectPage = () => {
+  console.log(process.env.NODE_ENV);
   const editor = useEditor({ extensions: extensions, content: content });
-  const handeSave = () => {
+  const [projectDetails, setProjectDetails] = useState<ProjectDetails | null>({
+    title: "",
+    slug: "",
+    html: "",
+  });
+
+  const handeSave = async () => {
     if (!editor) return;
     const content = editor.getJSON();
     const html = generateHTML(content, [StarterKit]);
-    console.log("content", content);
-    console.log("html", html);
+    setProjectDetails({ ...projectDetails, html });
+    const response = await fetch(`${baseUrl}/api/projects`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        dashboardtoken: process.env.NEXT_PUBLIC_DASHBOARD_TOKEN as string,
+      },
+      body: JSON.stringify(projectDetails),
+    });
+    if (!response.ok) {
+      console.error(response);
+    }
   };
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData);
+    data.slug = (data.title as string).split(" ").join("-").toLowerCase();
+    setProjectDetails({ ...projectDetails, ...data });
+  };
+
   return (
     <div>
       <div>
         <MenuBar editor={editor} />
         <EditorContent editor={editor} />
+      </div>
+
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-control">
+            <label className="label" htmlFor="title">
+              <span className="label-text">Title</span>
+            </label>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs"
+              id="title"
+              name="title"
+              placeholder="Type here"
+            />
+          </div>
+          {/* <div className="form-control">
+            <label className="label" htmlFor="slug">
+              <span className="label-text">Slug</span>
+            </label>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs"
+              id="slug"
+              name="slug"
+              placeholder="Type here"
+            />
+          </div> */}
+          <button className="btn mt-5">Submit</button>
+        </form>
       </div>
       {/* <EditorProvider
         slotBefore={<MenuBar />}
