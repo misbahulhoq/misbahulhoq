@@ -26,11 +26,14 @@ export const metadata: Metadata = {
     default: "Md Mezbah Uddin",
   },
   description:
-    "Welcome to the portfolio of Md Mezbah Uddin, a skilled front-end developer specializing in React, Next.js, and Tailwind CSS. Explore my projects, skills, and contact details.",
+    "Welcome to the portfolio of Md Mezbah Uddin, a skilled MERN Stack developer specializing in React, Next.js,MongoDb, Node.js, Express.js and Tailwind CSS. Explore my projects, skills, and contact details.",
   keywords: [
     "Md Mezbah Uddin",
     "Mezbah",
     "front-end developer",
+    "MERN Stack developer",
+    "Full stack developer",
+    "Backend developer",
     "React developer",
     "Next.js portfolio",
     "Tailwind CSS projects",
@@ -40,9 +43,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Md Mezbah Uddin", url: "https://misbahulhoq.vercel.app" }],
   robots: "index, follow",
   openGraph: {
-    title: "Md Mezbah Uddin | Front-End Developer Portfolio",
+    title: "Md Mezbah Uddin | MERN Stack Developer Portfolio",
     description:
-      "Explore the portfolio of Md Mezbah Uddin, showcasing expertise in front-end development, including React, Next.js, and Tailwind CSS.",
+      "Explore the portfolio of Md Mezbah Uddin, showcasing expertise in full stack development, including React, Next.js, Node.js, Express.js, and Tailwind CSS.",
     url: "https://misbahulhoq.vercel.app", // Replace with your actual domain
     siteName: "Md Mezbah Uddin Portfolio",
     images: [
