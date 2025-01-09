@@ -25,6 +25,9 @@ const Header = () => {
       <NavLink activeClassName="text-primary" href="/skills">
         Skills
       </NavLink>
+      <NavLink activeClassName="text-primary" href="/projects">
+        Projects
+      </NavLink>
       <NavLink activeClassName="text-primary" href="/contact">
         Contact
       </NavLink>
