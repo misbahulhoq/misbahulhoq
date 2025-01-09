@@ -4,12 +4,7 @@ import "./styles.css";
 import { Color } from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
-import {
-  EditorContent,
-  EditorProvider,
-  generateHTML,
-  useEditor,
-} from "@tiptap/react";
+import { EditorContent, generateHTML, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
 
@@ -182,6 +177,8 @@ const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
 
 const extensions = [
   Color.configure({ types: [TextStyle.name, ListItem.name] }),
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   TextStyle.configure({ types: [ListItem.name] }),
   StarterKit.configure({
     bulletList: {

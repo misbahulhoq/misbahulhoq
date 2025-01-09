@@ -90,7 +90,7 @@ const ArticleEditor = () => {
     ],
     content: "<p>Start writing...</p>",
   });
-  const [con, setCont] = useState(null);
+  const [con, setCont] = useState<JSONContent | null>(null);
 
   const handleSave = () => {
     if (!editor) return;
