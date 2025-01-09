@@ -4,13 +4,16 @@ import "./styles.css";
 import { Color } from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
-import { EditorProvider, useCurrentEditor } from "@tiptap/react";
+import {
+  EditorContent,
+  EditorProvider,
+  generateHTML,
+  useEditor,
+} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
 
-const MenuBar = () => {
-  const { editor } = useCurrentEditor();
-
+const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
   if (!editor) {
     return null;
   }
@@ -222,15 +225,33 @@ let content = `
   — Mom
 </blockquote>
 `;
-content = "";
+content = "Start Writing..";
 
 const AddProjectPage = () => {
+  const editor = useEditor({ extensions: extensions, content: content });
+  const handeSave = () => {
+    if (!editor) return;
+    const content = editor.getJSON();
+    const html = generateHTML(content, [StarterKit]);
+    console.log("content", content);
+    console.log("html", html);
+  };
   return (
-    <EditorProvider
-      slotBefore={<MenuBar />}
-      extensions={extensions}
-      content={content}
-    ></EditorProvider>
+    <div>
+      <div>
+        <MenuBar editor={editor} />
+        <EditorContent editor={editor} />
+      </div>
+      {/* <EditorProvider
+        slotBefore={<MenuBar />}
+        extensions={extensions}
+        content={content}
+      ></EditorProvider> */}
+
+      <div className="btn btn-secondary mt-6" onClick={handeSave}>
+        Submit
+      </div>
+    </div>
   );
 };
 export default AddProjectPage;

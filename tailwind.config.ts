@@ -16,6 +16,7 @@ const config: Config = {
           primary: "#FF6B00",
           "primary-content": "#fff",
           secondary: "#6B00FF",
+          //"secondary-content": "#fff",
           accent: "#0094FF",
         },
         dim: {

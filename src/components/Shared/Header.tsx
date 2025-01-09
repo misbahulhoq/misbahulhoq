@@ -10,6 +10,10 @@ const Header = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [showBlur, setShowBlur] = useState(false);
 
+  const isMe =
+    localStorage.getItem("dashboardToken") ===
+    process.env.NEXT_PUBLIC_DASHBOARD_TOKEN;
+
   const navLinksPc = (
     <>
       <NavLink activeClassName="text-primary" href="/">
@@ -24,6 +28,11 @@ const Header = () => {
       <NavLink activeClassName="text-primary" href="/contact">
         Contact
       </NavLink>
+      {isMe && (
+        <NavLink activeClassName="text-primary" href="/dashboard">
+          Dashboard
+        </NavLink>
+      )}
     </>
   );
 

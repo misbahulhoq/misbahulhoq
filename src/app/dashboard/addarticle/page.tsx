@@ -96,7 +96,9 @@ const ArticleEditor = () => {
     if (!editor) return;
 
     const content = editor.getJSON();
+    const html = generateHTML(content, [StarterKit]);
     setCont(content);
+    console.log(html);
     console.log("Editor Content:", content);
     alert("Article saved! Check the console for JSON content.");
   };

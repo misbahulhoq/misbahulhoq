@@ -8,13 +8,19 @@ const DashboardPage = () => {
       <div className="flex items-center gap-5">
         <Link
           href={`/dashboard/addproject`}
-          className="flex h-28 items-center justify-center rounded-md border border-black p-6"
+          className="flex h-28 items-center justify-center rounded-md border border-accent p-6 text-accent"
         >
           Add New Project
         </Link>
         <Link
+          href={`/dashboard/addarticle`}
+          className="flex h-28 items-center justify-center rounded-md border border-accent p-6 text-accent"
+        >
+          Add New Article
+        </Link>
+        <Link
           href={`/dashboard/editproject`}
-          className="flex h-28 items-center justify-center rounded-md border border-black p-6"
+          className="flex h-28 items-center justify-center rounded-md border border-accent p-6 text-accent"
         >
           {" "}
           Edit Project
