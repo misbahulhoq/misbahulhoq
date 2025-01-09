@@ -171,6 +171,17 @@ const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
         >
           Purple
         </button>
+        <button
+          onClick={() => {
+            editor.chain().focus().unsetAllMarks().run();
+            const html = prompt("Enter the HTML");
+            if (html) {
+              editor.chain().focus().insertContent(html).run();
+            }
+          }}
+        >
+          Insert HTML
+        </button>
       </div>
     </div>
   );
