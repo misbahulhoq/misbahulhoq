@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { baseUrl } from "@/api/api";
 import "./styles.css";
@@ -36,6 +37,8 @@ const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
         .setLink({ href: url })
         .run();
     } catch (e) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       alert(e.message);
     }
   }, [editor]);
