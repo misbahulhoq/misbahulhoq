@@ -3,6 +3,6 @@ export type ProjectDetails = {
   title: string;
   slug: string;
   thumbnail: string;
-  liverUrl: string;
+  liveUrl: string;
   html: string;
 };

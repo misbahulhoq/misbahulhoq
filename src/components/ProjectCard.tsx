@@ -14,7 +14,8 @@ import type { ProjectDetails } from "@/types/projectType";
  */
 
 const ProjectCard = ({ props }: { props: ProjectDetails }) => {
-  const { title, thumbnail, slug } = props || {};
+  const { title, thumbnail, slug, liveUrl } = props || {};
+
   return (
     <div className="card card-bordered mx-auto max-w-96 bg-base-100 shadow-xl">
       <figure>
@@ -36,7 +37,7 @@ const ProjectCard = ({ props }: { props: ProjectDetails }) => {
             Details
           </Link>
           <a
-            href=""
+            href={liveUrl}
             target="_blank"
             className="btn btn-primary btn-sm max-w-fit rounded-sm"
           >
