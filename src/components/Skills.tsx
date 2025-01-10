@@ -144,7 +144,7 @@ const Skills = () => {
                   width={55}
                   className={`${skill.icon === "/mezbah-skills/mongodb.svg" && "h-16 w-16"} ${skill.title === "React" && "spin spin-slow"}`}
                 />
-                <h3 className="text-lg font-semibold">{skill.title}</h3>
+                <h3 className="text-xl font-semibold">{skill.title}</h3>
                 {/* <p className="">
                   {skill.percentage}
                   <span className="text-success">%</span>{" "}

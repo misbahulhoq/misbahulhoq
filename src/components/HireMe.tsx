@@ -3,7 +3,7 @@ import React from "react";
 const HireMe = () => {
   return (
     <div className="container-center">
-      <h2 className="mb-8 text-center text-5xl font-bold">
+      <h2 className="mb-8 text-center text-4xl font-bold lg:text-5xl">
         Why Should You <span className="text-accent">Hire</span> Me?
       </h2>
       <div className="mx-auto max-w-[900px] space-y-4">

@@ -62,7 +62,7 @@ const Hero = () => {
   return (
     <section className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6">
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
-        <div className="left-content text-wrapper max-w-[450px] space-y-6 self-center">
+        <div className="left-content text-wrapper mt-5 max-w-[450px] space-y-6 self-center lg:mt-0">
           <h2 className="text-4xl font-bold lg:text-5xl">
             <span className="-ml-4 flex items-center justify-start">
               <span className="-mr-3 inline-block text-5xl font-normal text-primary">

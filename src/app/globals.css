@@ -22,8 +22,7 @@ body {
 }
 
 p {
-  opacity: 0.8;
-  line-height: 1.6;
+  @apply text-lg leading-relaxed opacity-80;
 }
 
 @keyframes spin {
