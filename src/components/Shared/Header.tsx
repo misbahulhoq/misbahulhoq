@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { AiOutlineMenuFold } from "react-icons/ai";
 import NavLink from "./NavLink";
 
 const Header = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [showBlur, setShowBlur] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const isMe =
     localStorage.getItem("dashboardToken") ===
@@ -45,6 +45,7 @@ const Header = () => {
         className="block rounded-xl py-3 text-center"
         activeClassName="text-primary-content bg-primary "
         href="/"
+        onClick={() => setShowMenu(false)}
       >
         Home
       </NavLink>
@@ -52,6 +53,7 @@ const Header = () => {
         className="block rounded-xl py-3 text-center"
         activeClassName="text-primary-content bg-primary"
         href="/about"
+        onClick={() => setShowMenu(false)}
       >
         About
       </NavLink>
@@ -59,13 +61,23 @@ const Header = () => {
         className="block rounded-xl py-3 text-center"
         activeClassName="text-primary-content bg-primary"
         href="/skills"
+        onClick={() => setShowMenu(false)}
       >
         Skills
       </NavLink>
       <NavLink
         className="block rounded-xl py-3 text-center"
+        activeClassName="text-primary-content bg-primary"
+        href="/projects"
+        onClick={() => setShowMenu(false)}
+      >
+        Projects
+      </NavLink>
+      <NavLink
+        className="block rounded-xl py-3 text-center"
         activeClassName="text-primary-content bg-primary "
         href="/contact"
+        onClick={() => setShowMenu(false)}
       >
         Contact
       </NavLink>
@@ -94,10 +106,10 @@ const Header = () => {
   };
   return (
     <nav
-      className={`sticky top-0 z-20 py-2 lg:py-3 ${
+      className={`sticky top-0 z-20 py-1 lg:py-3 ${
         showBlur ? "bg-base-100" : "bg-base-200"
-      } ${showBlur ? "bg-opacity-75" : "bg-opacity-100"} ${
-        showBlur && "shadow-[0_4px_10px_rgba(128,0,128,0.5) backdrop-blur-md"
+      } ${showBlur ? "bg-opacity-80" : "bg-opacity-100"} ${
+        showBlur && "shadow-[0_4px_10px_rgba(128,0,128,0.5) backdrop-blur-lg"
       } ${
         showBlur &&
         "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
@@ -105,14 +117,42 @@ const Header = () => {
     >
       <div className="container-center flex items-center justify-between gap-5">
         {/* dropdown menu-- visible only on small devices and hidden on large devices */}
-        <details className="dropdown lg:hidden">
-          <summary className="btn btn-outline -ml-2 w-fit max-w-fit border-none text-3xl">
-            <AiOutlineMenuFold />
-          </summary>
-          <ul className="menu dropdown-content z-[1] w-52 space-y-1 rounded-box bg-base-200 p-2 shadow">
+        <div className="relative lg:hidden">
+          <label className="swap swap-rotate">
+            {/* this hidden checkbox controls the state */}
+            <input
+              type="checkbox"
+              onClick={() => setShowMenu(!showMenu)}
+              checked={showMenu}
+            />
+            {/* hamburger icon */}
+            <svg
+              className="swap-off fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512"
+            >
+              <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+            </svg>
+
+            {/* close icon */}
+            <svg
+              className="swap-on fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 512 512"
+            >
+              <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+            </svg>
+          </label>
+          <ul
+            className={`menu dropdown-content z-[1] ${showMenu ? "block" : "hidden"} absolute w-52 space-y-1 rounded-box bg-base-200 p-2 shadow`}
+          >
             {navLinksMobile}
           </ul>
-        </details>
+        </div>
 
         <div className="links order-1 hidden items-center gap-5 font-medium lg:flex">
           {navLinksPc}
