@@ -22,19 +22,25 @@ const AboutMe = () => {
           </div>
 
           <div className="right-content about-me-text">
-            <SectionHeading sectionHeadingProps={{ heading: "About Me" }} />
-            <p className="mt-7">
+            <SectionHeading
+              sectionHeadingProps={{
+                heading: "About Me",
+                className: "!text-left",
+              }}
+            />
+            <p className="">
               I am a self taught MERN stack developer. I have a deep interest in
               full stack development. I have built some projects using MERN
               stack, where I have also used TypeScript (in both front-end and
-              back-end), Nextjs, Redux toolkit, Mongoose. My next target is to
-              learn DevOps and Mobile App Development. As I am dedicated to
-              learn new Technologies, I believe that, hiring me will be a good
-              choice for any company. I am working as a part time (4 pm to 9 pm)
-              front-end developer at Techjoule from June 2024. Currently I am a
-              student of B.Sc(Honors) Fourth Year at National University. Having
-              passion in web development has moved me from being a Soil Science
-              specialist to a web developer.
+              back-end), Nextjs, Redux toolkit, Mongoose.I love building
+              projects from scratch. My next target is to learn DevOps and
+              Mobile App Development. As I am dedicated to learn new
+              technologies, I believe that hiring me will be a good choice for
+              any company. I am working as a part time (4 pm to 9 pm) front-end
+              developer at Techjoule from June 2024. Currently I am a student of
+              B.Sc(Honors) Fourth Year at National University. Having passion in
+              web development has moved me from being a Soil Science specialist
+              to a web developer.
             </p>
           </div>
         </div>

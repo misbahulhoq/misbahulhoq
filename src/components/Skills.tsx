@@ -126,10 +126,10 @@ const skills = [
 const Skills = () => {
   return (
     <div className="container-center">
-      <h2 className="mb-8 text-center text-4xl font-bold lg:text-5xl">
+      <h2 className="mb-10 text-center text-4xl font-bold lg:text-5xl">
         My <span className="text-success">Skills</span>
       </h2>
-      <div className="grid gap-x-8 gap-y-8 pb-11 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-x-6 gap-y-6 pb-11 md:grid-cols-2 lg:grid-cols-3">
         {skills.map((skill) => {
           return (
             <div
