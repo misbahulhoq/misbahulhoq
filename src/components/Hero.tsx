@@ -80,15 +80,13 @@ const Hero = () => {
               </span>{" "}
             </span>
             Stack Developer <br /> <span className="">Mezbah Uddin </span>
-            here.
           </h2>
 
-          <p className="">
-            I am a MERN stack developer, creating functional web applications
-            using React, Next.JS, NodeJS, ExpressJS, MongoDB, TypeScript,
-            Firebase, TailwindCSS, DaisyUI. My next target is to learn DevOps
-            and Mobile App development.
-          </p>
+          {/* <p className="">
+            I am a self taught MERN stack developer, creating functional web
+            applications with a focus on modern technologies. My next target is
+            to learn DevOps and Mobile App development.
+          </p> */}
 
           {/* Icons wrapper */}
           <div className="grid grid-cols-3 gap-y-4 md:grid-cols-5">

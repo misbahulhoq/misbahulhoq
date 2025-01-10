@@ -7,7 +7,13 @@ const DashboardPage = () => {
     <div className="flex h-screen items-center justify-center">
       <div className="flex items-center gap-5">
         <Link
-          href={`/dashboard/addproject`}
+          href={`/dashboard/projects`}
+          className="flex h-28 items-center justify-center rounded-md border border-accent p-6 text-accent"
+        >
+          Inspect Projects
+        </Link>
+        <Link
+          href={`/dashboard/projects/add`}
           className="flex h-28 items-center justify-center rounded-md border border-accent p-6 text-accent"
         >
           Add New Project
