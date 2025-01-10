@@ -101,11 +101,11 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-8 bg-gray-900 py-8 text-center lg:py-6">
-        <p className="text-center">
-          © {new Date().getFullYear()}, Created by Md Mezbah Uddin. All rights
-          reserved.
-        </p>
+      <div className="mt-8 bg-gray-900 py-7 text-center lg:py-6">
+        <span className="text-center">
+          © Created by Md Mezbah Uddin. All rights reserved. 2024 -{" "}
+          {new Date().getFullYear()}
+        </span>
       </div>
 
       <div className="absolute -left-10 -top-10 h-20 w-20 rounded-full bg-primary bg-opacity-50 blur-xl"></div>
