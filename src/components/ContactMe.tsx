@@ -6,7 +6,7 @@ import ContactForm from "./ContactForm";
 const ContactMe = () => {
   return (
     <section className="py-12">
-      <div className="heading-wrapper mb-7 text-center">
+      <div className="heading-wrapper text-center">
         <SectionHeading sectionHeadingProps={{ heading: "Contact Me" }} />
         {/* <p className="mb-8 text-lg">
           Feel free to reach out via phone or email. I&apos;d love to connect
@@ -44,9 +44,16 @@ const ContactMe = () => {
         </div> */}
       </div>
 
-      <div className="container-center grid gap-5 lg:grid-cols-2">
-        <Image
+      <div className="container-center grid items-center gap-5 lg:grid-cols-2">
+        {/* <Image
           src={`/ilustrations/contact-3.jpg`}
+          alt="Contact illustration"
+          height={500}
+          width={500}
+          className="mr-auto hidden grow lg:block"
+        /> */}
+        <Image
+          src={`/ilustrations/contact-us-illustration-download-in-svg-png-gif-file-formats--call-logo-laptop-helping-customer-service-pack-network-communication-illustrations-2912020.webp`}
           alt="Contact illustration"
           height={500}
           width={500}

@@ -3,16 +3,16 @@ import React from "react";
 const HireMe = () => {
   return (
     <div className="container-center">
-      <h2 className="text-center text-5xl font-bold">
+      <h2 className="mb-8 text-center text-5xl font-bold">
         Why Should You <span className="text-accent">Hire</span> Me?
       </h2>
-      <div className="mx-auto mt-7 max-w-[900px] space-y-4">
+      <div className="mx-auto max-w-[900px] space-y-4">
         <p>
           You should hire me because I bring a unique blend of technical
-          expertise and creativity to every project. As a front-end developer, I
-          have a strong foundation in building scalable, user-friendly websites
-          and applications. My experience with modern frameworks like React,
-          Tailwind CSS, and tools like Firebase allows me to develop
+          expertise and creativity to every project. As a full stack developer,
+          I have a strong foundation in building scalable, user-friendly
+          websites and applications. My experience with modern frameworks like
+          React, Tailwind CSS, and tools like Firebase allows me to develop
           high-performance interfaces quickly and efficiently. I&apos;m always
           focused on the user experience, ensuring that my designs are both
           functional and visually appealing.
