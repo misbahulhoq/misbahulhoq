@@ -122,7 +122,7 @@ const Header = () => {
             {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
-              onClick={() => setShowMenu(!showMenu)}
+              onChange={() => setShowMenu(!showMenu)}
               checked={showMenu}
             />
             {/* hamburger icon */}
