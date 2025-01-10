@@ -45,16 +45,18 @@ const skills = [
     title: "JavaScript",
     percentage: 50,
     icon: "/mezbah-skills/js.svg",
-    description:
-      "While it's not possible for a developer to know all about javascript or any other programming language, but having 50-60% knowledge about it may get the job done.",
+    // description:
+    //   "While it's not possible for a developer to know all about javascript or any other programming language, but having 50-60% knowledge about it may get the job done.",
+    description: "The most popular programming language for web development.",
   },
 
   {
     title: "React",
     percentage: 60,
     icon: "/mezbah-skills/react.svg",
-    description:
-      "Developing an application only with vanilla javascript takes more time. This is where a library or framework comes into play.I choose React as it's one of the most popular library and it has a large community with huge learning resources",
+    description: "The most popular library for building user interfaces.",
+    // description:
+    //   "Developing an application only with vanilla javascript takes more time. This is where a library or framework comes into play.I choose React as it's one of the most popular library and it has a large community with huge learning resources",
   },
 
   {
@@ -62,29 +64,34 @@ const skills = [
     percentage: 20,
     icon: "/mezbah-skills/node.svg",
     description:
-      "I have just basic knowledge about Node.Js and Express. I already built some applications using node and express. I am currenty learning Node.JS.",
+      "The most popular backend javascript runtime for web applications.",
+    // description:
+    //   "I have just basic knowledge about Node.Js and Express. I already built some applications using node and express. I am currenty learning Node.JS.",
   },
 
   {
     title: "ExpressJS",
     icon: "/mezbah-skills/express.png",
-    description:
-      "Structuring an app only with NodeJs will take longer time and that's where Express comes into the picture. ",
+    description: "A lightweight framework for Node.Js.",
+    // description:
+    //   "Structuring an app only with NodeJs will take longer time and that's where Express comes into the picture. ",
   },
 
   {
     title: "MongoDB",
     icon: "/mezbah-skills/mongodb.svg",
-    description:
-      "Structuring an app only with NodeJs will take longer time and that's where Express comes into the picture. ",
+    description: "A NoSQL database for storing and retrieving data.",
+    // description:
+    //   "Structuring an app only with NodeJs will take longer time and that's where Express comes into the picture. ",
   },
 
   {
     title: "TypeScript",
     percentage: 40,
     icon: "/mezbah-skills/typescript.svg",
-    description:
-      "I use typescript for type safety and I also like the fact when typescript suggests me the code snippets.This behavior of typescript reduce the chance of making spelling mistakes.",
+    description: "A statically typed superset of JavaScript.",
+    // description:
+    //   "I use typescript for type safety and I also like the fact when typescript suggests me the code snippets.This behavior of typescript reduce the chance of making spelling mistakes.",
   },
 
   {
@@ -92,34 +99,27 @@ const skills = [
     percentage: 60,
     icon: "/mezbah-skills/next.svg",
     description:
-      "As React is a library, it does not come up with all the needed feature for an web application such as routing, authentication etc. In my opinion, Next.js is the best solution for these features. That's why I choose it.",
+      "The most popular framework of React for building web applications.",
+    // description:
+    //   "As React is a library, it does not come up with all the needed feature for an web application such as routing, authentication etc. In my opinion, Next.js is the best solution for these features. That's why I choose it.",
   },
   // {
-  //   title: "CSS",
-  //   percentage: 50,
-  //   icon: "/mezbah-skills/css.svg",
-  //   description:
-  //     "While I am writing css for a long time, still I can't say that I know all about it. As there's a vast amount of topics which I don't know still. But the requirement of several projects will teach me along the way.",
-  // },
-
-  // {
-  //   title: "Firebase",
-  //   percentage: 30,
-  //   description:
-  //     "Firebase is a great tool as I don't need to write all the logic for authentication from scratch. I use it only for authenticaion.",
-  // },
-  // {
-  //   title: "Redux",
-  //   percentage: 10,
-  //   description:
-  //     "I have just some basic idea about it. I am still learing it...",
+  //   title: "Linux",
+  //   percentage: 20,
+  //   icon: "/mezbah-skills/linux.svg",
+  //   description: "The most popular open source operating system.",
   // },
   {
-    title: "Linux",
+    title: "Jest",
     percentage: 20,
-    icon: "/mezbah-skills/linux.svg",
-    description:
-      "As it is one of the most popular OS for servers, so I have a deeper interest about it. I am just familiar with it's command line. I am using it as my primary OS.",
+    icon: "/mezbah-skills/jest.svg",
+    description: "The most popular testing framework for JavaScript.",
+  },
+  {
+    title: "Redux Toolkit",
+    percentage: 20,
+    icon: "/mezbah-skills/redux.svg",
+    description: "The most popular state management library for React.",
   },
 ];
 
