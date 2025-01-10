@@ -106,7 +106,7 @@ const Header = () => {
   };
   return (
     <nav
-      className={`sticky top-0 z-20 py-2 lg:py-3 ${
+      className={`sticky top-0 z-20 py-3 lg:py-3 ${
         showBlur ? "bg-base-100" : "bg-base-200"
       } ${showBlur ? "bg-opacity-80" : "bg-opacity-100"} ${
         showBlur && "shadow-[0_4px_10px_rgba(128,0,128,0.5) backdrop-blur-lg"
@@ -154,7 +154,7 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="links order-1 hidden items-center gap-5 font-medium lg:flex">
+        <div className="links order-1 hidden items-center gap-6 font-medium lg:flex">
           {navLinksPc}
         </div>
 
