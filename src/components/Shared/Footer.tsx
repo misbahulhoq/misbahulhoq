@@ -101,7 +101,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-8 bg-gray-900 py-7 text-center lg:py-6">
+      <div className="mt-8 bg-gray-900 px-2 py-7 text-center lg:py-6">
         <span className="text-center">
           © Created by Md Mezbah Uddin. All rights reserved. 2024 -{" "}
           {new Date().getFullYear()}
