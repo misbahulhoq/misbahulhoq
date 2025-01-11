@@ -13,7 +13,10 @@ const DownloadButton = () => {
     document.body.removeChild(link);
   };
   return (
-    <button onClick={downloadResume} className="btn btn-primary rounded-full">
+    <button
+      onClick={downloadResume}
+      className="btn btn-primary rounded-full !text-primary-content"
+    >
       Download Resume
     </button>
   );

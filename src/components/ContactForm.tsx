@@ -126,7 +126,7 @@ const ContactForm = () => {
         ) : (
           <button
             disabled={isLoading}
-            className="btn btn-primary max-[400px]:btn-block"
+            className="btn btn-primary !text-primary-content max-[400px]:btn-block"
           >
             Submit
           </button>
