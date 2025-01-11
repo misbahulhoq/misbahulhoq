@@ -11,7 +11,13 @@ import { EditorContent, generateHTML, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React, { useCallback, useState } from "react";
 
-const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
+const MenuBar = ({
+  editor,
+  setShowPopup,
+}: {
+  editor: ReturnType<typeof useEditor>;
+  setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const addLink = () => {
     const url = prompt("Enter the URL");
     if (url) {
@@ -185,18 +191,7 @@ const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
         >
           Purple
         </button>
-        <button
-          onClick={() => {
-            editor.chain().focus().unsetAllMarks().run();
-            const html = prompt("Enter the HTML");
-            if (html) {
-              editor.chain().focus().insertContent(html).run();
-            }
-          }}
-        >
-          Insert HTML
-        </button>
-
+        <button onClick={() => setShowPopup(true)}>Insert HTML</button>
         <button
           onClick={addLink}
           className={editor.isActive("link") ? "is-active" : ""}
@@ -244,6 +239,9 @@ const AddProjectPage = () => {
   });
   const [loading, setLoading] = React.useState(false);
   const editor = useEditor({ extensions: extensions });
+  // I am using this only to handle the image upload functionality of the editor. By the way, it's a trick created by me.
+  const [showPopup, setShowPopup] = useState(false); // State to control popup visibility
+  const [htmlInput, setHtmlInput] = useState(""); // State to store HTML input
 
   const handeSave = () => {
     if (!editor) return;
@@ -277,6 +275,14 @@ const AddProjectPage = () => {
     }
   };
 
+  const handleInsertHTML = () => {
+    if (htmlInput.trim() !== "") {
+      editor?.commands.insertContent(htmlInput);
+    }
+    setShowPopup(false); // Close popup after insertion
+    setHtmlInput(""); // Clear the input
+  };
+
   // const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
   //   event.preventDefault();
   //   const formData = new FormData(event.currentTarget);
@@ -288,7 +294,7 @@ const AddProjectPage = () => {
   return (
     <div>
       <div>
-        <MenuBar editor={editor} />
+        <MenuBar editor={editor} setShowPopup={setShowPopup} />
         <EditorContent editor={editor} />
       </div>
 
@@ -363,6 +369,35 @@ const AddProjectPage = () => {
       >
         Submit
       </button>
+
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-1/2 rounded bg-base-100 p-6 shadow-lg">
+            <h2 className="mb-4 text-lg font-bold">Insert HTML</h2>
+            <textarea
+              className="h-40 w-full rounded border p-2"
+              placeholder="Enter your HTML here..."
+              value={htmlInput}
+              onChange={(e) => setHtmlInput(e.target.value)}
+            />
+            <div className="mt-4 flex justify-end">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="btn btn-secondary mr-2 !text-secondary-content"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleInsertHTML}
+                className="btn btn-primary !text-primary-content"
+              >
+                Insert
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
