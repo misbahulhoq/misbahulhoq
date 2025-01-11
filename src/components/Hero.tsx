@@ -122,7 +122,7 @@ const Hero = () => {
               src="/mezbah-photo.png"
               height={100}
               width={300}
-              alt="Mezbah's Photo"
+              alt="Md Mezbah Uddin"
               className="relative z-10 lg:right-16"
             />
             <div className="bg-lines"></div>
