@@ -230,91 +230,16 @@ const MenuBar = ({ editor }: { editor: ReturnType<typeof useEditor> }) => {
     </div>
   );
 };
+
 const extensions = [
-  Color.configure({ types: [TextStyle.name, ListItem.name] }),
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  TextStyle.configure({ types: [ListItem.name] }),
-  StarterKit.configure({
-    bulletList: {
-      keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
-    },
-    orderedList: {
-      keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
-    },
-  }),
+  Color,
+  TextStyle,
+  StarterKit,
+  ListItem,
   Link.configure({
     openOnClick: true,
     autolink: true,
-    defaultProtocol: "https",
-    protocols: ["http", "https"],
-    isAllowedUri: (url, ctx) => {
-      try {
-        // construct URL
-        const parsedUrl = url.includes(":")
-          ? new URL(url)
-          : new URL(`${ctx.defaultProtocol}://${url}`);
-
-        // use default validation
-        if (!ctx.defaultValidate(parsedUrl.href)) {
-          return false;
-        }
-
-        // disallowed protocols
-        const disallowedProtocols = ["ftp", "file", "mailto"];
-        const protocol = parsedUrl.protocol.replace(":", "");
-
-        if (disallowedProtocols.includes(protocol)) {
-          return false;
-        }
-
-        // only allow protocols specified in ctx.protocols
-        const allowedProtocols = ctx.protocols.map((p) =>
-          typeof p === "string" ? p : p.scheme,
-        );
-
-        if (!allowedProtocols.includes(protocol)) {
-          return false;
-        }
-
-        // disallowed domains
-        const disallowedDomains = [
-          "example-phishing.com",
-          "malicious-site.net",
-        ];
-        const domain = parsedUrl.hostname;
-
-        if (disallowedDomains.includes(domain)) {
-          return false;
-        }
-
-        // all checks have passed
-        return true;
-      } catch (error) {
-        return false;
-      }
-    },
-    shouldAutoLink: (url) => {
-      try {
-        // construct URL
-        const parsedUrl = url.includes(":")
-          ? new URL(url)
-          : new URL(`https://${url}`);
-
-        // only auto-link if the domain is not in the disallowed list
-        const disallowedDomains = [
-          "example-no-autolink.com",
-          "another-no-autolink.com",
-        ];
-        const domain = parsedUrl.hostname;
-
-        return !disallowedDomains.includes(domain);
-      } catch (error) {
-        return false;
-      }
-    },
+    linkOnPaste: true,
   }),
 ];
 
@@ -326,10 +251,13 @@ const ProjectEditPage = ({ params }: { params: { slug: string } }) => {
     liveUrl: string;
   } | null>(null);
   const [loading, setLoading] = React.useState(true);
-  const editor = useEditor({
-    extensions,
-    content: project?.html || "",
-  });
+  const editor = useEditor(
+    {
+      extensions,
+      content: project?.html,
+    },
+    [project],
+  );
 
   React.useEffect(() => {
     const fetchProject = async () => {
