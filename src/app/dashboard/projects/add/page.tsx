@@ -231,45 +231,59 @@ interface ProjectDetails {
   title?: string;
   slug?: string;
   thumbnail?: string;
-  liverUrl?: string;
+  liveUrl?: string;
   html?: string;
 }
 const AddProjectPage = () => {
-  const editor = useEditor({ extensions: extensions });
   const [projectDetails, setProjectDetails] = useState<ProjectDetails | null>({
     title: "",
     slug: "",
     thumbnail: "",
-    liverUrl: "",
+    liveUrl: "",
     html: "",
   });
+  const [loading, setLoading] = React.useState(false);
+  const editor = useEditor({ extensions: extensions });
 
-  const handeSave = async () => {
+  const handeSave = () => {
     if (!editor) return;
-    const content = editor.getJSON();
     const html = editor.getHTML();
-    // const html = generateHTML(content, [StarterKit]);
+    console.log("html", html);
     setProjectDetails({ ...projectDetails, html });
-    const response = await fetch(`${baseUrl}/api/projects`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        dashboardtoken: process.env.NEXT_PUBLIC_DASHBOARD_TOKEN as string,
-      },
-      body: JSON.stringify(projectDetails),
-    });
-    if (!response.ok) {
-      console.error(response);
+    if (html == projectDetails?.html) {
+      setLoading(true);
+      fetch(`${baseUrl}/api/projects`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          dashboardtoken: process.env.NEXT_PUBLIC_DASHBOARD_TOKEN as string,
+        },
+        body: JSON.stringify(projectDetails),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setLoading(false);
+          console.log(data);
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.error(error);
+        });
     }
   };
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData);
-    data.slug = (data.title as string).split(" ").join("-").toLowerCase();
-    setProjectDetails({ ...projectDetails, ...data });
-  };
+  // const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+  //   event.preventDefault();
+  //   const formData = new FormData(event.currentTarget);
+  //   const data = Object.fromEntries(formData);
+  //   data.slug = (data.title as string).split(" ").join("-").toLowerCase();
+  //   setProjectDetails({ ...projectDetails, ...data });
+  // };
 
   return (
     <div>
@@ -279,7 +293,7 @@ const AddProjectPage = () => {
       </div>
 
       <div>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="form-control">
             <label className="label" htmlFor="title">
               <span className="label-text">Title</span>
@@ -290,6 +304,15 @@ const AddProjectPage = () => {
               id="title"
               name="title"
               placeholder="Type here"
+              onChange={(e) => {
+                const title = e.target.value;
+                const slug = title.split(" ").join("-").toLowerCase();
+                setProjectDetails({
+                  ...projectDetails,
+                  title: title,
+                  slug: slug,
+                });
+              }}
             />
           </div>
           <div className="form-control">
@@ -302,6 +325,13 @@ const AddProjectPage = () => {
               id="thumbnail"
               name="thumbnail"
               placeholder="Enter thumbnail url"
+              onChange={(e) => {
+                const thumbnail = e.target.value;
+                setProjectDetails({
+                  ...projectDetails,
+                  thumbnail: thumbnail,
+                });
+              }}
             />
           </div>
           <div className="form-control">
@@ -314,27 +344,25 @@ const AddProjectPage = () => {
               id="liveUrl"
               name="liveUrl"
               placeholder="Enter live url"
+              onChange={(e) => {
+                const liveUrl = e.target.value;
+                setProjectDetails({
+                  ...projectDetails,
+                  liveUrl: liveUrl,
+                });
+              }}
             />
           </div>
-          {/* <div className="form-control">
-            <label className="label" htmlFor="slug">
-              <span className="label-text">Slug</span>
-            </label>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs"
-              id="slug"
-              name="slug"
-              placeholder="Type here"
-            />
-          </div> */}
-          <button className="btn mt-5">Submit</button>
         </form>
       </div>
 
-      <div className="btn btn-secondary mt-6" onClick={handeSave}>
+      <button
+        className="btn btn-secondary mt-6 !text-secondary-content"
+        onClick={handeSave}
+        disabled={loading}
+      >
         Submit
-      </div>
+      </button>
     </div>
   );
 };
