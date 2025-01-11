@@ -44,7 +44,7 @@ const Footer = () => {
       <div className="container-center grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {/* <div></div> */}
         <div>
-          <h3 className="mb-3 text-xl font-semibold">Contact Info</h3>
+          <h3 className="footer-title text-lg">Contact Info</h3>
           <ul className="text-base opacity-80">
             <li>
               <a
@@ -69,7 +69,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="mb-3 text-xl font-semibold">Social Media</h3>
+          <h3 className="footer-title text-lg font-semibold">Social Media</h3>
           <ul className="text-base opacity-80">
             {socialLinks.map((link) => (
               <li key={link.link}>
@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="mb-3 text-xl font-semibold">Quick Links</h3>
+          <h3 className="footer-title text-lg">Quick Links</h3>
           <ul className="text-base opacity-80">
             {quickLinks.map((link) => (
               <li key={link.name} className="">
