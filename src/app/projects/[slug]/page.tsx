@@ -35,7 +35,7 @@ const ProjectDetailsPage = ({ params }: { params: { slug: string } }) => {
   return (
     <section className="project-details-page py-5">
       {/* Project Details      */}
-      <div className="container-center">
+      <div className="container-center project-details">
         <div dangerouslySetInnerHTML={{ __html: project?.html || "" }}></div>
       </div>
     </section>

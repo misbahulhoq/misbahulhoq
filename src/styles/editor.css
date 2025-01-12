@@ -11,70 +11,77 @@
   margin-top: 0;
 }
 
-button {
+.project-details button {
   @apply btn btn-outline btn-sm;
 }
 
-button.is-active {
+.project-details button.is-active {
   @apply btn btn-secondary btn-sm;
+}
+
+.project-details hr {
+  @apply h-[1px] bg-neutral;
+}
+
+.project-details ol {
+  @apply list-inside list-decimal;
+}
+
+.project-details ul {
+  @apply list-disc;
+}
+
+.project-details ul,
+.project-details ol {
+  @apply mx-4 my-3 ml-1 px-4 py-3;
+}
+
+.project-details ul li p,
+.project-details ol li p {
+  @apply my-1 inline-block;
+}
+
+.project-details h1,
+.project-details h2,
+.project-details h3,
+.project-details h4,
+.project-details h5,
+.project-details h6 {
+  @apply mt-10 text-pretty leading-tight;
+}
+
+.project-details h1,
+.project-details h2 {
+  @apply mb-6 mt-14 font-bold;
+}
+
+.project-details h3,
+.project-details h4,
+.project-details h5,
+.project-details h6 {
+  @apply mb-4 mt-8 font-medium;
+}
+
+.project-details h1 {
+  @apply text-4xl;
+}
+
+.project-details h2 {
+  @apply text-3xl;
+}
+
+.project-details h3 {
+  @apply text-2xl;
+}
+
+.project-details h4,
+.project-details h5,
+.project-details h6 {
+  /* styles for h4, h5, h6 */
 }
 
 hr {
   @apply h-[1px] bg-neutral;
-}
-
-ol {
-  @apply list-inside list-decimal;
-}
-
-ul {
-  @apply list-disc;
-}
-
-ul,
-ol {
-  @apply mx-4 my-3 ml-1 px-4 py-3;
-}
-
-ul li p,
-ol li p {
-  @apply my-1 inline-block;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply mt-10 text-pretty leading-tight;
-}
-
-h1,
-h2 {
-  @apply mb-6 mt-14 font-bold;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  @apply mb-4 mt-8 font-medium;
-}
-
-h1 {
-  @apply text-4xl;
-}
-h2 {
-  @apply text-3xl;
-}
-h3 {
-  @apply text-2xl;
-}
-h4,
-h5,
-h6 {
-  @apply text-xl;
 }
 
 code {

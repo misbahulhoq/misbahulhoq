@@ -273,7 +273,6 @@ const ProjectEditPage = ({ params }: { params: { slug: string } }) => {
   if (loading) {
     return <Spinner />;
   }
-  console.log(project);
 
   return (
     <section className="">
