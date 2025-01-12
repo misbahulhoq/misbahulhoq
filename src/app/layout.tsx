@@ -16,10 +16,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// export const metadata: Metadata = {
-//   title: "Md Mezbah Uddin",
-//   description: "Portfolio of Md Mezbah Uddin",
-// };
 export const metadata: Metadata = {
   title: {
     template: "%s | Md Mezbah Uddin",

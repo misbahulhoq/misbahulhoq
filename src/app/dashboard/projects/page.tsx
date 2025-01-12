@@ -21,8 +21,24 @@ const ProjectsPage = () => {
     fetchProjects();
   }, [fetchProjects]);
 
+  const handleDelete = async (slug: string) => {
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      const res = await fetch(`${baseUrl}/api/projects/${slug}`, {
+        method: "DELETE",
+        headers: {
+          dashboardtoken: process.env.NEXT_PUBLIC_DASHBOARD_TOKEN as string,
+        },
+      });
+      if (res.ok) {
+        const newProjects = projects.filter(
+          (project: ProjectDetails) => project.slug !== slug,
+        );
+        setProjects(newProjects);
+      }
+    }
+  };
+
   if (loading) return <Spinner />;
-  console.log(projects);
 
   return (
     <div>
@@ -44,7 +60,7 @@ const ProjectsPage = () => {
             <div className="card-body">
               <h2 className="card-title">{project.title}</h2>
               {/* <p>{project}</p> */}
-              <div className="card-actions justify-end">
+              <div className="card-actions w-full flex-grow">
                 <Link
                   href={`/projects/${project.slug}`}
                   rel="noopener noreferrer"
@@ -59,6 +75,13 @@ const ProjectsPage = () => {
                 >
                   Edit
                 </Link>
+
+                <button
+                  onClick={() => handleDelete(project.slug)}
+                  className="btn btn-outline btn-warning btn-sm max-w-fit justify-self-end"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
