@@ -2,6 +2,7 @@
 import { baseUrl } from "@/api/api";
 import React from "react";
 import "../../../styles/editor.css";
+import { processHtml } from "@/utils/htmlImageConverter";
 
 const ProjectDetailsPage = ({ params }: { params: { slug: string } }) => {
   const [project, setProject] = React.useState<{
@@ -30,13 +31,13 @@ const ProjectDetailsPage = ({ params }: { params: { slug: string } }) => {
       </div>
     );
   }
-  console.log(project);
+  const processedHtml = processHtml(project?.html || "");
 
   return (
     <section className="project-details-page py-5">
       {/* Project Details      */}
       <div className="container-center project-details">
-        <div dangerouslySetInnerHTML={{ __html: project?.html || "" }}></div>
+        <div dangerouslySetInnerHTML={{ __html: processedHtml }}></div>
       </div>
     </section>
   );

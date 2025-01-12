@@ -245,16 +245,17 @@ const extensions = [
 
 const ProjectEditPage = ({ params }: { params: { slug: string } }) => {
   const [project, setProject] = React.useState<{
-    title: string;
-    html: string;
-    thumbnail: string;
-    liveUrl: string;
+    title?: string;
+    html?: string;
+    thumbnail?: string;
+    liveUrl?: string;
   } | null>(null);
   const [loading, setLoading] = React.useState(true);
   const editor = useEditor(
     {
       extensions,
       content: project?.html,
+      immediatelyRender: false,
     },
     [project],
   );
@@ -270,15 +271,54 @@ const ProjectEditPage = ({ params }: { params: { slug: string } }) => {
     fetchProject();
   }, [params.slug]);
 
+  const updateProject = async () => {
+    const response = await fetch(`${baseUrl}/api/projects/${params.slug}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        dashboardtoken: process.env.NEXT_PUBLIC_DASHBOARD_TOKEN as string,
+      },
+      body: JSON.stringify({
+        title: project?.title,
+        html: editor?.getHTML(),
+        thumbnail: project?.thumbnail,
+        liveUrl: project?.liveUrl,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to update project, status ${response.status}`);
+    }
+  };
+
   if (loading) {
     return <Spinner />;
   }
 
   return (
-    <section className="">
+    <section className="project-details">
       <div>
         <MenuBar editor={editor} />
         <EditorContent editor={editor} className="editor-content" />
+        {editor && (
+          <button
+            onClick={() => {
+              const html = editor.getHTML();
+              console.log("updated html", html);
+              setProject({ ...project, html });
+              console.log("updated project", project);
+              updateProject()
+                .then(() => {
+                  alert("Project updated!");
+                })
+                .catch((err) => {
+                  alert(err);
+                });
+            }}
+            className="btn btn-primary mt-6"
+          >
+            Update Html
+          </button>
+        )}
       </div>
     </section>
   );
