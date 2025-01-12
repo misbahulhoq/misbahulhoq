@@ -297,7 +297,9 @@ const ProjectEditPage = ({ params }: { params: { slug: string } }) => {
   return (
     <section className="project-details">
       <div>
-        <MenuBar editor={editor} />
+        <div className="sticky top-20 z-10 bg-base-200 p-3">
+          <MenuBar editor={editor} />
+        </div>
         <EditorContent editor={editor} className="editor-content" />
         {editor && (
           <button
