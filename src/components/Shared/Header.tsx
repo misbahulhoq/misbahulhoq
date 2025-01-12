@@ -28,6 +28,9 @@ const Header = () => {
       <NavLink activeClassName="text-primary" href="/projects">
         Projects
       </NavLink>
+      <NavLink activeClassName="text-primary" href="/blogs">
+        Blogs
+      </NavLink>
       <NavLink activeClassName="text-primary" href="/contact">
         Contact
       </NavLink>
@@ -72,6 +75,14 @@ const Header = () => {
         onClick={() => setShowMenu(false)}
       >
         Projects
+      </NavLink>
+      <NavLink
+        className="block rounded-xl py-3 text-center"
+        activeClassName="text-primary-content bg-primary"
+        href="/blogs"
+        onClick={() => setShowMenu(false)}
+      >
+        Blogs
       </NavLink>
       <NavLink
         className="block rounded-xl py-3 text-center"
