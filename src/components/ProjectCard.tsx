@@ -17,7 +17,7 @@ const ProjectCard = ({ props }: { props: ProjectDetails }) => {
   const { title, thumbnail, slug, liveUrl } = props || {};
 
   return (
-    <div className="card card-bordered mx-auto max-w-96 bg-base-100 shadow-xl">
+    <div className="card card-bordered card-compact mx-auto max-w-96 bg-base-100 shadow-xl">
       <figure>
         <Image
           src={thumbnail || "/phone.svg"}
@@ -27,7 +27,7 @@ const ProjectCard = ({ props }: { props: ProjectDetails }) => {
           className="border-b border-accent object-cover"
         />
       </figure>
-      <div className="card-body p-6">
+      <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <div className="flex items-center gap-4">
           <Link

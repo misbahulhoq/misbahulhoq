@@ -1,10 +1,11 @@
 "use client";
 import { baseUrl } from "@/api/api";
 import ProjectCard from "@/components/ProjectCard";
+import Spinner from "@/components/Shared/Spinner";
 import { ProjectDetails } from "@/types/projectType";
 import React from "react";
 
-const ProjectsPage = () => {
+const ProjectsPage = ({ projectsPage = true }: { projectsPage?: boolean }) => {
   const [projects, setProjects] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
@@ -19,20 +20,22 @@ const ProjectsPage = () => {
       setLoading(false);
     });
   }, [projects.length]);
-  console.log(projects);
 
   if (loading)
-    return (
-      <div className="flex h-[90vh] items-center justify-center">
-        <span className="loading loading-dots loading-lg"></span>
+    return projectsPage ? (
+      <Spinner />
+    ) : (
+      <div className="flex justify-center">
+        <span className="loading loading-spinner loading-md"></span>
       </div>
     );
 
   return (
-    <section className="projects-page min-h-[90vh] py-6">
+    <section className={`projects-page ${projectsPage && "min-h-[90vh] py-6"}`}>
       <div className="container-center">
-        <h1 className="mb-6 text-center text-3xl font-bold">My Projects</h1>
-
+        {projectsPage && (
+          <h1 className="mb-6 text-center text-3xl font-bold">My Projects</h1>
+        )}
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {projects.map((project: ProjectDetails) => (
             <ProjectCard key={project?._id} props={project} />

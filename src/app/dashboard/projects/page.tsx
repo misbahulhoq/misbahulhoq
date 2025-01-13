@@ -6,7 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ProjectsPage = () => {
+const ProjectsPage = ({ projectsPage = false }: { projectsPage?: boolean }) => {
+  console.log(projectsPage);
   const [projects, setProjects] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const fetchProjects = React.useCallback(async () => {
@@ -38,7 +39,14 @@ const ProjectsPage = () => {
     }
   };
 
-  if (loading) return <Spinner />;
+  if (loading)
+    return projectsPage ? (
+      <div className="flex justify-center">
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    ) : (
+      <Spinner />
+    );
 
   return (
     <div>
