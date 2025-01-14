@@ -17,14 +17,14 @@ const ProjectCard = ({ props }: { props: ProjectDetails }) => {
   const { title, thumbnail, slug, liveUrl } = props || {};
 
   return (
-    <div className="card card-bordered card-compact mx-auto max-w-96 bg-base-100 shadow-xl">
-      <figure>
+    <div className="card card-bordered card-compact mx-auto h-[300px] max-w-96 bg-base-100 shadow-xl">
+      <figure className="border-b border-primary">
         <Image
           src={thumbnail || "/phone.svg"}
           alt={title + " Thumbnail"}
-          width={400}
-          height={350}
-          className="border-b border-accent object-cover"
+          width={300}
+          height={500}
+          className="h-[290px] w-full object-contain"
         />
       </figure>
       <div className="card-body">
