@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import NavLink from "./NavLink";
 
 const Header = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("");
   const [showBlur, setShowBlur] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isMe, setIsMe] = useState(false);

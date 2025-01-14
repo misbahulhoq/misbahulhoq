@@ -123,6 +123,7 @@ const Hero = () => {
               height={100}
               width={300}
               alt="Md Mezbah Uddin"
+              priority
               className="relative z-10 lg:right-16"
             />
             <div className="bg-lines"></div>
