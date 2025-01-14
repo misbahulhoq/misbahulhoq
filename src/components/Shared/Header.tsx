@@ -188,7 +188,7 @@ const Header = () => {
           <input
             type="checkbox"
             onChange={handleThemeChange}
-            checked={theme === "dim"}
+            checked={theme === "light"}
           />
 
           {/* sun icon */}
