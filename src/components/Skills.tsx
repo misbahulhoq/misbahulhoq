@@ -129,7 +129,7 @@ const Skills = () => {
       <h2 className="mb-10 text-center text-4xl font-bold lg:text-5xl">
         My <span className="text-success">Skills</span>
       </h2>
-      <div className="grid gap-x-6 gap-y-6 pb-11 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-x-5 gap-y-5 pb-11 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {skills.map((skill) => {
           return (
             <div

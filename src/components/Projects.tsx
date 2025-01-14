@@ -7,7 +7,7 @@ const Projects = () => {
   return (
     <section>
       <SectionHeading sectionHeadingProps={{ heading: "My Projects" }} />
-      <ProjectsPage projectsPage={false} />
+      <ProjectsPage isProjectsPage={false} />
     </section>
   );
 };

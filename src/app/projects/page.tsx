@@ -5,7 +5,11 @@ import Spinner from "@/components/Shared/Spinner";
 import { ProjectDetails } from "@/types/projectType";
 import React from "react";
 
-const ProjectsPage = ({ projectsPage = true }: { projectsPage?: boolean }) => {
+const ProjectsPage = ({
+  isProjectsPage = true,
+}: {
+  isProjectsPage?: boolean;
+}) => {
   const [projects, setProjects] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
@@ -22,7 +26,7 @@ const ProjectsPage = ({ projectsPage = true }: { projectsPage?: boolean }) => {
   }, [projects.length]);
 
   if (loading)
-    return projectsPage ? (
+    return isProjectsPage ? (
       <Spinner />
     ) : (
       <div className="flex justify-center">
@@ -31,9 +35,11 @@ const ProjectsPage = ({ projectsPage = true }: { projectsPage?: boolean }) => {
     );
 
   return (
-    <section className={`projects-page ${projectsPage && "min-h-[90vh] py-6"}`}>
+    <section
+      className={`projects-page ${isProjectsPage && "min-h-[90vh] py-6"}`}
+    >
       <div className="container-center">
-        {projectsPage && (
+        {isProjectsPage && (
           <h1 className="mb-6 text-center text-3xl font-bold">My Projects</h1>
         )}
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
