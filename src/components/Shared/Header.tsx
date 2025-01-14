@@ -6,13 +6,10 @@ import { useEffect } from "react";
 import NavLink from "./NavLink";
 
 const Header = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState("light");
   const [showBlur, setShowBlur] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-
-  const isMe =
-    localStorage.getItem("dashboardToken") ===
-    process.env.NEXT_PUBLIC_DASHBOARD_TOKEN;
+  const [isMe, setIsMe] = useState(false);
 
   const navLinksPc = (
     <>
@@ -96,8 +93,12 @@ const Header = () => {
   );
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.getElementById("html")?.setAttribute("data-theme", theme);
+    // Initialize theme
+    const storedTheme = localStorage.getItem("theme") || "light";
+    setTheme(storedTheme);
+    // Initialize user role (isMe)
+    const dashboardToken = localStorage.getItem("dashboardToken");
+    setIsMe(dashboardToken === process.env.NEXT_PUBLIC_DASHBOARD_TOKEN);
     window.addEventListener("scroll", () => {
       if (window.scrollY > 500) {
         setShowBlur(true);
@@ -105,16 +106,18 @@ const Header = () => {
         setShowBlur(false);
       }
     });
+  }, []);
+
+  useEffect(() => {
+    document.getElementById("html")?.setAttribute("data-theme", theme);
   }, [theme]);
 
   const handleThemeChange = () => {
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme === "light") {
-      setTheme("dim");
-    } else {
-      setTheme("light");
-    }
+    const newTheme = theme === "light" ? "dim" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
+
   return (
     <nav
       className={`sticky top-0 z-20 py-3 lg:py-3 ${
@@ -175,7 +178,7 @@ const Header = () => {
             alt="Logo"
             height={30}
             width={75}
-            className=""
+            className="h-[30px] w-[75px]"
           />
         </Link>
 

@@ -2,9 +2,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const NavClient = dynamic(() => import("@/components/Shared/Header"), {
-  ssr: false,
-});
+const NavClient = dynamic(() => import("@/components/Shared/Header"));
 const HeaderClient = () => {
   return <NavClient />;
 };

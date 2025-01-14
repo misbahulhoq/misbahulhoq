@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
 import Footer from "@/components/Shared/Footer";
-import HeaderClient from "@/components/Shared/HeaderClient";
+import Header from "@/components/Shared/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -67,8 +66,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-secondary selection:text-secondary-content`}
       >
-        {/* <Header /> */}
-        <HeaderClient />
+        <Header />
+        {/* <HeaderClient /> */}
         {children}
         <Footer />
       </body>
