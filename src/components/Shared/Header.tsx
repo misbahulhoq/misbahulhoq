@@ -174,7 +174,7 @@ const Header = () => {
 
         <Link href="/" className={``}>
           <Image
-            src={`${theme === "light" ? "/logos/logo-light.svg" : "/logos/logo-dark.svg"}`}
+            src={`${theme === "dim" ? "/logos/logo-dark.svg" : "/logos/logo-light.svg"}`}
             alt="Logo"
             height={30}
             width={75}
