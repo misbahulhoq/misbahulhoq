@@ -25,7 +25,7 @@ const AboutMe = () => {
             <SectionHeading
               sectionHeadingProps={{
                 heading: "About Me",
-                className: "!text-left",
+                className: "!text-left ",
               }}
             />
             <p className="">
