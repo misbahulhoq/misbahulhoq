@@ -29,7 +29,7 @@ const AboutMe = () => {
               }}
             />
             <p className="">
-              I am a self taught MERN stack developer. I have a deep interest in
+              I am a passionate MERN stack developer. I have a deep interest in
               full stack development. I have built some projects using MERN
               stack, where I have also used TypeScript (in both front-end and
               back-end), Nextjs, Redux toolkit, Mongoose.I love building
