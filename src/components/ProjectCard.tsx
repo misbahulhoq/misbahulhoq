@@ -14,22 +14,23 @@ import type { ProjectDetails } from "@/types/projectType";
  */
 
 const ProjectCard = ({ props }: { props: ProjectDetails }) => {
-  const { title, thumbnail, slug, liveUrl } = props || {};
+  const { title, thumbnail, slug, liveUrl, subTitle } = props || {};
 
   return (
     <div className="card card-bordered card-compact mx-auto h-[300px] max-w-96 bg-base-100 shadow-xl">
-      <figure className="border-b border-primary">
+      <figure className="!h-[290px] border-b border-primary">
         <Image
           src={thumbnail || "/phone.svg"}
           alt={title + " Thumbnail"}
           width={300}
           height={500}
-          className="h-[290px] w-full object-contain"
+          className="!h-[290px] w-full object-contain"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <div className="flex items-center gap-4">
+        <p className="text-sm">{subTitle}</p>
+        <div className="mt-2 flex items-center gap-4">
           <Link
             href={`/projects/${slug}`}
             className="btn btn-outline btn-primary btn-sm max-w-fit"

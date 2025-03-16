@@ -7,6 +7,7 @@ import { processHtml } from "@/utils/htmlImageConverter";
 const ProjectDetailsPage = ({ params }: { params: { slug: string } }) => {
   const [project, setProject] = React.useState<{
     title: string;
+    subTitle: string;
     html: string;
     thumbnail: string;
     liveUrl: string;
