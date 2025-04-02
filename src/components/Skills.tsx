@@ -1,44 +1,7 @@
+"use client";
+import { useInView, motion, Variants } from "framer-motion";
 import Image from "next/image";
-import React from "react";
-
-// const skillImages = [
-//   {
-//     img: "/mezbah-skills/js.svg",
-//     alt: "JS",
-//   },
-//   {
-//     img: "/mezbah-skills/react.svg",
-//     alt: "React",
-//   },
-//   {
-//     img: "/mezbah-skills/next.svg",
-//     alt: "Next.Js",
-//   },
-//   {
-//     img: "/mezbah-skills/css.svg",
-//     alt: "CSS",
-//   },
-//   {
-//     img: "/mezbah-skills/tailwind.svg",
-//     alt: "TailwindCSS",
-//   },
-//   {
-//     img: "/mezbah-skills/html.svg",
-//     alt: "CSS",
-//   },
-//   {
-//     img: "/mezbah-skills/node.svg",
-//     alt: "NodeJS",
-//   },
-//   {
-//     img: "/mezbah-skills/firebase.svg",
-//     alt: "Firebase Auth",
-//   },
-//   {
-//     img: "/mezbah-skills/linux.svg",
-//     alt: "Linux",
-//   },
-// ];
+import React, { useRef } from "react";
 
 const skills = [
   {
@@ -124,15 +87,53 @@ const skills = [
 ];
 
 const Skills = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.25, once: true });
+  const containerVariants: Variants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const childVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.2,
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+      },
+    },
+  };
   return (
     <div className="container-center">
       <h2 className="mb-10 text-center text-4xl font-bold lg:text-5xl">
         My <span className="text-success">Skills</span>
       </h2>
-      <div className="grid gap-x-5 gap-y-5 pb-11 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <motion.div
+        ref={ref}
+        className="grid gap-x-5 gap-y-5 pb-11 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
         {skills.map((skill) => {
           return (
-            <div
+            <motion.div
+              variants={childVariants}
+              // variants={containerVariants}
               key={skill.title}
               className="skill-box relative z-[10] cursor-pointer rounded-lg border p-6 transition-all duration-300 hover:border-primary hover:bg-base-200"
             >
@@ -156,10 +157,10 @@ const Skills = () => {
                 value={skill.percentage}
                 max="100"
               ></progress> */}
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 };
