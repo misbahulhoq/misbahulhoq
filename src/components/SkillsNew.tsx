@@ -1,7 +1,7 @@
 "use client";
-import { useInView, motion, Variants } from "framer-motion";
-import Image from "next/image";
-import React, { useRef } from "react";
+import { motion, useTransform, useScroll } from "framer-motion";
+import { useRef } from "react";
+import SkillCard from "./SkillCard";
 
 const skills = [
   {
@@ -86,73 +86,36 @@ const skills = [
   },
 ];
 
-const Skills = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.25, once: true });
-  const containerVariants: Variants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const childVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.2,
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-      },
-    },
-  };
+const SkillsNew = () => {
   return (
-    <div className="container-center">
-      <h2 className="mb-10 text-center text-4xl font-bold lg:text-5xl">
-        My <span className="text-success">Skills</span>
-      </h2>
-      <motion.div
-        ref={ref}
-        className="grid gap-x-5 gap-y-5 pb-11 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
-        {skills.map((skill) => {
-          return (
-            <motion.div
-              variants={childVariants}
-              key={skill.title}
-              className="skill-box relative z-[10] cursor-pointer rounded-lg border p-6 transition-all duration-300 hover:border-primary hover:bg-base-200"
-            >
-              <div className="mb-3 flex flex-col justify-between gap-5">
-                <Image
-                  src={`${skill.icon}`}
-                  alt={skill.title}
-                  height={55}
-                  width={55}
-                  className={`${skill.icon === "/mezbah-skills/mongodb.svg" && "h-16 w-16"} ${skill.title === "React" && "spin spin-slow"}`}
-                />
-                <h3 className="text-xl font-semibold">{skill.title}</h3>
-              </div>
-              <p>{skill.description}</p>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+    <div className="">
+      <HorizontalScrollCarousel />
     </div>
   );
 };
 
-export default Skills;
+const HorizontalScrollCarousel = () => {
+  const targetRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+
+  return (
+    <section ref={targetRef} className="relative h-[300vh]">
+      <h2 className="text-center text-4xl font-bold lg:text-5xl">
+        My <span className="text-success">Skills</span>
+      </h2>
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-4">
+          {skills.map((skill) => {
+            return <SkillCard key={skill.title} props={skill} />;
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default SkillsNew;

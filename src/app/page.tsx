@@ -3,7 +3,9 @@ import ContactMe from "@/components/ContactMe";
 import Hero from "@/components/Hero";
 import ProjectsHome from "@/components/ProjectsHome";
 // import HireMe from "@/components/HireMe";
-import Skills from "@/components/Skills";
+// import Skills from "@/components/Skills";
+import SkillsNew from "@/components/SkillsNew";
+import Example from "@/components/Test";
 
 export default function Home() {
   return (
@@ -14,10 +16,12 @@ export default function Home() {
           <AboutMe />
         </div>
       </div>
-      <Skills />
+      {/* <Skills /> */}
+      <SkillsNew />
       <ProjectsHome />
       {/* <HireMe /> */}
       <ContactMe />
+      <Example />
     </main>
   );
 }
