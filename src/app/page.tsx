@@ -5,7 +5,6 @@ import ProjectsHome from "@/components/ProjectsHome";
 // import HireMe from "@/components/HireMe";
 // import Skills from "@/components/Skills";
 import SkillsNew from "@/components/SkillsNew";
-import Example from "@/components/Test";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <ProjectsHome />
       {/* <HireMe /> */}
       <ContactMe />
-      <Example />
     </main>
   );
 }
