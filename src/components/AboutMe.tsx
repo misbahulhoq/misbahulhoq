@@ -1,17 +1,30 @@
+"use client";
 import React from "react";
+import { motion, useInView } from "framer-motion";
 import SectionHeading from "./Shared/SectionHeading";
 import { PiDotsNine } from "react-icons/pi";
 import Image from "next/image";
 
 const AboutMe = () => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { amount: 0.4 });
   return (
     <section
       id="about-me"
-      className="about-me-section relative overflow-hidden bg-neutral py-12 text-neutral-content lg:py-16"
+      className="about-me-section relative items-center overflow-hidden bg-neutral py-12 text-neutral-content lg:flex lg:h-[calc(100vh-100px)] lg:py-0"
     >
-      <div className="container-center relative z-10 min-h-fit">
+      <motion.div
+        ref={ref}
+        className="container-center relative z-10 min-h-fit"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{
+          opacity: isInView ? 1 : 0,
+          y: isInView ? 0 : 50,
+        }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         <div className="left-and-right-wrapper items-center justify-between py-6 lg:grid lg:grid-cols-2 lg:gap-5 lg:py-0">
-          <div className="left-content image-wrapper hidden lg:block">
+          <motion.div className="left-content image-wrapper hidden lg:block">
             <Image
               src="/ilustrations/using-laptop-two.webp"
               alt="Computer  Illustration"
@@ -19,7 +32,7 @@ const AboutMe = () => {
               width={500}
               className="h-[350px] w-[350px] rounded-full object-cover"
             />
-          </div>
+          </motion.div>
 
           <div className="right-content about-me-text">
             <SectionHeading
@@ -45,7 +58,7 @@ const AboutMe = () => {
           </div>
         </div>
         <div className="absolute -top-12 right-20 h-56 w-56 rounded-full bg-purple-600 opacity-20 blur-xl"></div>
-      </div>
+      </motion.div>
 
       <div className="bottom-right-dots-wrapper absolute -bottom-5 right-0 z-[1] flex items-center space-x-[-7px] text-4xl text-primary text-opacity-60">
         <div className="space-y-[-7px]">
