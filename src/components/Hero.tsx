@@ -1,10 +1,11 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import DownloadButton from "./DownloadButton";
+import { motion } from "framer-motion";
 import { RxSlash } from "react-icons/rx";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
-
+import DownloadButton from "./DownloadButton";
 const skillImages = [
   {
     img: "/mezbah-skills/js.svg",
@@ -62,7 +63,12 @@ const Hero = () => {
   return (
     <section className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6">
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
-        <div className="left-content text-wrapper mt-5 max-w-[450px] space-y-6 self-center lg:mt-0">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="left-content text-wrapper mt-5 max-w-[450px] space-y-6 self-center lg:mt-0"
+        >
           <h2 className="text-4xl font-bold lg:text-5xl">
             <span className="-ml-4 flex items-center justify-start">
               <span className="-mr-3 inline-block text-5xl font-normal text-primary">
@@ -113,9 +119,14 @@ const Hero = () => {
             <DownloadButton />
             {/* <Link className="btn btn-outline btn-primary"></Link> */}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="image-wrapper relative z-10 flex h-fit flex-grow justify-center overflow-y-hidden lg:justify-end lg:overflow-x-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          className="image-wrapper relative z-10 flex h-fit flex-grow justify-center overflow-y-hidden lg:justify-end lg:overflow-x-auto"
+        >
           <div className="">
             <div className="absolute -bottom-16 left-1/2 right-0 z-[1] h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-primary sm:h-96 sm:w-96 lg:left-auto lg:h-[420px] lg:w-[420px] lg:translate-x-0"></div>
             <Image
@@ -128,7 +139,7 @@ const Hero = () => {
             />
             <div className="bg-lines"></div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
