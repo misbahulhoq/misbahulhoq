@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { RxSlash } from "react-icons/rx";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import DownloadButton from "./DownloadButton";
+
 const skillImages = [
   {
     img: "/mezbah-skills/js.svg",
@@ -64,7 +65,7 @@ const Hero = () => {
     <section className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6">
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className="left-content text-wrapper mt-5 max-w-[450px] space-y-6 self-center lg:mt-0"
@@ -122,7 +123,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.4 }}
           className="image-wrapper relative z-10 flex h-fit flex-grow justify-center overflow-y-hidden lg:justify-end lg:overflow-x-auto"
