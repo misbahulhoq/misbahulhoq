@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { RxSlash } from "react-icons/rx";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import DownloadButton from "./DownloadButton";
+import { FaPhoneAlt } from "react-icons/fa";
 
 const skillImages = [
   {
@@ -115,6 +116,7 @@ const Hero = () => {
 
           <div className="buttons flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
             <Link href="/contact" className="btn btn-outline btn-primary">
+              <FaPhoneAlt className="" />
               Contact Me
             </Link>
             <DownloadButton />

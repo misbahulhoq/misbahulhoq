@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { FaDownload } from "react-icons/fa";
 
 const DownloadButton = () => {
   const downloadResume = () => {
@@ -17,6 +18,7 @@ const DownloadButton = () => {
       onClick={downloadResume}
       className="btn btn-primary rounded-full !text-primary-content"
     >
+      <FaDownload />
       Download Resume
     </button>
   );
