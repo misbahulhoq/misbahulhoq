@@ -17,7 +17,7 @@ const SkillCard = ({ props }: { props: Props }) => {
           alt={title}
           height={55}
           width={55}
-          className={`${icon === "/mezbah-skills/mongodb.svg" && "h-16 w-16"} ${title === "React" && "spin spin-slow"}`}
+          className={`${icon === "/mezbah-skills/mongodb.svg" && "h-16 w-16"} ${title === "React" && "spin spin-slow"} ${title === "Next.JS" && "rounded-full"}`}
         />
         <h3 className="text-xl font-semibold">{title}</h3>
       </div>

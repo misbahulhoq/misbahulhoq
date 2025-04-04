@@ -60,7 +60,7 @@ const skills = [
   {
     title: "Next.JS",
     percentage: 60,
-    icon: "/mezbah-skills/nextjs.png",
+    icon: "/mezbah-skills/next.png",
     description:
       "The most popular framework of React for building web applications.",
     // description:
