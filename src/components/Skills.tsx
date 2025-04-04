@@ -60,7 +60,7 @@ const skills = [
   {
     title: "Next.JS",
     percentage: 60,
-    icon: "/mezbah-skills/next.svg",
+    icon: "/mezbah-skills/next.png",
     description:
       "The most popular framework of React for building web applications.",
     // description:
@@ -142,7 +142,7 @@ const Skills = () => {
                   alt={skill.title}
                   height={55}
                   width={55}
-                  className={`${skill.icon === "/mezbah-skills/mongodb.svg" && "h-16 w-16"} ${skill.title === "React" && "spin spin-slow"}`}
+                  className={`${skill.icon === "/mezbah-skills/mongodb.svg" && "h-16 w-16"} ${skill.title === "React" && "spin spin-slow"} ${skill.title === "Next.JS" && "rounded-full"}`}
                 />
                 <h3 className="text-xl font-semibold">{skill.title}</h3>
               </div>
