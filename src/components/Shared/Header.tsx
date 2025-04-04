@@ -2,35 +2,92 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import NavLink from "./NavLink";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+
+type link = {
+  name: string;
+  href: string;
+};
+
+const links: link[] = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "About",
+    href: "/about",
+  },
+  {
+    name: "Skills",
+    href: "/skills",
+  },
+  {
+    name: "Projects",
+    href: "/projects",
+  },
+  {
+    name: "Blogs",
+    href: "/blogs",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
+  },
+];
 
 const Header = () => {
+  const pathName = usePathname();
+  console.log(pathName);
   const [theme, setTheme] = useState("");
   const [showBlur, setShowBlur] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isMe, setIsMe] = useState(false);
+  const [selected, setSelected] = useState(pathName);
+
+  // const navLinksPc = (
+  //   <>
+  //     <NavLink activeClassName="text-primary" href="/">
+  //       Home
+  //     </NavLink>
+  //     <NavLink activeClassName="text-primary" href="/about">
+  //       About
+  //     </NavLink>
+  //     <NavLink activeClassName="text-primary" href="/skills">
+  //       Skills
+  //     </NavLink>
+  //     <NavLink activeClassName="text-primary" href="/projects">
+  //       Projects
+  //     </NavLink>
+  //     <NavLink activeClassName="text-primary" href="/blogs">
+  //       Blogs
+  //     </NavLink>
+  //     <NavLink activeClassName="text-primary" href="/contact">
+  //       Contact
+  //     </NavLink>
+  //     {isMe && (
+  //       <NavLink activeClassName="text-primary" href="/dashboard">
+  //         Dashboard
+  //       </NavLink>
+  //     )}
+  //   </>
+  // )
 
   const navLinksPc = (
     <>
-      <NavLink activeClassName="text-primary" href="/">
-        Home
-      </NavLink>
-      <NavLink activeClassName="text-primary" href="/about">
-        About
-      </NavLink>
-      <NavLink activeClassName="text-primary" href="/skills">
-        Skills
-      </NavLink>
-      <NavLink activeClassName="text-primary" href="/projects">
-        Projects
-      </NavLink>
-      <NavLink activeClassName="text-primary" href="/blogs">
-        Blogs
-      </NavLink>
-      <NavLink activeClassName="text-primary" href="/contact">
-        Contact
-      </NavLink>
+      {" "}
+      {links.map((link) => (
+        <AnimatedTab
+          text={link.name}
+          selected={selected === link.href}
+          setSelected={setSelected}
+          key={link.href}
+          href={link.href}
+        />
+      ))}
       {isMe && (
         <NavLink activeClassName="text-primary" href="/dashboard">
           Dashboard
@@ -211,6 +268,39 @@ const Header = () => {
         </label>
       </div>
     </nav>
+  );
+};
+
+const AnimatedTab = ({
+  text,
+  href,
+  selected,
+  setSelected,
+}: {
+  text: string;
+  selected: boolean;
+  href: string;
+  setSelected: Dispatch<SetStateAction<string>>;
+}) => {
+  return (
+    <Link
+      href={href}
+      onClick={() => setSelected(href)}
+      className={`${
+        selected
+          ? "text-white"
+          : "text-base-content hover:bg-slate-800 hover:text-white"
+      } relative rounded-full px-4 py-1 text-sm transition-colors`}
+    >
+      <span className="relative z-10">{text}</span>
+      {selected && (
+        <motion.span
+          layoutId="pill-tab"
+          transition={{ type: "spring", duration: 0.5 }}
+          className="absolute inset-0 z-0 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
+        ></motion.span>
+      )}
+    </Link>
   );
 };
 
