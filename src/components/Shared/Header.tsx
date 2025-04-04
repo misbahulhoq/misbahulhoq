@@ -225,7 +225,7 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="links order-1 hidden items-center gap-6 font-medium lg:flex">
+        <div className="links order-1 hidden items-center gap-4 font-medium lg:flex">
           {navLinksPc}
         </div>
 
