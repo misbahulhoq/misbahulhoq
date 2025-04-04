@@ -34,7 +34,7 @@ const skillImages = [
     tooltip: "MongoDB",
   },
   {
-    img: "/mezbah-skills/next.svg",
+    img: "/mezbah-skills/next.png",
     alt: "Next.Js",
     tooltip: "Next.JS",
   },
@@ -105,9 +105,9 @@ const Hero = () => {
                   height={100}
                   width={100}
                   // style={{ backgroundColor: "transparent" }}
-                  className={`h-[60px] w-[60px] cursor-pointer select-none object-cover ${
+                  className={`h-[60px] w-[60px] cursor-pointer select-none object-cover filter-none ${
                     item.img === "/mezbah-skills/react.svg" && "spin-slow"
-                  } ${item.alt === "MongoDB" && "object-fill"}`}
+                  } ${item.alt === "MongoDB" && "object-fill"} ${item.alt === "Next.Js" && "rounded-full"} ${item.alt === "TailwindCSS" && ""}`}
                 />
               </div>
             ))}
