@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Md Mezbah Uddin", url: "https://misbahulhoq.vercel.app" }],
   robots: "index, follow",
   openGraph: {
-    title: "Md Mezbah Uddin | MERN Stack Developer Portfolio",
+    title: "Md Mezbah Uddin | MERN Stack Developer",
     description:
       "Explore the portfolio of Md Mezbah Uddin, showcasing expertise in full stack development, including React, Next.js, Node.js, Express.js, and Tailwind CSS.",
     url: "https://misbahulhoq.vercel.app", // Replace with your actual domain
