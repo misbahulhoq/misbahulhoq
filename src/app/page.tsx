@@ -1,12 +1,10 @@
+"use client";
 import AboutMe from "@/components/AboutMe";
 import ContactMe from "@/components/ContactMe";
 import Hero from "@/components/Hero";
 import { Projects } from "@/components/Projects";
 import ProjectsHome from "@/components/ProjectsHome";
-
 import SectionHeading from "@/components/Shared/SectionHeading";
-// import HireMe from "@/components/HireMe";
-// import Skills from "@/components/Skills";
 import SkillsNew from "@/components/SkillsNew";
 
 export default function Home() {
@@ -19,14 +17,13 @@ export default function Home() {
         </div>
       </div>
       {/* <Skills /> */}
-      <SkillsNew />
-      <ProjectsHome />
+      <div>
+        <SkillsNew />
+      </div>
+      {/* <ProjectsHome /> */}
+      <Projects />
       {/* <HireMe /> */}
       <ContactMe />
-      <div>
-        <SectionHeading sectionHeadingProps={{ heading: "My Projects" }} />
-        <Projects />
-      </div>
     </main>
   );
 }

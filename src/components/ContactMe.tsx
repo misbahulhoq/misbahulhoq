@@ -1,11 +1,14 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import SectionHeading from "./Shared/SectionHeading";
 import ContactForm from "./ContactForm";
+import useSectionObserver from "@/hooks/useSectionObserver";
 
 const ContactMe = () => {
+  const ref = useSectionObserver("contact");
   return (
-    <section className="py-12">
+    <section id="contact" ref={ref} className="py-12">
       <div className="heading-wrapper text-center">
         <SectionHeading sectionHeadingProps={{ heading: "Contact Me" }} />
         {/* <p className="mb-8 text-lg">

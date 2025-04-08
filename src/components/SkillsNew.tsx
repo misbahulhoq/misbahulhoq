@@ -88,24 +88,23 @@ const skills = [
 ];
 
 const SkillsNew = () => {
+  const ref = useSectionObserver("skills");
   return (
-    <div className="">
+    <div id="skills" ref={ref} className="min-h-screen">
       <HorizontalScrollCarousel />
     </div>
   );
 };
 
 const HorizontalScrollCarousel = () => {
-  // const targetRef = useRef<HTMLDivElement | null>(null);
-  const targetRef = useSectionObserver("skills");
+  const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
-
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section id="skills" ref={targetRef} className="relative h-[300vh]">
+    <section ref={targetRef} className="relative h-[300vh]">
       <h2 className="text-center text-4xl font-bold lg:text-5xl">
         My <span className="text-success">Skills</span>
       </h2>
