@@ -20,7 +20,7 @@ const projects = [
   },
 ];
 
-export const TextParallaxContentExample = () => {
+export const Projects = () => {
   return (
     <div className="">
       {projects.map((project) => {

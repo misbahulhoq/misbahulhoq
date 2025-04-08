@@ -1,8 +1,9 @@
 import AboutMe from "@/components/AboutMe";
 import ContactMe from "@/components/ContactMe";
 import Hero from "@/components/Hero";
+import { Projects } from "@/components/Projects";
 import ProjectsHome from "@/components/ProjectsHome";
-import { TextParallaxContentExample } from "@/components/Scroll";
+
 import SectionHeading from "@/components/Shared/SectionHeading";
 // import HireMe from "@/components/HireMe";
 // import Skills from "@/components/Skills";
@@ -24,7 +25,7 @@ export default function Home() {
       <ContactMe />
       <div>
         <SectionHeading sectionHeadingProps={{ heading: "My Projects" }} />
-        <TextParallaxContentExample />
+        <Projects />
       </div>
     </main>
   );
