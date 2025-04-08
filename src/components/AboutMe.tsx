@@ -4,13 +4,17 @@ import { motion, useInView } from "framer-motion";
 import SectionHeading from "./Shared/SectionHeading";
 import { PiDotsNine } from "react-icons/pi";
 import Image from "next/image";
+import useSectionObserver from "@/hooks/useSectionObserver";
 
 const AboutMe = () => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { amount: 0.4, once: true });
+  const sectionRef = useSectionObserver("about");
+
   return (
     <section
-      id="about-me"
+      id="about"
+      ref={sectionRef}
       className="about-me-section relative items-center overflow-hidden bg-neutral py-12 text-neutral-content lg:flex lg:h-[calc(100vh-100px)] lg:py-0"
     >
       <motion.div

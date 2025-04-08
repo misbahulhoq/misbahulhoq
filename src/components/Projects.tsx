@@ -3,6 +3,7 @@ import React, { ReactNode, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
 import Link from "next/link";
+import useSectionObserver from "@/hooks/useSectionObserver";
 
 const projects = [
   {
@@ -21,8 +22,9 @@ const projects = [
 ];
 
 export const Projects = () => {
+  const ref = useSectionObserver("projects");
   return (
-    <div className="">
+    <div id="projects" ref={ref} className="">
       {projects.map((project) => {
         return (
           <TextParallaxContent

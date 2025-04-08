@@ -5,49 +5,49 @@ import React, { useState } from "react";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import NavLink from "./NavLink";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import { useCurrentSection } from "@/app/Provider";
 
 type link = {
   name: string;
   href: string;
+  sectionId: string;
 };
 
 const links: link[] = [
   {
     name: "Home",
     href: "/",
+    sectionId: "hero",
   },
   {
     name: "About",
     href: "/about",
+    sectionId: "about",
   },
   {
     name: "Skills",
     href: "/skills",
+    sectionId: "skills",
   },
   {
     name: "Projects",
     href: "/projects",
-  },
-  {
-    name: "Blogs",
-    href: "/blogs",
+    sectionId: "projects",
   },
   {
     name: "Contact",
     href: "/contact",
+    sectionId: "contact",
   },
 ];
 
 const Header = () => {
-  const pathName = usePathname();
   const { currentSection } = useCurrentSection();
   const [theme, setTheme] = useState("");
   const [showBlur, setShowBlur] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isMe, setIsMe] = useState(false);
-  const [selected, setSelected] = useState(pathName);
+  const [, setSelected] = useState("hero");
   console.log(currentSection);
 
   // const navLinksPc = (
@@ -80,14 +80,15 @@ const Header = () => {
 
   const navLinksPc = (
     <>
-      {" "}
       {links.map((link) => (
         <AnimatedTab
           text={link.name}
-          selected={selected === link.href}
+          selected={currentSection === link.sectionId}
           setSelected={setSelected}
           key={link.href}
           href={link.href}
+          // onClick={() => scrollToSection(link.sectionId)}
+          sectionId={link.sectionId}
         />
       ))}
       {isMe && (
@@ -275,19 +276,28 @@ const Header = () => {
 
 const AnimatedTab = ({
   text,
-  href,
   selected,
-  setSelected,
+  sectionId,
 }: {
   text: string;
   selected: boolean;
   href: string;
   setSelected: Dispatch<SetStateAction<string>>;
+  // onClick: () => void;
+  sectionId: string;
 }) => {
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
-    <Link
-      href={href}
-      onClick={() => setSelected(href)}
+    <button
+      // href={href}
+      onClick={() => {
+        scrollToSection(sectionId);
+      }}
       className={`${
         selected
           ? "text-white"
@@ -302,7 +312,7 @@ const AnimatedTab = ({
           className="absolute inset-0 z-0 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
         ></motion.span>
       )}
-    </Link>
+    </button>
   );
 };
 

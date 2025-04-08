@@ -2,6 +2,7 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import SkillCard from "./SkillCard";
+import useSectionObserver from "@/hooks/useSectionObserver";
 
 const skills = [
   {
@@ -95,7 +96,8 @@ const SkillsNew = () => {
 };
 
 const HorizontalScrollCarousel = () => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
+  // const targetRef = useRef<HTMLDivElement | null>(null);
+  const targetRef = useSectionObserver("skills");
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
@@ -103,7 +105,7 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh]">
+    <section id="skills" ref={targetRef} className="relative h-[300vh]">
       <h2 className="text-center text-4xl font-bold lg:text-5xl">
         My <span className="text-success">Skills</span>
       </h2>

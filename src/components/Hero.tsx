@@ -63,9 +63,10 @@ const skillImages = [
 ];
 
 const Hero = () => {
-  const ref = useSectionObserver("hero-section");
+  const ref = useSectionObserver("hero");
   return (
     <section
+      id="hero"
       ref={ref}
       className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6"
     >
