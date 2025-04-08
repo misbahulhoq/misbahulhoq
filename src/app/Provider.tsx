@@ -1,17 +1,23 @@
 "use client";
 import Footer from "@/components/Shared/Footer";
 import Header from "@/components/Shared/Header";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useContext, useState } from "react";
 import { createContext } from "react";
 
-const SectionContext = createContext(null);
+type SectionContextType = {
+  currentSection: string;
+  setCurrentSection: (section: string) => void;
+};
+
+const SectionContext = createContext<SectionContextType | null>(null);
 
 type ProviderProps = {
   children: ReactNode;
 };
 const Provider: React.FC<ProviderProps> = ({ children }) => {
+  const [currentSection, setCurrentSection] = useState<string>("");
   return (
-    <SectionContext.Provider value={null}>
+    <SectionContext.Provider value={{ currentSection, setCurrentSection }}>
       <Header />
       {children}
       <Footer />
@@ -20,3 +26,11 @@ const Provider: React.FC<ProviderProps> = ({ children }) => {
 };
 
 export default Provider;
+
+export const useCurrentSection = () => {
+  const context = useContext(SectionContext);
+  if (!context)
+    throw new Error("useCurrentSection must be used within a Provider");
+
+  return context;
+};

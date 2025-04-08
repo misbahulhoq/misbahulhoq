@@ -7,6 +7,7 @@ import { RxSlash } from "react-icons/rx";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import DownloadButton from "./DownloadButton";
 import { FaPhoneAlt } from "react-icons/fa";
+import useSectionObserver from "@/hooks/useSectionObserver";
 
 const skillImages = [
   {
@@ -62,8 +63,12 @@ const skillImages = [
 ];
 
 const Hero = () => {
+  const ref = useSectionObserver("hero-section");
   return (
-    <section className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6">
+    <section
+      ref={ref}
+      className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6"
+    >
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

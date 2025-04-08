@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import NavLink from "./NavLink";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useCurrentSection } from "@/app/Provider";
 
 type link = {
   name: string;
@@ -41,12 +42,13 @@ const links: link[] = [
 
 const Header = () => {
   const pathName = usePathname();
-  console.log(pathName);
+  const { currentSection } = useCurrentSection();
   const [theme, setTheme] = useState("");
   const [showBlur, setShowBlur] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isMe, setIsMe] = useState(false);
   const [selected, setSelected] = useState(pathName);
+  console.log(currentSection);
 
   // const navLinksPc = (
   //   <>
