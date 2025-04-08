@@ -19,6 +19,7 @@ const projects = [
     },
   },
 ];
+
 export const TextParallaxContentExample = () => {
   return (
     <div className="">
