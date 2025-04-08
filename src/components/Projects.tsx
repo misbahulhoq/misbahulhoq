@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
 import Link from "next/link";
 import useSectionObserver from "@/hooks/useSectionObserver";
+import SectionHeading from "./Shared/SectionHeading";
 
 const projects = [
   {
@@ -25,6 +26,7 @@ export const Projects = () => {
   const ref = useSectionObserver("projects");
   return (
     <div id="projects" ref={ref} className="">
+      <SectionHeading sectionHeadingProps={{ heading: "My Projects" }} />
       {projects.map((project) => {
         return (
           <TextParallaxContent
