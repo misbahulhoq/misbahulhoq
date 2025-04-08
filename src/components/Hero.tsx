@@ -68,7 +68,7 @@ const Hero = () => {
     <section
       id="hero"
       ref={ref}
-      className="hero-section flex min-h-[calc(100vh-64px)] items-center bg-base-200 lg:py-6"
+      className="hero-section flex min-h-[calc(100vh-64px)] scroll-mt-16 items-center bg-base-200 lg:py-6"
     >
       <div className="container-center items- flex flex-col justify-between lg:flex-row">
         <motion.div

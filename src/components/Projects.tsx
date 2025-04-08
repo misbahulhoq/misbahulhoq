@@ -25,7 +25,7 @@ const projects = [
 export const Projects = () => {
   const ref = useSectionObserver("projects");
   return (
-    <div id="projects" ref={ref} className="">
+    <div id="projects" ref={ref} className="scroll-mt-16">
       <SectionHeading sectionHeadingProps={{ heading: "My Projects" }} />
       {projects.map((project) => {
         return (

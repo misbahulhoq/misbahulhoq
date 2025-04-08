@@ -8,7 +8,7 @@ import useSectionObserver from "@/hooks/useSectionObserver";
 const ContactMe = () => {
   const ref = useSectionObserver("contact");
   return (
-    <section id="contact" ref={ref} className="py-12">
+    <section id="contact" ref={ref} className="scroll-mt-16 py-12">
       <div className="heading-wrapper text-center">
         <SectionHeading sectionHeadingProps={{ heading: "Contact Me" }} />
         {/* <p className="mb-8 text-lg">

@@ -89,8 +89,10 @@ const skills = [
 
 const SkillsNew = () => {
   const ref = useSectionObserver("skills");
+
   return (
-    <div id="skills" ref={ref} className="min-h-screen">
+    <div id="skills" className="relative min-h-screen scroll-mt-16">
+      <div ref={ref} className="absolute top-0 h-[1px] w-full" />
       <HorizontalScrollCarousel />
     </div>
   );
