@@ -37,7 +37,7 @@
 
 .project-details ul,
 .project-details ol {
-  @apply my-3 ml-1 list-inside py-3;
+  @apply mb-3 ml-1 list-inside pb-3;
 }
 
 .project-details ul li p,
@@ -56,7 +56,7 @@
 
 .project-details h1,
 .project-details h2 {
-  @apply mb-6 font-bold;
+  @apply mb-3 mt-6 font-bold;
 }
 
 .project-details h3,

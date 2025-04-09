@@ -10,10 +10,10 @@ const projects = [
   {
     name: "Tuition Batch",
     imgUrl: "/project-images/tuition-batch.png",
-    subHeading: "A tuition batch management system.",
-    heading: "An app that allows teachers to track attendance.",
+    subHeading: "An app that helps teachers to track attendance.",
+    heading: "Tuition Batch",
     exampleContent: {
-      heading: "A Tuition Batch management system.",
+      heading: "Tuition Batch.",
       description:
         "A user friendly app to track attendance. Login with google and start working.",
       projectDetailsLink: "/projects/tuition-batch",
