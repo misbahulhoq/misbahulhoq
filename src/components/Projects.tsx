@@ -152,12 +152,13 @@ const ExampleContent = ({ props }: { props: ExampleContentProps }) => {
       <div className="col-span-1 md:col-span-8">
         <p className="mb-6 text-xl md:text-2xl">{description}</p>
         <div className="flex flex-col gap-5 lg:flex-row">
-          <Link
+          <a
+            target="_blank"
             href={liveLink}
             className="btn btn-outline btn-primary !btn-block lg:!btn-wide"
           >
             Live Preview <FiArrowUpRight className="inline" />
-          </Link>
+          </a>
           <Link
             href={projectDetailsLink}
             className="btn btn-primary !btn-block lg:!btn-wide"
