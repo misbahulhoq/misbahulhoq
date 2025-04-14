@@ -160,13 +160,14 @@ export const myProjects = [
     ],
   },
   {
-    title: 'CarePulse - Health Management System',
-    desc: 'An innovative healthcare platform designed to streamline essential medical processes. It simplifies patient registration, appointment scheduling, and medical record management, providing a seamless experience for both healthcare providers and patients.',
+    title: 'Gamezone',
+    desc: 'A react app where there is a lot of games listed.',
     subdesc:
       'With a focus on efficiency, CarePulse integrantes complex forms and SMS notifications, by using Next.js, Appwrite, Twillio and Sentry that enhance operational workflows.',
-    href: 'https://www.youtube.com/watch?v=lEflo_sc82g',
-    texture: '/textures/project/project3.mp4',
+    href: 'https://game-zone-eight.vercel.app',
+    texture: '/textures/project/game-zone.png',
     logo: '/assets/project-logo3.png',
+    frontRepo: 'https://github.com/misbahulhoq/gamezone',
     logoStyle: {
       backgroundColor: '#60f5a1',
       background:
