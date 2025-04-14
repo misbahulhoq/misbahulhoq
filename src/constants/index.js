@@ -63,6 +63,8 @@ export const myProjects = [
     subdesc:
       'It took about 100 hours to complete the project. Still I am working on it to introduce some new features.',
     href: 'https://arbanpublicschool.vercel.app/',
+    frontRepo: 'https://github.com/misbahulhoq/arbanpublicschool',
+    backRepo: 'https://github.com/misbahulhoq/api-arbanpublicschool ',
     texture: '/textures/project/arban-public-school.png',
     logo: '/assets/arban-public-school-logo.jpg',
     logoStyle: {

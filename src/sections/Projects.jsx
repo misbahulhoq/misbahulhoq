@@ -70,14 +70,20 @@ const Projects = () => {
           </div>
           <div className="flex justify-between items-center text-white-600 ">
             {currentProject.frontRepo && (
-              <a target="_blank" className="cursor-pointer flex items-center gap-1 hover:text-white">
+              <a
+                target="_blank"
+                href={currentProject.frontRepo}
+                className="cursor-pointer flex items-center gap-1 hover:text-white">
                 <GithubIcon />
                 Front-end
               </a>
             )}
 
             {currentProject.backRepo && (
-              <a target="_blank" className="cursor-pointer flex items-center gap-1 hover:text-white">
+              <a
+                target="_blank"
+                href={currentProject.backRepo}
+                className="cursor-pointer flex items-center gap-1 hover:text-white">
                 <GithubIcon /> Back-end
               </a>
             )}
