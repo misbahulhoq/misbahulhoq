@@ -105,13 +105,14 @@ export const myProjects = [
     ],
   },
   {
-    title: 'TuitionBatch - Real-Time Google Docs Clone',
-    desc: 'Tuitionbatch app is a powerful app that helps to track attendance of students. A very user friendly app.',
-    subdesc:
-      'With LiveDoc, users can experience the future of collaboration, where multiple contributors work together in real time without any lag, by using Next.js and Liveblocks newest features.',
-    href: 'https://www.youtube.com/watch?v=y5vE8y_f_OM',
-    texture: '/textures/project/project2.mp4',
-    logo: '/assets/project-logo2.png',
+    title: 'TuitionBatch.',
+    desc: 'Tuitionbatch app is a simple yet powerful app that helps to track attendance of students. A very user friendly app. Any teacher can login with google and start working on it.',
+    subdesc: 'It took about 20 hours to complete the project. I am still trying to add some new features.',
+    href: 'https://tuitionbatch.vercel.app',
+    frontRepo: ' ',
+    backRepo: ' ',
+    texture: '/textures/project/tuition-batch.png',
+    logo: '/assets/tuitiontabatch-logo.png',
     logoStyle: {
       backgroundColor: '#13202F',
       border: '0.2px solid #17293E',
@@ -127,7 +128,7 @@ export const myProjects = [
       {
         id: 2,
         name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
+        path: '/assets/tailwindcss.png',
       },
       {
         id: 3,
@@ -136,8 +137,23 @@ export const myProjects = [
       },
       {
         id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
+        name: 'Nextjs',
+        path: '/mezbah-skills/next.png',
+      },
+      {
+        id: 5,
+        name: 'Nodejs',
+        path: '/mezbah-skills/node.svg',
+      },
+      {
+        id: 6,
+        name: 'Express',
+        path: '/mezbah-skills/express.png',
+      },
+      {
+        id: 7,
+        name: 'Mongodb',
+        path: '/mezbah-skills/mongodb.svg',
       },
     ],
   },
