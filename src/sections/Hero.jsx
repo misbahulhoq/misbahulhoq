@@ -13,6 +13,7 @@ import CanvasLoader from '../components/Loading.jsx';
 import HeroCamera from '../components/HeroCamera.jsx';
 import { calculateSizes } from '../constants/index.js';
 import { HackerRoom } from '../components/HackerRoom.jsx';
+import Desk from '../components/Room.jsx';
 
 const Hero = () => {
   // Use media queries to determine screen size
@@ -26,20 +27,21 @@ const Hero = () => {
     <section className="min-h-screen w-full flex flex-col relative" id="home">
       <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
         <p className="sm:text-3xl text-xl font-medium text-white text-center font-generalsans">
-          Hi, I am Adrian <span className="waving-hand">👋</span>
+          Hi, I am Mezbah <span className="waving-hand">👋</span>
         </p>
-        <p className="hero_tag text-gray_gradient">Building Products & Brands</p>
+        <p className="hero_tag text-gray_gradient">A Full Stack Developer.</p>
       </div>
 
       <div className="w-full h-full absolute inset-0">
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />}>
             {/* To hide controller */}
-            <Leva hidden />
+            {/* <Leva /> */}
             <PerspectiveCamera makeDefault position={[0, 0, 30]} />
 
             <HeroCamera isMobile={isMobile}>
-              <HackerRoom scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, -Math.PI, 0]} />
+              {/* <HackerRoom scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, -Math.PI, 0]} /> */}
+              <Desk scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, 0.2, 0]} />
             </HeroCamera>
 
             <group>
@@ -49,7 +51,7 @@ const Hero = () => {
               <Cube position={sizes.cubePosition} />
             </group>
 
-            <ambientLight intensity={1} />
+            <ambientLight intensity={2} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
           </Suspense>
         </Canvas>
