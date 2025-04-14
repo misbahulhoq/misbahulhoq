@@ -1,9 +1,9 @@
 <div align="center">
-  <br />
+  <!-- <br />
     <a href="https://youtu.be/kt0FrkQgw8w" target="_blank">
       <img src="https://github.com/user-attachments/assets/2afc2dc3-f840-4d98-9378-f34acd7df173" alt="Project Banner">
     </a>
-  <br />
+  <br /> -->
 
   <div>
     <img src="https://img.shields.io/badge/-React_JS-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="react.js" />
@@ -31,7 +31,7 @@
 
 ## 🚨 Tutorial
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>. 
+This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
 
 If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
 
@@ -74,7 +74,7 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 👉 **Fully Responsive**: Optimized layout ensuring a smooth experience across all devices, from desktop to mobile.
 
-and many more, including code architecture and reusability 
+and many more, including code architecture and reusability
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -639,7 +639,8 @@ export const workExperiences = [
     name: 'Framer',
     pos: 'Lead Web Developer',
     duration: '2022 - Present',
-    title: "Framer serves as my go-to tool for creating interactive prototypes. I use it to bring designs to  life, allowing stakeholders to experience the user flow and interactions before development.",
+    title:
+      'Framer serves as my go-to tool for creating interactive prototypes. I use it to bring designs to  life, allowing stakeholders to experience the user flow and interactions before development.',
     icon: '/assets/framer.svg',
     animation: 'victory',
   },
@@ -648,7 +649,8 @@ export const workExperiences = [
     name: 'Figma',
     pos: 'Web Developer',
     duration: '2020 - 2022',
-    title: "Figma is my collaborative design platform of choice. I utilize it to work seamlessly with team members and clients, facilitating real-time feedback and design iterations. Its cloud-based.",
+    title:
+      'Figma is my collaborative design platform of choice. I utilize it to work seamlessly with team members and clients, facilitating real-time feedback and design iterations. Its cloud-based.',
     icon: '/assets/figma.svg',
     animation: 'clapping',
   },
@@ -657,7 +659,8 @@ export const workExperiences = [
     name: 'Notion',
     pos: 'Junior Web Developer',
     duration: '2019 - 2020',
-    title: "Notion helps me keep my projects organized. I use it for project management, task tracking, and as a central hub for documentation, ensuring that everything from design notes to.",
+    title:
+      'Notion helps me keep my projects organized. I use it for project management, task tracking, and as a central hub for documentation, ensuring that everything from design notes to.',
     icon: '/assets/notion.svg',
     animation: 'salute',
   },
@@ -799,8 +802,8 @@ export default Rings;
 <summary>About Earth Maps</summary>
 
 ```js
-globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
+globeImageUrl = '//unpkg.com/three-globe/example/img/earth-night.jpg';
+bumpImageUrl = '//unpkg.com/three-globe/example/img/earth-topology.png';
 ```
 
 </details>
@@ -867,12 +870,12 @@ Here is the list of all the resources used in the project video:
 - [Mixamo](https://www.mixamo.com/)
 - [FBX Animations ZIP](https://drive.google.com/file/d/1yQhrRvEQFEwxbjG2qelv_T-gAatXJ3N1/view?usp=sharing)
 
-
 ## <a name="assets">🔗 Assets</a>
 
 Models and Assets used in the project can be found [here](https://drive.google.com/file/d/1UiJyotDmF2_tBC-GeLpRZuFY_gx5e7iX/view?usp=sharing)
 
 ## <a name="more">🚀 More</a>
+
 **Advance your skills with Next.js Pro Course**
 
 Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning experience. They're packed with detailed explanations, cool features, and exercises to boost your skills. Give it a go!
