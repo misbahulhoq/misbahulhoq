@@ -63,8 +63,8 @@ export const myProjects = [
     subdesc:
       'It took about 100 hours to complete the project. Still I am working on it to introduce some new features.',
     href: 'https://arbanpublicschool.vercel.app/',
-    texture: '/textures/project/project1.mp4',
-    logo: '/assets/project-logo1.png',
+    texture: '/textures/project/arban-public-school.png',
+    logo: '/assets/arban-public-school-logo.jpg',
     logoStyle: {
       backgroundColor: '#2A1816',
       border: '0.2px solid #36201D',
@@ -75,22 +75,32 @@ export const myProjects = [
       {
         id: 1,
         name: 'React.js',
-        path: '/assets/react.svg',
+        path: '/mezbah-skills/react.svg',
       },
       {
         id: 2,
         name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
+        path: '/mezbah-skills/tailwind.svg',
       },
       {
         id: 3,
         name: 'TypeScript',
-        path: '/assets/typescript.png',
+        path: '/mezbah-skills/typescript.svg',
       },
       {
         id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
+        name: 'Nodejs',
+        path: '/mezbah-skills/node.svg',
+      },
+      {
+        id: 5,
+        name: 'ExpressJS',
+        path: '/mezbah-skills/express.png',
+      },
+      {
+        id: 6,
+        name: 'Nodejs',
+        path: '/mezbah-skills/mongodb.svg',
       },
     ],
   },
