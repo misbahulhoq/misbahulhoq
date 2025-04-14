@@ -161,17 +161,17 @@ export const myProjects = [
   },
   {
     title: 'Gamezone',
-    desc: 'A react app where there is a lot of games listed.',
+    desc: 'A react app where there is a lot of games listed. I used an open source api named rawg.io to create this app. I used React, ChakraUI. This project has search functionality, theme switcher, filtering . ',
     subdesc:
-      'With a focus on efficiency, CarePulse integrantes complex forms and SMS notifications, by using Next.js, Appwrite, Twillio and Sentry that enhance operational workflows.',
+      'About 50 hours were needed to create this project. Because this was the first project which I created with react.',
     href: 'https://game-zone-eight.vercel.app',
     texture: '/textures/project/game-zone.png',
-    logo: '/assets/project-logo3.png',
+    logo: '/assets/react.svg',
     frontRepo: 'https://github.com/misbahulhoq/gamezone',
     logoStyle: {
-      backgroundColor: '#60f5a1',
+      backgroundColor: '#101010',
       background:
-        'linear-gradient(0deg, #60F5A150, #60F5A150), linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(208, 213, 221, 0.8) 100%)',
+        'linear-gradient(0deg, #101010, #60F5A150), linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(208, 213, 221, 0.8) 100%)',
       border: '0.2px solid rgba(208, 213, 221, 1)',
       boxShadow: '0px 0px 60px 0px rgba(35, 131, 96, 0.3)',
     },
@@ -181,21 +181,6 @@ export const myProjects = [
         id: 1,
         name: 'React.js',
         path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'TailwindCSS',
-        path: 'assets/tailwindcss.png',
-      },
-      {
-        id: 3,
-        name: 'TypeScript',
-        path: '/assets/typescript.png',
-      },
-      {
-        id: 4,
-        name: 'Framer Motion',
-        path: '/assets/framer.png',
       },
     ],
   },
