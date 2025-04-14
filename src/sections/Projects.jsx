@@ -60,7 +60,7 @@ const Projects = () => {
             </div>
 
             <a
-              className="flex items-center gap-2 cursor-pointer text-white-600 hover:text-white"
+              className="flex items-center gap-2 mt-4 cursor-pointer text-white-600 hover:text-white"
               href={currentProject.href}
               target="_blank"
               rel="noreferrer">
@@ -68,7 +68,7 @@ const Projects = () => {
               <img src="/assets/arrow-up.png" alt="arrow" className="w-3 h-3" />
             </a>
           </div>
-          <div className="flex justify-between items-center text-white-600 ">
+          <div className="flex justify-between mt-4 items-center text-white-600 lg:mt-6">
             {currentProject.frontRepo && (
               <a
                 target="_blank"

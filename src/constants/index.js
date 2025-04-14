@@ -111,8 +111,8 @@ export const myProjects = [
     desc: 'Tuitionbatch app is a simple yet powerful app that helps to track attendance of students. A very user friendly app. Any teacher can login with google and start working on it.',
     subdesc: 'It took about 20 hours to complete the project. I am still trying to add some new features.',
     href: 'https://tuitionbatch.vercel.app',
-    frontRepo: ' ',
-    backRepo: ' ',
+    frontRepo: 'https://github.com/misbahulhoq/tuitionbatch',
+    backRepo: 'https://github.com/misbahulhoq/api-tuitionbatch',
     texture: '/textures/project/tuition-batch.png',
     logo: '/assets/tuitiontabatch-logo.png',
     logoStyle: {
