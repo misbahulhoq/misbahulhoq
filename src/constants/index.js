@@ -232,5 +232,3 @@ export const workExperiences = [
     animation: 'salute',
   },
 ];
-
-console.log(myProjects.length);
