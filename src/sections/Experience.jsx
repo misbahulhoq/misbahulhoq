@@ -28,7 +28,11 @@ const WorkExperience = () => {
             </Canvas>
           
           </div> */}
-          <img src="/assets/portfolio-work-illustration-dark.svg" alt="Work illustration" className="self-stretch" />
+          <img
+            src="/assets/portfolio-work-illustration-dark.svg"
+            alt="Work illustration"
+            className="self-stretch hidden lg:block"
+          />
           <div className="work-content">
             <div className="sm:py-10 py-5 sm:px-5 px-2.5">
               {workExperiences.map((item, index) => (

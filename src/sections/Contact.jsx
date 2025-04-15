@@ -1,16 +1,16 @@
-import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
-
 import useAlert from '../hooks/useAlert.js';
 import Alert from '../components/Alert.jsx';
 
 const Contact = () => {
   const formRef = useRef();
-
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
-
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8080/api/email'
+      : 'https://portfolio-api-eosin.vercel.app/api/email';
 
   const handleChange = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
@@ -19,49 +19,41 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+    console.log(form);
 
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: 'JavaScript Mastery',
-          from_email: form.email,
-          to_email: 'sujata@jsmastery.pro',
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
-      )
-      .then(
-        () => {
-          setLoading(false);
-          showAlert({
-            show: true,
-            text: 'Thank you for your message 😃',
-            type: 'success',
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setLoading(false);
+        showAlert({
+          show: true,
+          text: 'Thank you for your message 😃',
+          type: 'success',
+        });
+        setTimeout(() => {
+          hideAlert(false);
+          setForm({
+            name: '',
+            email: '',
+            message: '',
           });
-
-          setTimeout(() => {
-            hideAlert(false);
-            setForm({
-              name: '',
-              email: '',
-              message: '',
-            });
-          }, [3000]);
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          showAlert({
-            show: true,
-            text: "I didn't receive your message 😢",
-            type: 'danger',
-          });
-        },
-      );
+        }, [3000]);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err);
+        showAlert({
+          show: true,
+          text: "I didn't receive your message 😢",
+          type: 'danger',
+        });
+      });
   };
 
   return (
@@ -120,7 +112,6 @@ const Contact = () => {
 
             <button className="field-btn" type="submit" disabled={loading}>
               {loading ? 'Sending...' : 'Send Message'}
-
               <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
             </button>
           </form>
