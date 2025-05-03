@@ -11,11 +11,16 @@ export const navLinks = [
   },
   {
     id: 3,
-    name: 'Work',
-    href: '#work',
+    name: 'Projects',
+    href: '#projects',
   },
   {
     id: 4,
+    name: 'Experience',
+    href: '#experience',
+  },
+  {
+    id: 5,
     name: 'Contact',
     href: '#contact',
   },
@@ -184,6 +189,20 @@ export const myProjects = [
       },
     ],
   },
+  // {
+  //   title: 'captcha-generator-react',
+  //   desc: "An npm package that helps generate captcha using just a few lines of code in react. It's a very lighweight package. ",
+  //   subdesc: 'About 2 hours were needed to create this project.',
+  //   href: 'https://www.npmjs.com/package/captcha-generator-react',
+  //   texture: '/textures/project/gym-management.png',
+  //   logo: '/assets/react.svg',
+  //   frontRepo: 'https://github.com/misbahulhoq/gym-management-app',
+  //   logoStyle: {
+  //     backgroundColor: '#13202F',
+  //     border: '0.2px solid #17293E',
+  //     boxShadow: '0px 0px 60px 0px #2F6DB54D',
+  //   },
+  // },
 ];
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
