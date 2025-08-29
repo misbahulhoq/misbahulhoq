@@ -1,13 +1,9 @@
 "use client";
-import { Github, Linkedin, Twitter, Moon, Sun, Computer } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { Button } from "../ui/button";
 import ThemeToggler from "./ThemeToggler";
 
 export const Footer = () => {
-  const { setTheme } = useTheme();
-
   const navLinks = [
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
@@ -16,16 +12,11 @@ export const Footer = () => {
   ];
 
   const socialLinks = [
-    { href: "https://github.com/your-username", label: "GitHub", icon: Github },
+    { href: "https://github.com/misbahulhoq", label: "GitHub", icon: Github },
     {
-      href: "https://linkedin.com/in/your-username",
+      href: "https://linkedin.com/in/misbahulhoq",
       label: "LinkedIn",
       icon: Linkedin,
-    },
-    {
-      href: "https://twitter.com/your-username",
-      label: "Twitter",
-      icon: Twitter,
     },
   ];
 
