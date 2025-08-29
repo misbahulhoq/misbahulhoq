@@ -1,40 +1,50 @@
 "use client";
 
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Laptop } from "lucide-react";
 import { useTheme } from "next-themes";
-
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export default function ThemeToggler() {
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, [theme]);
+
+  if (!mounted) return null;
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="cursor-pointer">
-          <Sun className="h-[1.2rem] size-6 w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="flex border px-1.5 py-0.5 items-center gap-2 md:gap-1.5 rounded-full">
+      <Button
+        variant={theme === "light" ? "default" : "outline"}
+        size="icon"
+        className={`cursor-pointer rounded-full`}
+        onClick={() => setTheme("light")}
+      >
+        <Sun className="size-5" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+
+      <Button
+        variant={theme === "dark" ? "default" : "outline"}
+        size={"icon"}
+        className={`cursor-pointer rounded-full`}
+        onClick={() => setTheme("dark")}
+      >
+        <Moon className="size-5" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+
+      <Button
+        variant={theme === "system" ? "default" : "outline"}
+        size="icon"
+        className={`cursor-pointer rounded-full`}
+        onClick={() => setTheme("system")}
+      >
+        <Laptop className="size-5" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+    </div>
   );
 }
