@@ -1,13 +1,5 @@
 import React from "react";
-import ThemeToggler from "./ThemeToggler";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Download } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";

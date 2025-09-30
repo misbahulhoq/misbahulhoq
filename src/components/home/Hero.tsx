@@ -53,7 +53,7 @@ export default function HeroSection() {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-                Hi, I'm{" "}
+                Hi, I&apos;m{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                     Mezbah
