@@ -53,22 +53,6 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Right-side Action Button (Desktop) */}
-        <div className="hidden md:block">
-          <Button size="default" className="rounded-full">
-            <>
-              <Download />
-              <a
-                href="https://docs.google.com/document/d/1pDQoLB5JTBV-Q_QNMCulFohbcLhJZSyA-fli2lDb2uc/export?format=pdf"
-                target="_blank"
-                className="rounded-full"
-              >
-                Download Resume
-              </a>
-            </>
-          </Button>
-        </div>
-
         {/* Mobile Navigation */}
         <div className="md:hidden ">
           <Sheet>
