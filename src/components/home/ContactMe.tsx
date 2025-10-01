@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, FormEventHandler, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import {
   Mail,
   MapPin,
@@ -111,11 +111,11 @@ export default function ContactMeSection() {
             </span>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can bring your ideas to
-            life.
+            Have a project in mind? Let&apos;s discuss how we can bring your
+            ideas to life.
           </p>
         </div>
 
@@ -296,8 +296,8 @@ export default function ContactMeSection() {
                 </h4>
               </div>
               <p className="text-sm text-muted-foreground">
-                I'm open to freelance opportunities and full-time positions.
-                Let's create something amazing together!
+                I&apos;m open to freelance opportunities and full-time
+                positions. Let&apos;s create something amazing together!
               </p>
             </div>
 
@@ -320,8 +320,8 @@ export default function ContactMeSection() {
           <div className="max-w-3xl mx-auto">
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-8"></div>
             <blockquote className="text-lg italic text-muted-foreground">
-              "Great things are never done by one person. They're done by a team
-              of people."
+              &quot;Great things are never done by one person. They&apos;re done
+              by a team of people.&quot;
             </blockquote>
             <p className="text-sm text-muted-foreground mt-2">— Steve Jobs</p>
           </div>

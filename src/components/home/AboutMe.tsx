@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Code, Database, Rocket, Users, Award, Coffee } from "lucide-react";
+import { Code, Database, Rocket, Users } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 
@@ -136,9 +136,9 @@ export default function AboutMeSection() {
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  I'm a passionate full-stack developer in building scalable web
-                  applications. I love transforming complex problems into
-                  simple, beautiful, and intuitive solutions.
+                  I&apos;m a passionate full-stack developer in building
+                  scalable web applications. I love transforming complex
+                  problems into simple, beautiful, and intuitive solutions.
                 </p>
                 <p>
                   My journey in tech started with a curiosity about how websites
@@ -148,10 +148,10 @@ export default function AboutMeSection() {
                   latest industry trends.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me contributing to
+                  When I&apos;m not coding, you&apos;ll find me contributing to
                   open-source projects, writing technical blogs, or exploring
-                  new technologies that push the boundaries of what's possible
-                  on the web.
+                  new technologies that push the boundaries of what&apos;s
+                  possible on the web.
                 </p>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function AboutMeSection() {
         {/* CTA */}
         <div className="text-center mt-16">
           <Button size="lg" className="rounded-full cursor-pointer">
-            Let's work Together
+            Let&apos;s work Together
           </Button>
         </div>
       </div>
