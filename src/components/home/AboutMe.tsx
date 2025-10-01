@@ -136,10 +136,9 @@ export default function AboutMeSection() {
               </h3>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  I'm a passionate full-stack developer with over 5 years of
-                  experience in building scalable web applications. I love
-                  transforming complex problems into simple, beautiful, and
-                  intuitive solutions.
+                  I'm a passionate full-stack developer in building scalable web
+                  applications. I love transforming complex problems into
+                  simple, beautiful, and intuitive solutions.
                 </p>
                 <p>
                   My journey in tech started with a curiosity about how websites
@@ -264,7 +263,7 @@ export default function AboutMeSection() {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <Button size="lg" className="p-6 rounded-full">
+          <Button size="lg" className="rounded-full cursor-pointer">
             Let's work Together
           </Button>
         </div>
