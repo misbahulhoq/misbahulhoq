@@ -90,7 +90,7 @@ export default function AboutMeSection() {
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-75 blur group-hover:opacity-100 transition duration-500"></div>
               <div className="relative bg-card rounded-2xl overflow-hidden border border-border">
                 {/* Replace with your image */}
-                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center ">
                   <div className="text-center space-y-4 p-8">
                     <div className="w-24 h-24 mx-auto bg-primary/20 rounded-full flex items-center justify-center border-2 border-primary">
                       <Image
@@ -246,7 +246,7 @@ export default function AboutMeSection() {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
