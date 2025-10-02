@@ -22,6 +22,10 @@ const navLinks: { href: string; label: string }[] = [
     href: "#contact",
     label: "Contact",
   },
+  {
+    href: "/login",
+    label: "Login",
+  },
 ];
 
 const Navbar = () => {
