@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
 import { Footer } from "../shared/Footer";
 import Navbar from "../shared/Navbar";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 const Provider = ({ children }: { children: React.ReactNode }) => {
@@ -16,6 +17,7 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
         enableSystem
         disableTransitionOnChange
       >
+        <Toaster />
         <Navbar />
         {children}
         <Footer />

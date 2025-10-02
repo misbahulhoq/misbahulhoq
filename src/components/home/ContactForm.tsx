@@ -1,7 +1,28 @@
 "use client";
-import React, { FormEvent, useState, useTransition } from "react";
+import React, { FormEvent, useState } from "react";
 import { Send, Loader } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { baseUrl } from "@/lib/baseUrl";
+import toast from "react-hot-toast";
 
+const sendMessage = async (body: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) => {
+  const res = await fetch(`${baseUrl}/contact`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    throw new Error("Failed to send message");
+  }
+  return res.json();
+};
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,7 +30,18 @@ const ContactForm = () => {
     subject: "",
     message: "",
   });
-  const [isSubmitting, startSubmission] = useTransition();
+  const { isPending: isSubmitting, mutate } = useMutation({
+    mutationFn: sendMessage,
+    onSuccess: () => {
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      toast.success("Message sent successfully!");
+    },
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,7 +54,8 @@ const ContactForm = () => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    startSubmission(() => {});
+    // Send the form data to the server
+    mutate(formData);
   };
   return (
     <div className="bg-card border border-border rounded-2xl p-6 lg:p-8 shadow-lg relative group">
