@@ -7,9 +7,11 @@ import {
   Send,
   Github,
   Linkedin,
-  MessageSquare,
   Check,
+  Facebook,
+  PhoneCall,
 } from "lucide-react";
+
 export default function ContactMeSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -61,21 +63,27 @@ export default function ContactMeSection() {
 
   const socialLinks = [
     {
-      icon: Github,
-      name: "GitHub",
-      link: "https://github.com/misbahulhoq",
-      color: "hover:bg-foreground/10",
-    },
-    {
       icon: Linkedin,
       name: "LinkedIn",
       link: "https://www.linkedin.com/in/misbahulhoq/",
       color: "hover:bg-primary/10",
     },
     {
-      icon: MessageSquare,
-      name: "Discord",
-      link: "#",
+      icon: PhoneCall,
+      name: "What's App",
+      link: "https://wa.me/+8801521377999",
+      color: "hover:bg-primary/10",
+    },
+    {
+      icon: Github,
+      name: "GitHub",
+      link: "https://github.com/misbahulhoq",
+      color: "hover:bg-foreground/10",
+    },
+    {
+      icon: Facebook,
+      name: "Facebook",
+      link: "https://www.facebook.com/Misbah900920",
       color: "hover:bg-primary/10",
     },
   ];
@@ -121,7 +129,7 @@ export default function ContactMeSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Contact Form */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 lg:max-w-[500px]">
             <div className="bg-card border border-border rounded-2xl p-6 lg:p-8 shadow-lg relative group">
               {/* Gradient border effect on hover */}
               <div className="absolute -inset-[1px] bg-gradient-to-r from-primary to-accent rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500 -z-10"></div>
@@ -133,7 +141,7 @@ export default function ContactMeSection() {
                     htmlFor="name"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Your Name
+                    Your Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -141,8 +149,9 @@ export default function ContactMeSection() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:opacity-60"
                     placeholder="John Doe"
+                    required
                   />
                 </div>
 
@@ -152,7 +161,7 @@ export default function ContactMeSection() {
                     htmlFor="email"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Your Email
+                    Your Email <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -160,8 +169,9 @@ export default function ContactMeSection() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="john@example.com"
+                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:opacity-60"
+                    placeholder="your-name@domain.com"
+                    required
                   />
                 </div>
 
@@ -171,7 +181,7 @@ export default function ContactMeSection() {
                     htmlFor="subject"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Subject
+                    Subject <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -179,8 +189,9 @@ export default function ContactMeSection() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:opacity-60"
                     placeholder="Project Inquiry"
+                    required
                   />
                 </div>
 
@@ -190,7 +201,7 @@ export default function ContactMeSection() {
                     htmlFor="message"
                     className="block text-sm font-medium text-foreground mb-2"
                   >
-                    Message
+                    Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -198,8 +209,9 @@ export default function ContactMeSection() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none placeholder:opacity-60"
                     placeholder="Tell me about your project..."
+                    required
                   ></textarea>
                 </div>
 
