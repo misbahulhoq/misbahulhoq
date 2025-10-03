@@ -13,12 +13,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-export default function DashboardSidebar() {
+export default function DashboardSidebar({
+  user,
+}: {
+  user: { name: string; email: string };
+}) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("dashboard");
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const pathName = usePathname();
-  console.log(pathName);
 
   const menuItems = [
     {
@@ -124,10 +127,10 @@ export default function DashboardSidebar() {
             </div>
             <div className="flex-1 text-left">
               <p className="text-sm font-semibold text-sidebar-foreground">
-                John Doe
+                {user?.name}
               </p>
               <p className="text-xs text-sidebar-foreground/60">
-                john@example.com
+                {user?.email}
               </p>
             </div>
           </button>
