@@ -4,7 +4,7 @@ import { Menu, Download } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { DialogTitle } from "@radix-ui/react-dialog";
-
+import { usePathname } from "next/navigation";
 const navLinks: { href: string; label: string }[] = [
   {
     href: "#about",
@@ -29,6 +29,8 @@ const navLinks: { href: string; label: string }[] = [
 ];
 
 const Navbar = () => {
+  const pathName = usePathname();
+  if (pathName.includes("dashboard")) return null;
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-5 flex h-16 items-center justify-between">
