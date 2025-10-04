@@ -6,18 +6,21 @@ import Image from "next/image";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const { thumbnail, title, description, repoLinks, liveSiteLink } = project;
+  console.log(thumbnail);
   return (
     <div className="bg-card border-border group w-full max-w-sm overflow-hidden rounded-2xl border shadow-lg transition-all duration-300 hover:shadow-2xl">
       {/* Thumbnail */}
       <div className="from-primary/20 to-accent/20 relative aspect-video overflow-hidden bg-gradient-to-br">
-        {/* Replace this div with actual image */}
         <div className="flex h-full w-full items-center justify-center">
-          <Image
-            fill
-            src={thumbnail[0]}
-            alt={title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
+          {/* Image */}
+          {thumbnail.length > 0 && (
+            <Image
+              fill
+              src={thumbnail[0]}
+              alt={title}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          )}
         </div>
 
         {/* Overlay on hover */}

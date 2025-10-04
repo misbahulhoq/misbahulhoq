@@ -114,6 +114,7 @@ export default function ProjectDetailsPage({
               </h1>
               <p className="text-muted-foreground mb-6 text-xl">
                 {/* {project.tagline} */}
+                some titasldkfjlasdkj;lasdkj;asdj;akj;kj;laskdjflk
               </p>
             </div>
 

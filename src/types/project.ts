@@ -1,5 +1,6 @@
 export type FormData = {
   title: string;
+  tagline: string;
   thumbnail: string;
   frontendRepo: string;
   backendRepo?: string;

@@ -10,13 +10,21 @@ import { baseUrl } from "@/lib/baseUrl";
 import toast from "react-hot-toast";
 
 const AddProjectPage = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
   const [description, setDescription] = useState("");
 
   const onSubmit = async (data: FormData) => {
     const payload = {
       title: data.title,
-      thumbnail: data.thumbnail.split(",").map((url) => url.trim()),
+      tagline: data.tagline,
+      thumbnail:
+        data.thumbnail.length > 0
+          ? data.thumbnail.split(",").map((url) => url.trim())
+          : [],
       repoLinks: {
         frontend: data.frontendRepo,
         backend: data.backendRepo || undefined,
@@ -43,8 +51,15 @@ const AddProjectPage = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <input
-        {...register("title", { required: "Title is required." })}
+        {...register("title")}
         placeholder="Title"
+        className={`block w-full border p-2`}
+        required
+      />
+
+      <input
+        {...register("tagline")}
+        placeholder="Tagline (a short description)"
         className={`block w-full border p-2`}
         required
       />
@@ -53,6 +68,7 @@ const AddProjectPage = () => {
         {...register("frontendRepo")}
         placeholder="Frontend Repo Link"
         className="block w-full border p-2"
+        required
       />
       <input
         {...register("backendRepo")}
@@ -69,6 +85,7 @@ const AddProjectPage = () => {
         {...register("thumbnail")}
         placeholder="Thumbnail URLs (comma separated)"
         className="w-full border p-2"
+        required
       />
 
       <label className="mb-1 block">Description</label>
@@ -78,18 +95,21 @@ const AddProjectPage = () => {
         {...register("features")}
         placeholder="Features (comma separated)"
         className="block w-full border p-2"
+        required
       />
 
       <input
         {...register("technologies")}
         placeholder="Technologies (comma separated)"
         className="block w-full border p-2"
+        required
       />
 
       <input
         {...register("duration")}
         placeholder="Project Duration"
         className="block w-full border p-2"
+        required
       />
 
       <input
