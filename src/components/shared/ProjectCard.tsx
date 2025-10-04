@@ -1,10 +1,18 @@
 import React from "react";
 import { ExternalLink, Github, Star } from "lucide-react";
 import { Project } from "@/types/project";
+import Link from "next/link";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const { thumbnail, title, description, features, technologies, repoLinks } =
-    project;
+  const {
+    thumbnail,
+    title,
+    description,
+    features,
+    technologies,
+    repoLinks,
+    liveSiteLink,
+  } = project;
   return (
     <div className="w-full max-w-sm bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group">
       {/* Thumbnail */}
@@ -12,7 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {/* Replace this div with actual image */}
         <div className="w-full h-full flex items-center justify-center">
           <img
-            src={thumbnail}
+            src={thumbnail[0]}
             alt={title}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -21,10 +29,10 @@ export default function ProjectCard({ project }: { project: Project }) {
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
           <a
-            href={""}
+            href={liveSiteLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 bg-primary text-primary-foreground rounded-full hover:scale-110 transition-transform shadow-lg"
+            className="p-3 bg-primary text-primary-foreground rounded-full hover:scale-110 transition-transform shadow-lg cursor-pointer"
             title="View Live Site"
           >
             <ExternalLink className="w-5 h-5" />
@@ -68,10 +76,10 @@ export default function ProjectCard({ project }: { project: Project }) {
         </h3>
 
         {/* Description */}
-        {/* <div
+        <div
           dangerouslySetInnerHTML={{ __html: description }}
           className="text-sm text-muted-foreground mb-3 line-clamp-2 leading-relaxed"
-        ></div> */}
+        ></div>
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-3">
@@ -94,9 +102,12 @@ export default function ProjectCard({ project }: { project: Project }) {
         <div className="flex items-center justify-end pt-3 border-t border-border">
           {/* Stats */}
           {/* Actions */}
-          <button className="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium rounded-lg hover:scale-105 transition-transform">
+          <Link
+            href={`/projects/${project._id}`}
+            className="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-medium rounded-lg hover:scale-105 transition-transform cursor-pointer"
+          >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
 

@@ -7,23 +7,25 @@ import "react-quill-new/dist/quill.snow.css";
 import { FormData } from "@/types/project";
 import { Button } from "@/components/ui/button";
 import { baseUrl } from "@/lib/baseUrl";
+import toast from "react-hot-toast";
 
 const AddProjectPage = () => {
   const { register, handleSubmit } = useForm<FormData>();
   const [description, setDescription] = useState("");
+  const [thumbnails, setThumbnails] = useState("");
   const [features, setFeatures] = useState("");
 
   const onSubmit = async (data: FormData) => {
     const payload = {
       title: data.title,
-      thumbnail: data.thumbnail,
+      thumbnail: data.thumbnail.split(",").map((url) => url.trim()),
       repoLinks: {
         frontend: data.frontendRepo,
         backend: data.backendRepo || undefined,
       },
       liveSiteLink: data.liveSiteLink || undefined,
       description,
-      features,
+      features: data.features.split(",").map((feature) => feature.trim()),
       technologies: data.technologies.split(",").map((tech) => tech.trim()),
       displayOrder: Number(data.displayOrder),
     };
@@ -37,7 +39,7 @@ const AddProjectPage = () => {
       credentials: "include",
       body: JSON.stringify(payload),
     });
-    alert("Project added successfully!");
+    toast.success("Project added successfully!");
   };
 
   return (
@@ -45,40 +47,39 @@ const AddProjectPage = () => {
       <input
         {...register("title", { required: "Title is required." })}
         placeholder="Title"
-        className={`border p-2`}
+        className={`block w-full border p-2`}
         required
       />
-      <input
-        {...register("thumbnail")}
-        placeholder="Thumbnail URL"
-        className="border p-2"
-      />
+
       <input
         {...register("frontendRepo")}
         placeholder="Frontend Repo Link"
-        className="border p-2"
+        className="block w-full border p-2"
       />
       <input
         {...register("backendRepo")}
         placeholder="Backend Repo Link (optional)"
-        className="border p-2"
+        className="block w-full border p-2"
       />
       <input
         {...register("liveSiteLink")}
         placeholder="Live Site Link (optional)"
-        className="border p-2"
+        className="w-full border p-2"
       />
 
-      <label className="block mb-1">Description</label>
+      <label className="mb-1 block">Thumbnail URLs (comma separated)</label>
+      <ReactQuill value={thumbnails} onChange={setThumbnails} />
+
+      <label className="mb-1 block">Description</label>
       <ReactQuill value={description} onChange={setDescription} />
 
-      <label>Features</label>
+      <label>Features (comma separated)</label>
       <ReactQuill value={features} onChange={setFeatures} />
 
       <input
         {...register("technologies")}
         placeholder="Technologies (comma separated)"
-        className="border p-2"
+        className="block w-full border p-2"
       />
 
       <input

@@ -13,14 +13,15 @@ export type FormData = {
 export type Project = {
   _id: string;
   title: string;
-  thumbnail: string;
+  thumbnail: string[];
   repoLinks: {
     frontend: string;
     backend?: string;
   };
   liveSiteLink?: string;
   description: string;
-  features: string;
+  features: string[];
   technologies: string[];
+  duration: string;
   displayOrder: number;
 };
