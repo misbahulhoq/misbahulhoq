@@ -3,7 +3,7 @@ import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import { useAuth } from "@/hooks/useAuth";
 import React from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -19,4 +19,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default DashboardLayout;

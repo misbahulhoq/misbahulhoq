@@ -12,8 +12,6 @@ import toast from "react-hot-toast";
 const AddProjectPage = () => {
   const { register, handleSubmit } = useForm<FormData>();
   const [description, setDescription] = useState("");
-  const [thumbnails, setThumbnails] = useState("");
-  const [features, setFeatures] = useState("");
 
   const onSubmit = async (data: FormData) => {
     const payload = {
@@ -27,10 +25,10 @@ const AddProjectPage = () => {
       description,
       features: data.features.split(",").map((feature) => feature.trim()),
       technologies: data.technologies.split(",").map((tech) => tech.trim()),
+      duration: data.duration,
       displayOrder: Number(data.displayOrder),
     };
 
-    console.log(payload);
     fetch(`${baseUrl}/projects`, {
       method: "POST",
       headers: {
@@ -67,18 +65,30 @@ const AddProjectPage = () => {
         className="w-full border p-2"
       />
 
-      <label className="mb-1 block">Thumbnail URLs (comma separated)</label>
-      <ReactQuill value={thumbnails} onChange={setThumbnails} />
+      <input
+        {...register("thumbnail")}
+        placeholder="Thumbnail URLs (comma separated)"
+        className="w-full border p-2"
+      />
 
       <label className="mb-1 block">Description</label>
       <ReactQuill value={description} onChange={setDescription} />
 
-      <label>Features (comma separated)</label>
-      <ReactQuill value={features} onChange={setFeatures} />
+      <textarea
+        {...register("features")}
+        placeholder="Features (comma separated)"
+        className="block w-full border p-2"
+      />
 
       <input
         {...register("technologies")}
         placeholder="Technologies (comma separated)"
+        className="block w-full border p-2"
+      />
+
+      <input
+        {...register("duration")}
+        placeholder="Project Duration"
         className="block w-full border p-2"
       />
 

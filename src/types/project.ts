@@ -7,6 +7,7 @@ export type FormData = {
   description: string;
   features: string;
   technologies: string; // user enters comma-separated
+  duration: string;
   displayOrder: number;
 };
 

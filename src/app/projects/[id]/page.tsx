@@ -4,8 +4,6 @@ import {
   ArrowLeft,
   ExternalLink,
   Github,
-  Heart,
-  Share2,
   CheckCircle,
   Code,
   Layers,
@@ -15,13 +13,15 @@ import {
 } from "lucide-react";
 import { baseUrl } from "@/lib/baseUrl";
 import { Project } from "@/types/project";
+import { Spinner } from "@/components/ui/spinner";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function ProjectDetailsPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const [isLiked, setIsLiked] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [projectId, setProjectId] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -31,7 +31,7 @@ export default function ProjectDetailsPage({
     params?.then((data) => {
       setProjectId(data.id);
     });
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     startTransition(() => {
@@ -56,7 +56,11 @@ export default function ProjectDetailsPage({
   }, [projectId]);
 
   if (pending || !project) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Spinner height={100} width={100} />
+      </div>
+    );
   }
 
   const {
@@ -76,36 +80,36 @@ export default function ProjectDetailsPage({
 
   const prevImage = () => {
     setCurrentImageIndex(
-      (prev) => (prev - 1 + thumbnail.length) % thumbnail.length
+      (prev) => (prev - 1 + thumbnail.length) % thumbnail.length,
     );
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       {/* Hero Section with Background */}
-      <div className="relative bg-gradient-to-br from-primary/10 via-accent/5 to-background border-b border-border">
+      <div className="from-primary/10 via-accent/5 to-background border-border relative border-b bg-gradient-to-br">
         <div className="absolute inset-0 overflow-hidden opacity-30">
-          <div className="absolute w-96 h-96 bg-primary rounded-full opacity-20 blur-3xl top-0 right-0 animate-pulse"></div>
+          <div className="bg-primary absolute top-0 right-0 h-96 w-96 animate-pulse rounded-full opacity-20 blur-3xl"></div>
           <div
-            className="absolute w-96 h-96 bg-accent rounded-full opacity-20 blur-3xl bottom-0 left-0 animate-pulse"
+            className="bg-accent absolute bottom-0 left-0 h-96 w-96 animate-pulse rounded-full opacity-20 blur-3xl"
             style={{ animationDelay: "1s" }}
           ></div>
         </div>
 
-        <div className="relative mx-auto container px-6 py-8">
+        <div className="relative container mx-auto px-6 py-8">
           {/* Back Button */}
-          <button className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6 group">
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <button className="text-muted-foreground hover:text-foreground group mb-6 flex items-center gap-2 transition-colors">
+            <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
             <span>Back to Projects</span>
           </button>
 
           {/* Project Header */}
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+          <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex-1">
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-3">
+              <h1 className="text-foreground mb-3 text-4xl font-bold lg:text-5xl">
                 {title}
               </h1>
-              <p className="text-xl text-muted-foreground mb-6">
+              <p className="text-muted-foreground mb-6 text-xl">
                 {/* {project.tagline} */}
               </p>
             </div>
@@ -116,18 +120,18 @@ export default function ProjectDetailsPage({
                 href={liveSiteLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                className="bg-primary text-primary-foreground flex items-center gap-2 rounded-lg px-6 py-3 font-semibold shadow-lg transition-transform hover:scale-105"
               >
-                <ExternalLink className="w-5 h-5" />
+                <ExternalLink className="h-5 w-5" />
                 Live Demo
               </a>
               <a
                 href={repoLinks.frontend}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground font-semibold rounded-lg hover:border-primary/50 transition-colors"
+                className="bg-card border-border text-foreground hover:border-primary/50 flex items-center gap-2 rounded-lg border px-6 py-3 font-semibold transition-colors"
               >
-                <Github className="w-5 h-5" />
+                <Github className="h-5 w-5" />
                 Frontend
               </a>
               {repoLinks.backend && (
@@ -135,48 +139,34 @@ export default function ProjectDetailsPage({
                   href={repoLinks.backend}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground font-semibold rounded-lg hover:border-primary/50 transition-colors"
+                  className="bg-card border-border text-foreground hover:border-primary/50 flex items-center gap-2 rounded-lg border px-6 py-3 font-semibold transition-colors"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="h-5 w-5" />
                   Backend
                 </a>
               )}
-              <button
-                onClick={() => setIsLiked(!isLiked)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
-                  isLiked
-                    ? "bg-accent/10 text-accent border border-accent/50"
-                    : "bg-card border border-border text-foreground hover:border-primary/50"
-                }`}
-              >
-                <Heart className={`w-5 h-5 ${isLiked ? "fill-current" : ""}`} />
-                {isLiked ? "Liked" : "Like"}
-              </button>
-              <button className="flex items-center gap-2 px-6 py-3 bg-card border border-border text-foreground font-semibold rounded-lg hover:border-primary/50 transition-colors">
-                <Share2 className="w-5 h-5" />
-                Share
-              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="mx-auto container px-6 py-12">
-        <div className="grid lg:grid-cols-3 gap-12">
+      <div className="container mx-auto px-6 py-12">
+        <div className="grid gap-12 lg:grid-cols-3">
           {/* Left Column - Main Content */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="space-y-12 lg:col-span-2">
             {/* Image Gallery */}
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-foreground mb-4">
+              <h2 className="text-foreground mb-4 text-2xl font-bold">
                 Project Gallery
               </h2>
-              <div className="relative group">
-                <div className="aspect-video rounded-2xl overflow-hidden border border-border shadow-xl">
-                  <img
+              <div className="group relative">
+                <div className="border-border aspect-video overflow-hidden rounded-2xl border shadow-xl">
+                  <Image
+                    fill
                     src={thumbnail[currentImageIndex]}
                     alt={`${project.title} screenshot ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
 
@@ -185,26 +175,26 @@ export default function ProjectDetailsPage({
                   <>
                     <button
                       onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card/90 backdrop-blur-sm border border-border rounded-full flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all opacity-0 group-hover:opacity-100"
+                      className="bg-card/90 border-border text-foreground hover:bg-primary hover:text-primary-foreground absolute top-1/2 left-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border opacity-0 backdrop-blur-sm transition-all group-hover:opacity-100"
                     >
-                      <ChevronLeft className="w-5 h-5" />
+                      <ChevronLeft className="h-5 w-5" />
                     </button>
                     <button
                       onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card/90 backdrop-blur-sm border border-border rounded-full flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-all opacity-0 group-hover:opacity-100"
+                      className="bg-card/90 border-border text-foreground hover:bg-primary hover:text-primary-foreground absolute top-1/2 right-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border opacity-0 backdrop-blur-sm transition-all group-hover:opacity-100"
                     >
-                      <ChevronRight className="w-5 h-5" />
+                      <ChevronRight className="h-5 w-5" />
                     </button>
                   </>
                 )}
 
                 {/* Image Indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
                   {thumbnail.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
+                      className={`h-2 w-2 rounded-full transition-all ${
                         index === currentImageIndex
                           ? "bg-primary w-6"
                           : "bg-card/50 hover:bg-card"
@@ -220,16 +210,17 @@ export default function ProjectDetailsPage({
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`aspect-video rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`aspect-video overflow-hidden rounded-lg border-2 transition-all ${
                       index === currentImageIndex
                         ? "border-primary scale-95"
                         : "border-border hover:border-primary/50"
                     }`}
                   >
-                    <img
+                    <Image
+                      fill
                       src={image}
                       alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="h-full w-full object-cover"
                     />
                   </button>
                 ))}
@@ -238,29 +229,30 @@ export default function ProjectDetailsPage({
 
             {/* Description */}
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
-                <Layers className="w-6 h-6 text-primary" />
+              <h2 className="text-foreground mb-4 flex items-center gap-2 text-2xl font-bold">
+                <Layers className="text-primary h-6 w-6" />
                 Project Overview
               </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                {description}
-              </p>
+              <div
+                dangerouslySetInnerHTML={{ __html: description }}
+                className="text-muted-foreground leading-relaxed"
+              ></div>
             </div>
 
             {/* Features */}
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-                <Zap className="w-6 h-6 text-accent" />
+              <h2 className="text-foreground mb-6 flex items-center gap-2 text-2xl font-bold">
+                <Zap className="text-accent h-6 w-6" />
                 Key Features
               </h2>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {features.map((feature, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors"
+                    className="bg-card border-border hover:border-primary/50 flex items-start gap-3 rounded-xl border p-4 transition-colors"
                   >
-                    <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-foreground">{feature}</span>
+                    <CheckCircle className="text-accent mt-0.5 h-5 w-5 flex-shrink-0" />
+                    <span className="text-foreground text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -268,8 +260,8 @@ export default function ProjectDetailsPage({
 
             {/* Technologies */}
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-                <Code className="w-6 h-6 text-primary" />
+              <h2 className="text-foreground mb-6 flex items-center gap-2 text-2xl font-bold">
+                <Code className="text-primary h-6 w-6" />
                 Technologies Used
               </h2>
               <div className="space-y-6">
@@ -277,7 +269,7 @@ export default function ProjectDetailsPage({
                   {technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-secondary text-secondary-foreground font-medium rounded-lg border border-border hover:border-primary/50 hover:bg-primary/10 transition-all"
+                      className="bg-secondary text-secondary-foreground border-border hover:border-primary/50 hover:bg-primary/10 rounded-lg border px-4 py-2 font-medium transition-all"
                     >
                       {tech}
                     </span>
@@ -291,43 +283,43 @@ export default function ProjectDetailsPage({
           <div className="lg:col-span-1">
             <div className="sticky top-8 space-y-6">
               {/* Project Info Card */}
-              <div className="bg-card border border-border rounded-2xl p-6 space-y-4">
-                <h3 className="font-bold text-foreground mb-4">
+              <div className="bg-card border-border space-y-4 rounded-2xl border p-6">
+                <h3 className="text-foreground mb-4 font-bold">
                   Project Information
                 </h3>
 
                 <div className="space-y-3">
-                  <div className="h-px bg-border"></div>
+                  <div className="bg-border h-px"></div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">
+                    <p className="text-muted-foreground mb-1 text-sm">
                       Duration
                     </p>
                     <p className="text-foreground font-medium">{duration}</p>
                   </div>
-                  <div className="h-px bg-border"></div>
+                  <div className="bg-border h-px"></div>
                 </div>
               </div>
 
               {/* Quick Links Card */}
-              <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 rounded-2xl p-6">
-                <h3 className="font-bold text-foreground mb-4">Quick Links</h3>
+              <div className="from-primary/10 to-accent/10 border-primary/20 rounded-2xl border bg-gradient-to-br p-6">
+                <h3 className="text-foreground mb-4 font-bold">Quick Links</h3>
                 <div className="space-y-3">
                   <a
                     href={liveSiteLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
+                    className="text-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="h-4 w-4" />
                     Visit Live Site
                   </a>
                   <a
                     href={repoLinks.frontend}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
+                    className="text-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="h-4 w-4" />
                     Frontend Repository
                   </a>
                   {repoLinks.backend && (
@@ -335,9 +327,9 @@ export default function ProjectDetailsPage({
                       href={repoLinks.backend}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
+                      className="text-foreground hover:text-primary flex items-center gap-2 text-sm transition-colors"
                     >
-                      <Github className="w-4 h-4" />
+                      <Github className="h-4 w-4" />
                       Backend Repository
                     </a>
                   )}
@@ -345,16 +337,19 @@ export default function ProjectDetailsPage({
               </div>
 
               {/* CTA Card */}
-              <div className="bg-card border border-border rounded-2xl p-6 text-center">
-                <h3 className="font-bold text-foreground mb-2">
+              <div className="bg-card border-border rounded-2xl border p-6 text-center">
+                <h3 className="text-foreground mb-2 font-bold">
                   Like this project?
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Let's work together on your next big idea!
+                <p className="text-muted-foreground mb-4 text-sm">
+                  Let&apos;s work together on your next big idea!
                 </p>
-                <button className="w-full px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:scale-105 transition-transform">
+                <Link
+                  href={"/#contact"}
+                  className="bg-primary text-primary-foreground w-full rounded-lg px-6 py-3 font-semibold transition-transform hover:scale-105"
+                >
                   Get In Touch
-                </button>
+                </Link>
               </div>
             </div>
           </div>

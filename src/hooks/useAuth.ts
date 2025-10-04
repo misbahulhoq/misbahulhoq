@@ -6,7 +6,7 @@ export function useAuth() {
   const [loading, startTransition] = useTransition();
   const router = useRouter();
   const [user, setUser] = useState<{ name: string; email: string } | null>(
-    null
+    null,
   );
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function useAuth() {
           router.push("/login");
         });
     });
-  }, []);
+  }, [router]);
 
   return { user, loading };
 }

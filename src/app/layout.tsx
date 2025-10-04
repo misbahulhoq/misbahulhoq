@@ -92,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <link rel="icon" href="/icon.png" type="image/png" sizes="16x16" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
