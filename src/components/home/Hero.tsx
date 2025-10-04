@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "../ui/button";
 import { Download } from "lucide-react";
+import Link from "next/link";
 
 const techs = [
   "React.js",
@@ -22,7 +23,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden">
       {/* Grid pattern overlay */}
       <div
         className="absolute inset-0 opacity-10 dark:opacity-5"
@@ -33,18 +34,18 @@ export default function HeroSection() {
       ></div>
 
       <div className="relative container mx-auto px-5 py-16 lg:py-25">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Content Section */}
           <div
             className={`space-y-8 transition-all duration-1000 ${
               isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-10 opacity-0"
             }`}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00D9FF]/10 border border-[#00D9FF]/30 backdrop-blur-sm">
-              <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#00D9FF]/30 bg-[#00D9FF]/10 px-4 py-2 backdrop-blur-sm">
+              <div className="bg-accent h-2 w-2 animate-pulse rounded-full"></div>
               <span className="text-sm font-medium">
                 Available for new projects
               </span>
@@ -52,20 +53,20 @@ export default function HeroSection() {
 
             {/* Main Heading */}
             <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-5xl leading-tight font-bold sm:text-6xl lg:text-7xl">
                 Hi, I&apos;m{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                  <span className="from-primary to-accent relative z-10 bg-gradient-to-r bg-clip-text text-transparent">
                     Mezbah
                   </span>
-                  <span className="absolute bottom-2 left-0 w-full h-3 bg-primary/20 -z-0"></span>
+                  <span className="bg-primary/20 absolute bottom-2 left-0 -z-0 h-3 w-full"></span>
                 </span>
               </h1>
               <p className="text-2xl sm:text-3xl">Full Stack Developer</p>
             </div>
 
             {/* Description */}
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-muted-foreground max-w-xl text-lg leading-relaxed">
               I craft exceptional digital experiences with modern web
               technologies. Specializing in building scalable web applications
               that solve real-world problems and delight users.
@@ -76,7 +77,7 @@ export default function HeroSection() {
               {techs.map((tech, index) => (
                 <span
                   key={tech}
-                  className="px-4  py-2 bg-gray-100 dark:bg-[#1E293B]/50 border border-gray-300 dark:border-[#1E293B] rounded-lg text-gray-700 dark:text-[#A0AEC0] text-sm font-medium backdrop-blur-sm hover:border-accent/50 hover:text-accent dark:hover:text-accent transition-all duration-300 cursor-pointer"
+                  className="hover:border-accent/50 hover:text-accent dark:hover:text-accent cursor-pointer rounded-lg border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 backdrop-blur-sm transition-all duration-300 dark:border-[#1E293B] dark:bg-[#1E293B]/50 dark:text-[#A0AEC0]"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {tech}
@@ -86,13 +87,15 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button
-                variant={"outline"}
-                size="lg"
-                className="rounded-full border-primary hover:bg-primary hover:text-primary-foreground cursor-pointer"
-              >
-                View My Work
-              </Button>
+              <Link href={"#projects"}>
+                <Button
+                  variant={"outline"}
+                  size="lg"
+                  className="border-primary hover:bg-primary hover:text-primary-foreground cursor-pointer rounded-full"
+                >
+                  View My Work
+                </Button>
+              </Link>
               {/* Download Resume Button */}
               <Button size="lg" className="rounded-full">
                 <>
@@ -111,25 +114,25 @@ export default function HeroSection() {
 
           {/* Right Video Section */}
           <div
-            className={`transition-all duration-1000 delay-300 ${
+            className={`transition-all delay-300 duration-1000 ${
               isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
+                ? "translate-x-0 opacity-100"
+                : "translate-x-10 opacity-0"
             }`}
           >
-            <div className="relative group">
+            <div className="group relative">
               {/* Glowing border effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#00D9FF] via-[#7C3AED] to-[#00D9FF] rounded-2xl opacity-75 blur-lg group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
+              <div className="absolute -inset-1 animate-pulse rounded-2xl bg-gradient-to-r from-[#00D9FF] via-[#7C3AED] to-[#00D9FF] opacity-75 blur-lg transition-all duration-500 group-hover:opacity-100"></div>
 
               {/* Video container */}
-              <div className="relative bg-[#060918] rounded-2xl overflow-hidden border border-[#1E293B] shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl border border-[#1E293B] bg-[#060918] shadow-2xl">
                 {/* Video placeholder - Replace with your actual video */}
-                <div className="aspect-[9/16] sm:aspect-video bg-gradient-to-br from-[#1E293B] to-[#060918] flex items-center justify-center">
-                  <div className="text-center w-full h-full">
+                <div className="flex aspect-[9/16] items-center justify-center bg-gradient-to-br from-[#1E293B] to-[#060918] sm:aspect-video">
+                  <div className="h-full w-full text-center">
                     <iframe
                       // width="560"
                       //height="315"
-                      className="w-full h-full"
+                      className="h-full w-full"
                       src="https://www.youtube.com/embed/ugmlP8v2y6E"
                       title="Embedded YouTube Short"
                       frameBorder="0"
@@ -169,10 +172,10 @@ export default function HeroSection() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-[#A0AEC0] text-sm">Scroll Down</span>
+        <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 transform animate-bounce flex-col items-center gap-2 lg:flex">
+          <span className="text-sm text-[#A0AEC0]">Scroll Down</span>
           <svg
-            className="w-6 h-6 text-[#00D9FF]"
+            className="h-6 w-6 text-[#00D9FF]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

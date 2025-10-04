@@ -54,45 +54,48 @@ export default function AboutMeSection() {
   ];
 
   return (
-    <section className="py-16 lg:py-28 bg-background relative overflow-hidden">
+    <section
+      id="about"
+      className="bg-background relative overflow-hidden py-16 lg:py-28"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
-        <div className="absolute w-96 h-96 bg-primary rounded-full opacity-20 blur-3xl top-0 right-0 animate-pulse"></div>
+        <div className="bg-primary absolute top-0 right-0 h-96 w-96 animate-pulse rounded-full opacity-20 blur-3xl"></div>
         <div
-          className="absolute w-96 h-96 bg-accent rounded-full opacity-20 blur-3xl bottom-0 left-0 animate-pulse"
+          className="bg-accent absolute bottom-0 left-0 h-96 w-96 animate-pulse rounded-full opacity-20 blur-3xl"
           style={{ animationDelay: "1s" }}
         ></div>
       </div>
 
       <div className="relative container mx-auto px-5">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+        <div className="mb-16 text-center">
+          <div className="bg-primary/10 border-primary/20 mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2">
             <span className="text-primary text-sm font-medium">
               Get to know me
             </span>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+          <h2 className="text-foreground mb-4 text-4xl font-bold sm:text-5xl lg:text-6xl">
             About Me
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             Passionate developer crafting digital experiences that make a
             difference
           </p>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+        <div className="mb-20 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Column - Profile Image & Info */}
           <div className="space-y-8">
-            <div className="relative group">
+            <div className="group relative">
               {/* Image container with gradient border */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl opacity-75 blur group-hover:opacity-100 transition duration-500"></div>
-              <div className="relative bg-card rounded-2xl overflow-hidden border border-border">
+              <div className="from-primary to-accent absolute -inset-1 rounded-2xl bg-gradient-to-r opacity-75 blur transition duration-500 group-hover:opacity-100"></div>
+              <div className="bg-card border-border relative overflow-hidden rounded-2xl border">
                 {/* Replace with your image */}
-                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center ">
-                  <div className="text-center space-y-4 p-8">
-                    <div className="w-24 h-24 mx-auto bg-primary/20 rounded-full flex items-center justify-center border-2 border-primary">
+                <div className="from-primary/20 to-accent/20 flex aspect-square items-center justify-center bg-gradient-to-br">
+                  <div className="space-y-4 p-8 text-center">
+                    <div className="bg-primary/20 border-primary mx-auto flex h-24 w-24 items-center justify-center rounded-full border-2">
                       <Image
                         src={"/mezbah-professional.png"}
                         alt="Md Mezbah Uddin"
@@ -107,21 +110,21 @@ export default function AboutMeSection() {
 
             {/* Quick Info Cards */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors">
-                <Rocket className="w-8 h-8 text-primary mb-3" />
-                <h3 className="font-semibold text-foreground mb-1">
+              <div className="bg-card border-border hover:border-primary/50 rounded-xl border p-6 transition-colors">
+                <Rocket className="text-primary mb-3 h-8 w-8" />
+                <h3 className="text-foreground mb-1 font-semibold">
                   Fast Learner
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Quick to adapt to new technologies
                 </p>
               </div>
-              <div className="bg-card border border-border rounded-xl p-6 hover:border-accent/50 transition-colors">
-                <Database className="w-8 h-8 text-accent mb-3" />
-                <h3 className="font-semibold text-foreground mb-1">
+              <div className="bg-card border-border hover:border-accent/50 rounded-xl border p-6 transition-colors">
+                <Database className="text-accent mb-3 h-8 w-8" />
+                <h3 className="text-foreground mb-1 font-semibold">
                   Problem Solver
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   Love tackling complex challenges
                 </p>
               </div>
@@ -131,10 +134,10 @@ export default function AboutMeSection() {
           {/* Right Column - About Text & Tabs */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-foreground">
+              <h3 className="text-foreground text-2xl font-bold">
                 Building the web, one line of code at a time
               </h3>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="text-muted-foreground space-y-4 leading-relaxed">
                 <p>
                   I&apos;m a passionate full-stack developer in building
                   scalable web applications. I love transforming complex
@@ -159,10 +162,10 @@ export default function AboutMeSection() {
             {/* Tabbed Content */}
             <div>
               {/* Tab Buttons */}
-              <div className="flex gap-2 border-b border-border mb-6">
+              <div className="border-border mb-6 flex gap-2 border-b">
                 <button
                   onClick={() => setActiveTab("skills")}
-                  className={`px-6 py-3 font-medium transition-colors relative ${
+                  className={`relative px-6 py-3 font-medium transition-colors ${
                     activeTab === "skills"
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -170,12 +173,12 @@ export default function AboutMeSection() {
                 >
                   Skills
                   {activeTab === "skills" && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
+                    <div className="bg-primary absolute right-0 bottom-0 left-0 h-0.5"></div>
                   )}
                 </button>
                 <button
                   onClick={() => setActiveTab("experience")}
-                  className={`px-6 py-3 font-medium transition-colors relative ${
+                  className={`relative px-6 py-3 font-medium transition-colors ${
                     activeTab === "experience"
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -183,7 +186,7 @@ export default function AboutMeSection() {
                 >
                   Experience
                   {activeTab === "experience" && (
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
+                    <div className="bg-primary absolute right-0 bottom-0 left-0 h-0.5"></div>
                   )}
                 </button>
               </div>
@@ -191,18 +194,18 @@ export default function AboutMeSection() {
               {/* Tab Content */}
               <div className="min-h-[300px]">
                 {activeTab === "skills" && (
-                  <div className="grid sm:grid-cols-2 gap-6 animate-in fade-in duration-300">
+                  <div className="animate-in fade-in grid gap-6 duration-300 sm:grid-cols-2">
                     {skills.map((skillGroup) => (
                       <div key={skillGroup.category} className="space-y-3">
-                        <h4 className="font-semibold text-foreground flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-primary"></div>
+                        <h4 className="text-foreground flex items-center gap-2 font-semibold">
+                          <div className="bg-primary h-2 w-2 rounded-full"></div>
                           {skillGroup.category}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {skillGroup.items.map((skill) => (
                             <span
                               key={skill}
-                              className="px-3 py-1.5 bg-secondary text-secondary-foreground text-sm rounded-lg border border-border hover:border-primary/50 hover:bg-primary/10 transition-all cursor-default"
+                              className="bg-secondary text-secondary-foreground border-border hover:border-primary/50 hover:bg-primary/10 cursor-default rounded-lg border px-3 py-1.5 text-sm transition-all"
                             >
                               {skill}
                             </span>
@@ -214,21 +217,21 @@ export default function AboutMeSection() {
                 )}
 
                 {activeTab === "experience" && (
-                  <div className="space-y-6 animate-in fade-in duration-300">
+                  <div className="animate-in fade-in space-y-6 duration-300">
                     {experiences.map((exp, index) => (
-                      <div key={index} className="flex gap-4 group">
+                      <div key={index} className="group flex gap-4">
                         <div className="flex flex-col items-center">
-                          <div className="w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+                          <div className="bg-primary ring-primary/20 h-3 w-3 rounded-full ring-4"></div>
                           {index < experiences.length - 1 && (
-                            <div className="w-0.5 h-full bg-border group-hover:bg-primary/50 transition-colors"></div>
+                            <div className="bg-border group-hover:bg-primary/50 h-full w-0.5 transition-colors"></div>
                           )}
                         </div>
                         <div className="flex-1 pb-8">
-                          <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors">
-                            <p className="text-sm text-primary font-medium mb-2">
+                          <div className="bg-card border-border hover:border-primary/50 rounded-xl border p-6 transition-colors">
+                            <p className="text-primary mb-2 text-sm font-medium">
                               {exp.year}
                             </p>
-                            <h4 className="text-lg font-semibold text-foreground mb-1">
+                            <h4 className="text-foreground mb-1 text-lg font-semibold">
                               {exp.role}
                             </h4>
                             <p className="text-muted-foreground">
@@ -246,24 +249,24 @@ export default function AboutMeSection() {
         </div>
 
         {/* Stats Section */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-card border border-border rounded-xl p-6 text-center hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all group"
+              className="bg-card border-border hover:border-primary/50 hover:shadow-primary/10 group rounded-xl border p-6 text-center transition-all hover:shadow-lg"
             >
-              <stat.icon className="w-10 h-10 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
-              <div className="text-3xl font-bold text-foreground mb-2">
+              <stat.icon className="text-primary mx-auto mb-4 h-10 w-10 transition-transform group-hover:scale-110" />
+              <div className="text-foreground mb-2 text-3xl font-bold">
                 {stat.value}
               </div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-muted-foreground text-sm">{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
-          <Button size="lg" className="rounded-full cursor-pointer">
+        <div className="mt-16 text-center">
+          <Button size="lg" className="cursor-pointer rounded-full">
             Let&apos;s work Together
           </Button>
         </div>

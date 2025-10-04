@@ -98,10 +98,13 @@ export default function ProjectDetailsPage({
 
         <div className="relative container mx-auto px-6 py-8">
           {/* Back Button */}
-          <button className="text-muted-foreground hover:text-foreground group mb-6 flex items-center gap-2 transition-colors">
+          <Link
+            href={"/#projects"}
+            className="text-muted-foreground hover:text-foreground group mb-6 flex items-center gap-2 transition-colors"
+          >
             <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
             <span>Back to Projects</span>
-          </button>
+          </Link>
 
           {/* Project Header */}
           <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
@@ -163,7 +166,8 @@ export default function ProjectDetailsPage({
               <div className="group relative">
                 <div className="border-border aspect-video overflow-hidden rounded-2xl border shadow-xl">
                   <Image
-                    fill
+                    width={500}
+                    height={500}
                     src={thumbnail[currentImageIndex]}
                     alt={`${project.title} screenshot ${currentImageIndex + 1}`}
                     className="h-full w-full object-cover"
@@ -217,7 +221,8 @@ export default function ProjectDetailsPage({
                     }`}
                   >
                     <Image
-                      fill
+                      height={500}
+                      width={500}
                       src={image}
                       alt={`Thumbnail ${index + 1}`}
                       className="h-full w-full object-cover"

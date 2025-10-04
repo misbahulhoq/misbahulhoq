@@ -11,10 +11,6 @@ const navLinks: { href: string; label: string }[] = [
     label: "About",
   },
   {
-    href: "#skills",
-    label: "Skills",
-  },
-  {
     href: "#projects",
     label: "Projects",
   },
@@ -32,19 +28,19 @@ const Navbar = () => {
   const pathName = usePathname();
   if (pathName.includes("dashboard")) return null;
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-5 flex h-16 items-center justify-between">
+    <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
+      <div className="container mx-auto flex h-16 items-center justify-between px-5">
         <Link href="/" className="text-lg font-bold">
           Mezbah
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-foreground/80 text-foreground"
+              className="hover:text-foreground/80 text-foreground transition-colors"
             >
               {link.label}
             </Link>
@@ -52,7 +48,7 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden ">
+        <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
