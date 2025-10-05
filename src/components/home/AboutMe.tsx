@@ -267,7 +267,7 @@ export default function AboutMeSection() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <Button size="lg" className="cursor-pointer rounded-full">
-            Let&apos;s work Together
+            <a href="#contact"> Let&apos;s work Together</a>
           </Button>
         </div>
       </div>
