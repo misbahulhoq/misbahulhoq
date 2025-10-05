@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Download } from "lucide-react";
 import { Button } from "../ui/button";
@@ -29,23 +29,26 @@ const Navbar = () => {
   const pathName = usePathname();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [user, setUser] = useState<null | any>(null);
+  const [pending, startTransition] = useTransition();
 
   useEffect(() => {
-    fetch(`${baseUrl}/auth/me`, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        return res.json();
+    startTransition(() => {
+      fetch(`${baseUrl}/auth/me`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
       })
-      .then((data) => {
-        if (data?.success) {
-          setUser(data?.data);
-        }
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          if (data?.success) {
+            setUser(data?.data);
+          }
+        });
+    });
   }, []);
-  if (!user) return null;
+  if (pending) return null;
   if (pathName.includes("dashboard")) return null;
   return (
     <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
