@@ -1,7 +1,7 @@
 import { baseUrl } from "@/lib/baseUrl";
 import { BlogType } from "@/types/blog";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ArrowRight, Tag } from "lucide-react";
+import { ArrowRight, Tag, Trash } from "lucide-react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
@@ -31,7 +31,7 @@ export default function BlogCard({
     },
   });
   return (
-    <article className="bg-card border-border group overflow-hidden rounded-2xl border shadow-lg transition-all duration-300 hover:shadow-2xl">
+    <article className="bg-card border-border group relative overflow-hidden rounded-2xl border shadow-lg transition-all duration-300 hover:shadow-2xl">
       <div className="p-6">
         {/* Title */}
         <h3 className="text-foreground group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors">
@@ -67,17 +67,20 @@ export default function BlogCard({
           {adminMode ? (
             <>
               <Link
-                href={`/dashboard/blog/edit/${_id}`}
+                href={`/dashboard/blogs/edit/${_id}`}
                 className="bg-primary text-primary-foreground group flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-xs font-medium transition-transform hover:scale-105"
               >
                 Edit
               </Link>
-              <button
+              {/* <button
                 onClick={() => deleteMutation.mutate(_id)}
                 className="border-primary bg-primary/10 group flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-xs font-medium transition-transform hover:scale-105"
               >
                 Delete
-              </button>
+              </button> */}
+              <DeleteConfirmationDialog
+                onConfirm={() => deleteMutation.mutate(_id)}
+              />
             </>
           ) : (
             <Link
@@ -92,7 +95,92 @@ export default function BlogCard({
       </div>
 
       {/* Bottom gradient accent */}
-      <div className="from-primary via-accent to-primary h-1 bg-gradient-to-r"></div>
+      <div className="from-primary via-accent to-primary absolute bottom-0 h-1 w-full bg-gradient-to-r"></div>
     </article>
+  );
+}
+
+// shadcn/ui components (adjust import paths to your project)
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { useState } from "react";
+
+type Props = {
+  /** Name of the item to delete (used in the dialog text) */
+  itemName?: string;
+  /** Called when the user confirms the deletion */
+  onConfirm: () => void | Promise<void>;
+  /** Optional className for the trigger button */
+  className?: string;
+};
+
+function DeleteConfirmationDialog({
+  itemName = "this item",
+  onConfirm,
+}: Props) {
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  async function handleConfirm() {
+    try {
+      setLoading(true);
+      await Promise.resolve(onConfirm());
+      setOpen(false);
+    } catch (err) {
+      // handle error (toast/log) — keep it minimal here
+      console.error("Delete failed", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="border-primary bg-primary/10 group flex cursor-pointer items-center gap-2 rounded-lg border px-4 py-2 text-xs font-medium transition-transform hover:scale-105"
+        >
+          <Trash className="h-4 w-4" />
+          Delete
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Confirm deletion</DialogTitle>
+          <DialogDescription>
+            Are you sure you want to delete <strong>{itemName}</strong>? This
+            action cannot be undone.
+          </DialogDescription>
+        </DialogHeader>
+
+        <DialogFooter className="flex justify-end gap-2">
+          <Button
+            variant="outline"
+            onClick={() => setOpen(false)}
+            disabled={loading}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            onClick={handleConfirm}
+            disabled={loading}
+            className="bg-destructive text-destructive-foreground hover:brightness-95"
+          >
+            {loading ? "Deleting..." : "OK, Delete"}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }

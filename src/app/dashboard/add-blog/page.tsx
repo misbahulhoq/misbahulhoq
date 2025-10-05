@@ -17,7 +17,12 @@ import {
 } from "@/components/ui/select";
 import toast from "react-hot-toast";
 import { baseUrl } from "@/lib/baseUrl";
+const isEmptyRegex = /^(?:\s|<[^>]+>|&nbsp;|&#160;)*$/;
 
+function hasRealText(htmlString: string): boolean {
+  // Return the opposite of whether it's an "empty" string
+  return !isEmptyRegex.test(htmlString);
+}
 const AddBlog = () => {
   const { register, handleSubmit } = useForm<BlogFormData & { tags: string }>();
   const [excerpt, setExcerpt] = useState("");
@@ -26,6 +31,14 @@ const AddBlog = () => {
     "draft",
   );
   const onSubmit = async (data: BlogFormData & { tags: string }) => {
+    if (!hasRealText(content)) {
+      toast.error("Content is required!");
+      return;
+    }
+    if (!hasRealText(excerpt)) {
+      toast.error("Excerpt is required!");
+      return;
+    }
     const payload: BlogFormData = {
       title: data.title,
       slug: data.title.replace(/\s+/g, "-").toLowerCase(),
@@ -35,7 +48,6 @@ const AddBlog = () => {
       status,
     };
 
-    console.log(payload);
     try {
       const response = await fetch(`${baseUrl}/blogs`, {
         method: "POST",
