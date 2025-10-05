@@ -45,24 +45,28 @@ export default function LoginPage() {
         if (res.ok) {
           res.json().then(() => {
             toast.success("Login successful! Redirecting to dashboard.");
-            router.push("/dashboard");
+            setTimeout(() => {
+              router.push("/dashboard");
+            }, 1000);
           });
+        } else {
+          toast.error("Invalid credentials.");
         }
       });
     });
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center ">
+    <div className="bg-background relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-96 h-96 bg-primary rounded-full opacity-20 blur-3xl -top-48 -left-48 animate-pulse"></div>
+        <div className="bg-primary absolute -top-48 -left-48 h-96 w-96 animate-pulse rounded-full opacity-20 blur-3xl"></div>
         <div
-          className="absolute w-96 h-96 bg-accent rounded-full opacity-20 blur-3xl top-1/2 right-0 animate-pulse"
+          className="bg-accent absolute top-1/2 right-0 h-96 w-96 animate-pulse rounded-full opacity-20 blur-3xl"
           style={{ animationDelay: "1s" }}
         ></div>
         <div
-          className="absolute w-96 h-96 bg-primary rounded-full opacity-20 blur-3xl -bottom-48 -right-48 animate-pulse"
+          className="bg-primary absolute -right-48 -bottom-48 h-96 w-96 animate-pulse rounded-full opacity-20 blur-3xl"
           style={{ animationDelay: "2s" }}
         ></div>
       </div>
@@ -79,13 +83,13 @@ export default function LoginPage() {
 
       {/* Main Content */}
       <div className="relative container mx-auto px-5">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid items-center gap-8 lg:grid-cols-2">
           {/* Left Side - Branding & Info */}
-          <div className="hidden lg:block space-y-8">
+          <div className="hidden space-y-8 lg:block">
             <div className="space-y-6">
               {/* Logo/Brand */}
-              <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full">
-                <Sparkles className="w-5 h-5 text-primary" />
+              <div className="bg-primary/10 border-primary/20 inline-flex items-center gap-3 rounded-full border px-4 py-2">
+                <Sparkles className="text-primary h-5 w-5" />
                 <span className="text-primary font-semibold">
                   Portfolio Admin
                 </span>
@@ -93,13 +97,13 @@ export default function LoginPage() {
 
               {/* Heading */}
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                <h1 className="text-foreground text-5xl leading-tight font-bold lg:text-6xl">
                   Welcome Back to Your
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mt-2">
+                  <span className="from-primary to-accent mt-2 block bg-gradient-to-r bg-clip-text text-transparent">
                     Creative Space
                   </span>
                 </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground text-lg leading-relaxed">
                   Manage your portfolio, update projects, and track your
                   analytics all in one place.
                 </p>
@@ -114,10 +118,10 @@ export default function LoginPage() {
                 ].map((feature, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 text-muted-foreground"
+                    className="text-muted-foreground flex items-center gap-3"
                   >
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <feature.icon className="w-5 h-5 text-primary" />
+                    <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-lg">
+                      <feature.icon className="text-primary h-5 w-5" />
                     </div>
                     <span>{feature.text}</span>
                   </div>
@@ -128,14 +132,14 @@ export default function LoginPage() {
 
           {/* Right Side - Login Form */}
           <div className="w-full">
-            <div className="bg-card border border-border rounded-2xl shadow-2xl p-8 lg:p-10 relative group">
+            <div className="bg-card border-border group relative rounded-2xl border p-8 shadow-2xl lg:p-10">
               {/* Gradient border effect */}
-              <div className="absolute -inset-[1px] bg-gradient-to-r from-primary to-accent rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500 -z-10"></div>
+              <div className="from-primary to-accent absolute -inset-[1px] -z-10 rounded-2xl bg-gradient-to-r opacity-0 blur transition duration-500 group-hover:opacity-20"></div>
 
               {/* Mobile Logo */}
-              <div className="lg:hidden mb-8 text-center">
-                <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-4">
-                  <Sparkles className="w-5 h-5 text-primary" />
+              <div className="mb-8 text-center lg:hidden">
+                <div className="bg-primary/10 border-primary/20 mb-4 inline-flex items-center gap-3 rounded-full border px-4 py-2">
+                  <Sparkles className="text-primary h-5 w-5" />
                   <span className="text-primary font-semibold">
                     Portfolio Admin
                   </span>
@@ -144,7 +148,7 @@ export default function LoginPage() {
 
               {/* Form Header */}
               <div className="mb-8">
-                <h2 className="text-3xl font-bold text-foreground mb-2">
+                <h2 className="text-foreground mb-2 text-3xl font-bold">
                   Sign In
                 </h2>
                 <p className="text-muted-foreground">
@@ -158,19 +162,19 @@ export default function LoginPage() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="text-foreground mb-2 block text-sm font-medium"
                   >
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Mail className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full pl-11 pr-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:ring-primary w-full rounded-lg border py-3 pr-4 pl-11 transition-all focus:border-transparent focus:ring-2 focus:outline-none"
                       placeholder="you@example.com"
                     />
                   </div>
@@ -180,30 +184,30 @@ export default function LoginPage() {
                 <div>
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="text-foreground mb-2 block text-sm font-medium"
                   >
                     Password
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Lock className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
                     <input
                       type={showPassword ? "text" : "password"}
                       id="password"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className="w-full pl-11 pr-12 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:ring-primary w-full rounded-lg border py-3 pr-12 pl-11 transition-all focus:border-transparent focus:ring-2 focus:outline-none"
                       placeholder="••••••••"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2 transition-colors"
                     >
                       {showPassword ? (
-                        <EyeOff className="w-5 h-5" />
+                        <EyeOff className="h-5 w-5" />
                       ) : (
-                        <Eye className="w-5 h-5" />
+                        <Eye className="h-5 w-5" />
                       )}
                     </button>
                   </div>
@@ -212,10 +216,10 @@ export default function LoginPage() {
                 {/* Remember Me  */}
                 {
                   <div className="flex items-center justify-between">
-                    <label className="flex items-center gap-2 cursor-pointer">
+                    <label className="flex cursor-pointer items-center gap-2">
                       <input
                         type="checkbox"
-                        className="w-4 h-4 rounded border-input text-primary focus:ring-2 focus:ring-primary"
+                        className="border-input text-primary focus:ring-primary h-4 w-4 rounded focus:ring-2"
                         onChange={(e) => {
                           setFormData({
                             ...formData,
@@ -223,7 +227,7 @@ export default function LoginPage() {
                           });
                         }}
                       />
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-muted-foreground text-sm">
                         Remember me
                       </span>
                     </label>
@@ -234,26 +238,26 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="w-full group relative px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/50"
+                  className="group bg-primary text-primary-foreground hover:shadow-primary/50 relative w-full overflow-hidden rounded-lg px-8 py-3 font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isPending ? "Signing in..." : "Sign In"}
                     {isPending ? (
                       <LoaderIcon className="h-5 w-5 animate-spin" />
                     ) : (
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                     )}
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="from-primary to-accent absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
                 </button>
               </form>
             </div>
 
             {/* Security Badge */}
             <div className="mt-6 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full">
-                <Shield className="w-4 h-4 text-accent" />
-                <span className="text-xs text-muted-foreground">
+              <div className="bg-card border-border inline-flex items-center gap-2 rounded-full border px-4 py-2">
+                <Shield className="text-accent h-4 w-4" />
+                <span className="text-muted-foreground text-xs">
                   Secured with 256-bit encryption
                 </span>
               </div>
