@@ -34,9 +34,12 @@ export default function BlogCard({
     <article className="bg-card border-border group relative overflow-hidden rounded-2xl border shadow-lg transition-all duration-300 hover:shadow-2xl">
       <div className="p-6">
         {/* Title */}
-        <h3 className="text-foreground group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors">
+        <Link
+          href={`/blogs/${_id}`}
+          className="text-foreground group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors"
+        >
           {title}
-        </h3>
+        </Link>
 
         {/* Excerpt */}
         <div
@@ -84,7 +87,7 @@ export default function BlogCard({
             </>
           ) : (
             <Link
-              href={`/blog/${_id}`}
+              href={`/blogs/${_id}`}
               className="bg-primary text-primary-foreground group flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-xs font-medium transition-transform hover:scale-105"
             >
               Read More

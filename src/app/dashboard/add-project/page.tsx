@@ -10,11 +10,7 @@ import { baseUrl } from "@/lib/baseUrl";
 import toast from "react-hot-toast";
 
 const AddProjectPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
+  const { register, handleSubmit } = useForm<FormData>();
   const [description, setDescription] = useState("");
 
   const onSubmit = async (data: FormData) => {

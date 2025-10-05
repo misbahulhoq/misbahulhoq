@@ -31,7 +31,7 @@ export default function BlogListing() {
 
   return (
     <div className="bg-background min-h-screen">
-      <div className="mx-auto max-w-7xl">
+      <div className="container mx-auto px-5">
         {/* Header Section */}
         <div className="mb-12">
           <div className="bg-primary/10 border-primary/20 mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2">
@@ -72,8 +72,8 @@ export default function BlogListing() {
               No articles found
             </h3>
             <p className="text-muted-foreground">
-              Try adjusting your search or filter to find what you're looking
-              for.
+              Try adjusting your search or filter to find what you&apos;re
+              looking for.
             </p>
           </div>
         )}

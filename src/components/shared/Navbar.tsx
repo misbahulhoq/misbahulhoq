@@ -19,6 +19,10 @@ const navLinks: { href: string; label: string }[] = [
     label: "Contact",
   },
   {
+    href: "/blogs",
+    label: "Blogs",
+  },
+  {
     href: "/login",
     label: "Login",
   },
