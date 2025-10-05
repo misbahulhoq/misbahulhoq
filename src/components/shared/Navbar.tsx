@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Download } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { usePathname } from "next/navigation";
+import { baseUrl } from "@/lib/baseUrl";
 const navLinks: { href: string; label: string }[] = [
   {
     href: "#about",
@@ -22,14 +23,28 @@ const navLinks: { href: string; label: string }[] = [
     href: "/blogs",
     label: "Blogs",
   },
-  {
-    href: "/login",
-    label: "Login",
-  },
 ];
 
 const Navbar = () => {
   const pathName = usePathname();
+  const [user, setUser] = useState<null | any>(null);
+
+  useEffect(() => {
+    fetch(`${baseUrl}/auth/me`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data?.success) {
+          setUser(data?.data);
+        }
+      });
+  }, []);
+  if (!user) return null;
   if (pathName.includes("dashboard")) return null;
   return (
     <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
@@ -49,6 +64,22 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+
+          {!user ? (
+            <Link
+              href={"/login"}
+              className="hover:text-foreground/80 text-foreground transition-colors"
+            >
+              Login
+            </Link>
+          ) : (
+            <Link
+              href={"/dashboard"}
+              className="hover:text-foreground/80 text-foreground transition-colors"
+            >
+              Dashboard
+            </Link>
+          )}
         </nav>
 
         {/* Mobile Navigation */}
@@ -72,6 +103,21 @@ const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
+                {!user ? (
+                  <Link
+                    href={"/login"}
+                    className="hover:text-foreground/80 text-foreground transition-colors"
+                  >
+                    Login
+                  </Link>
+                ) : (
+                  <Link
+                    href={"/dashboard"}
+                    className="hover:text-foreground/80 text-foreground transition-colors"
+                  >
+                    Dashboard
+                  </Link>
+                )}
                 <Button className="mt-4 rounded-full">
                   <Download />
                   <a
