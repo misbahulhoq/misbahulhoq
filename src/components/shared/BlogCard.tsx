@@ -100,7 +100,6 @@ export default function BlogCard({
   );
 }
 
-// shadcn/ui components (adjust import paths to your project)
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

@@ -3,9 +3,9 @@ import React from "react";
 import { BookOpen, Search } from "lucide-react";
 import BlogCard from "@/components/shared/BlogCard";
 import { BlogType } from "@/types/blog";
-import { useQueryClient, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { baseUrl } from "@/lib/baseUrl";
-
+import { usePathname } from "next/navigation";
 const fetchProjects = async () => {
   const res = await fetch(baseUrl + "/blogs", {
     credentials: "include",
@@ -14,11 +14,12 @@ const fetchProjects = async () => {
 };
 
 export default function BlogListing() {
-  const queryClient = useQueryClient();
   const { data, isPending } = useQuery({
     queryKey: ["blogs"],
     queryFn: fetchProjects,
   });
+
+  const pathName = usePathname();
 
   if (isPending)
     return (
@@ -55,7 +56,11 @@ export default function BlogListing() {
         {blogs.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {blogs.map((blog: BlogType) => (
-              <BlogCard key={blog._id} blog={blog} adminMode />
+              <BlogCard
+                key={blog._id}
+                blog={blog}
+                adminMode={pathName.includes("dashboard")}
+              />
             ))}
           </div>
         ) : (
