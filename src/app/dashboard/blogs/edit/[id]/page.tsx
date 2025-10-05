@@ -55,7 +55,7 @@ const BlogEditPage = ({ params }: { params: Promise<{ id: string }> }) => {
       setContent(blog.content);
       setStatus(blog.status);
     }
-  }, [params, data]);
+  }, [params, data, blog]);
 
   if (isPending) {
     return <div>Loading...</div>;

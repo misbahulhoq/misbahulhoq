@@ -27,6 +27,7 @@ const navLinks: { href: string; label: string }[] = [
 
 const Navbar = () => {
   const pathName = usePathname();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [user, setUser] = useState<null | any>(null);
 
   useEffect(() => {

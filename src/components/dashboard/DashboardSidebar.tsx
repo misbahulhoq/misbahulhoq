@@ -5,7 +5,6 @@ import {
   FolderOpen,
   BookOpen,
   PenSquare,
-  LogOut,
   Menu,
   X,
   User,
