@@ -176,6 +176,7 @@ export default function LoginPage() {
                       onChange={handleChange}
                       className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:ring-primary w-full rounded-lg border py-3 pr-4 pl-11 transition-all focus:border-transparent focus:ring-2 focus:outline-none"
                       placeholder="you@example.com"
+                      required
                     />
                   </div>
                 </div>
@@ -198,6 +199,7 @@ export default function LoginPage() {
                       onChange={handleChange}
                       className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:ring-primary w-full rounded-lg border py-3 pr-12 pl-11 transition-all focus:border-transparent focus:ring-2 focus:outline-none"
                       placeholder="••••••••"
+                      required
                     />
                     <button
                       type="button"
