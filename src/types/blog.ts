@@ -7,3 +7,5 @@ export type BlogFormData = {
   status: "draft" | "published" | "archived"; // would come from a dropdown
   //featuredImage?: string; //
 };
+
+export type BlogType = BlogFormData & { _id: string };
