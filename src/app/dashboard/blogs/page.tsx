@@ -29,7 +29,7 @@ export default function BlogListing() {
   const blogs = data?.data;
 
   return (
-    <div className="bg-background min-h-screen p-6 lg:p-12">
+    <div className="bg-background min-h-screen">
       <div className="mx-auto max-w-7xl">
         {/* Header Section */}
         <div className="mb-12">

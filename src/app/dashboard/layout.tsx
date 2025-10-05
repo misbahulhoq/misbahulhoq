@@ -14,7 +14,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <DashboardSidebar user={user as { name: string; email: string }} />
 
       {/* Main Content Area - Demo */}
-      <main className="flex-1 p-6 lg:p-8">{children}</main>
+      <main className="flex-1 px-6 pt-16 lg:px-8 lg:pt-6">{children}</main>
     </div>
   );
 };

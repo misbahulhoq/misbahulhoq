@@ -64,16 +64,16 @@ export default function DashboardSidebar({
   const bottomMenuItems = [{ id: "logout", icon: LogOut, label: "Logout" }];
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="bg-background flex min-h-screen">
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-card border border-border rounded-lg text-foreground hover:bg-primary/10 transition-colors"
+        className="bg-card border-border text-foreground hover:bg-primary/10 fixed top-4 left-4 z-50 rounded-lg border p-2 transition-colors lg:hidden"
       >
         {isSidebarOpen ? (
-          <X className="w-6 h-6" />
+          <X className="h-6 w-6" />
         ) : (
-          <Menu className="w-6 h-6" />
+          <Menu className="h-6 w-6" />
         )}
       </button>
 
@@ -81,35 +81,27 @@ export default function DashboardSidebar({
       {isSidebarOpen && (
         <div
           onClick={() => setIsSidebarOpen(false)}
-          className="lg:hidden fixed inset-0 bg-background/80 backdrop-blur-sm z-30"
+          className="bg-background/80 fixed inset-0 z-30 backdrop-blur-sm lg:hidden"
         ></div>
       )}
 
       {/* Sidebar */}
       <aside
-        className={`
-          fixed lg:static inset-y-0 left-0 z-40
-          w-72 bg-sidebar border-r border-sidebar-border
-          transform transition-transform duration-300 ease-in-out
-          ${
-            isSidebarOpen
-              ? "translate-x-0"
-              : "-translate-x-full lg:translate-x-0"
-          }
-          flex flex-col
-        `}
+        className={`bg-sidebar border-sidebar-border fixed inset-y-0 left-0 z-40 w-72 transform border-r transition-transform duration-300 ease-in-out lg:static ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        } flex flex-col`}
       >
         {/* Sidebar Header */}
-        <div className="p-6 border-b border-sidebar-border">
+        <div className="border-sidebar-border border-b p-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-white" />
+            <div className="from-primary to-accent flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br">
+              <Sparkles className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-sidebar-foreground">
+              <h1 className="text-sidebar-foreground text-lg font-bold">
                 Portfolio
               </h1>
-              <p className="text-xs text-sidebar-foreground/60">
+              <p className="text-sidebar-foreground/60 text-xs">
                 Admin Dashboard
               </p>
             </div>
@@ -117,19 +109,19 @@ export default function DashboardSidebar({
         </div>
 
         {/* User Profile Section */}
-        <div className="p-4 border-b border-sidebar-border">
+        <div className="border-sidebar-border border-b p-4">
           <button
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-sidebar-accent transition-colors group"
+            className="hover:bg-sidebar-accent group flex w-full items-center gap-3 rounded-lg p-3 transition-colors"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center border-2 border-primary/30">
-              <User className="w-5 h-5 text-primary" />
+            <div className="from-primary/20 to-accent/20 border-primary/30 flex h-10 w-10 items-center justify-center rounded-full border-2 bg-gradient-to-br">
+              <User className="text-primary h-5 w-5" />
             </div>
             <div className="flex-1 text-left">
-              <p className="text-sm font-semibold text-sidebar-foreground">
+              <p className="text-sidebar-foreground text-sm font-semibold">
                 {user?.name}
               </p>
-              <p className="text-xs text-sidebar-foreground/60">
+              <p className="text-sidebar-foreground/60 text-xs">
                 {user?.email}
               </p>
             </div>
@@ -137,7 +129,7 @@ export default function DashboardSidebar({
         </div>
 
         {/* Navigation Links */}
-        <nav className="p-4 space-y-2 overflow-y-auto">
+        <nav className="space-y-2 overflow-y-auto p-4">
           <div className="space-y-1">
             {menuItems.map((item) => (
               <Link
@@ -147,23 +139,19 @@ export default function DashboardSidebar({
                   setActiveLink(item.id);
                   setIsSidebarOpen(false);
                 }}
-                className={`
-                  w-full flex items-center gap-3 px-4 py-3 rounded-lg
-                  transition-all duration-200 group relative
-                  ${
-                    pathName === item.href
-                      ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg"
-                      : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                  }
-                `}
+                className={`group relative flex w-full items-center gap-3 rounded-lg px-4 py-3 transition-all duration-200 ${
+                  pathName === item.href
+                    ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg"
+                    : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                } `}
               >
                 {/* Active indicator */}
                 {pathName === item.href && (
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full"></div>
+                  <div className="bg-primary absolute top-1/2 left-0 h-8 w-1 -translate-y-1/2 rounded-r-full"></div>
                 )}
 
                 <item.icon
-                  className={`w-5 h-5 ${
+                  className={`h-5 w-5 ${
                     pathName === item.href
                       ? "scale-110"
                       : "group-hover:scale-110"
@@ -176,14 +164,11 @@ export default function DashboardSidebar({
                 {/* Badge */}
                 {item.badge && (
                   <span
-                    className={`
-                    px-2 py-0.5 text-xs font-semibold rounded-full
-                    ${
+                    className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
                       activeLink === item.id
                         ? "bg-white/20 text-white"
                         : "bg-primary/10 text-primary"
-                    }
-                  `}
+                    } `}
                   >
                     {item.badge}
                   </span>
@@ -194,22 +179,18 @@ export default function DashboardSidebar({
         </nav>
 
         {/* Bottom Menu */}
-        <div className="p-4 border-t border-sidebar-border space-y-1">
+        <div className="border-sidebar-border space-y-1 border-t p-4">
           {bottomMenuItems.map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveLink(item.id)}
-              className={`
-                w-full flex items-center gap-3 px-4 py-3 rounded-lg
-                transition-all duration-200 group
-                ${
-                  activeLink === item.id
-                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                    : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                }
-              `}
+              className={`group flex w-full items-center gap-3 rounded-lg px-4 py-3 transition-all duration-200 ${
+                activeLink === item.id
+                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                  : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+              } `}
             >
-              <item.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <item.icon className="h-5 w-5 transition-transform group-hover:scale-110" />
               <span className="flex-1 text-left font-medium">{item.label}</span>
             </button>
           ))}

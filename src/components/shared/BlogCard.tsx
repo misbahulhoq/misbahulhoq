@@ -24,6 +24,7 @@ export default function BlogCard({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      toast.success("Blog deleted successfully!");
     },
     onError: () => {
       toast.error("Could not delete blog");
