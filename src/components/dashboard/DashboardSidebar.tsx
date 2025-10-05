@@ -42,7 +42,7 @@ export default function DashboardSidebar({
       id: "view-projects",
       icon: FolderOpen,
       label: "View Projects",
-      badge: "12",
+      badge: null,
       href: "/dashboard/view-projects",
     },
     {
@@ -56,12 +56,10 @@ export default function DashboardSidebar({
       id: "blogs",
       icon: BookOpen,
       label: "Blogs",
-      badge: "8",
+      badge: null,
       href: "/dashboard/blogs",
     },
   ];
-
-  const bottomMenuItems = [{ id: "logout", icon: LogOut, label: "Logout" }];
 
   return (
     <div className="bg-background flex min-h-screen">
@@ -177,24 +175,6 @@ export default function DashboardSidebar({
             ))}
           </div>
         </nav>
-
-        {/* Bottom Menu */}
-        <div className="border-sidebar-border space-y-1 border-t p-4">
-          {bottomMenuItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveLink(item.id)}
-              className={`group flex w-full items-center gap-3 rounded-lg px-4 py-3 transition-all duration-200 ${
-                activeLink === item.id
-                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                  : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-              } `}
-            >
-              <item.icon className="h-5 w-5 transition-transform group-hover:scale-110" />
-              <span className="flex-1 text-left font-medium">{item.label}</span>
-            </button>
-          ))}
-        </div>
       </aside>
     </div>
   );
