@@ -1,5 +1,12 @@
 "use client";
-import { use, useState, useTransition } from "react";
+import {
+  KeyboardEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 import { MessageCircle, X, Send } from "lucide-react";
 import { baseUrl } from "@/lib/baseUrl";
 
@@ -10,6 +17,23 @@ export default function ChatBox() {
   >([{ text: "Hi! How can I help you today?", sender: "bot" }]);
   const [input, setInput] = useState("");
   const [pending, startTransition] = useTransition();
+  const chatBoxRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = useCallback(() => {
+    const chatContainer = chatBoxRef.current;
+    if (chatContainer) {
+      console.log("chat container found");
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  }, []);
+
+  useEffect(() => {
+    const chatContainer = chatBoxRef.current;
+    if (chatContainer) {
+      console.log("chat container found");
+      chatContainer.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, [messages]);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -19,6 +43,7 @@ export default function ChatBox() {
     if (input.trim()) {
       setMessages([...messages, { text: input, sender: "user" }]);
 
+      scrollToBottom();
       // API call
       startTransition(async () => {
         const response = await fetch(`${baseUrl}/chat`, {
@@ -43,9 +68,10 @@ export default function ChatBox() {
     }
   };
 
-  const handleKeyPress = (e: any) => {
+  const handleKeyPress: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === "Enter") {
       handleSend();
+      scrollToBottom();
     }
   };
 
@@ -64,7 +90,10 @@ export default function ChatBox() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="animate-in slide-in-from-bottom-5 flex h-[500px] flex-col rounded-lg bg-white shadow-2xl duration-300 sm:w-96">
+        <div
+          id="chat-box"
+          className="animate-in slide-in-from-bottom-5 flex h-[500px] flex-col rounded-lg bg-white shadow-2xl duration-300 sm:w-96"
+        >
           {/* Header */}
           <div className="bg-accent flex items-center justify-between rounded-t-lg p-4 text-white">
             <div className="flex items-center gap-3">
@@ -85,7 +114,10 @@ export default function ChatBox() {
           </div>
 
           {/* Messages Area */}
-          <div className="bg-background text-foreground flex-1 space-y-4 overflow-y-auto p-4">
+          <div
+            ref={chatBoxRef}
+            className="bg-background text-foreground flex-1 space-y-4 overflow-y-auto p-4"
+          >
             {messages.map((msg, idx) => {
               return (
                 <div
