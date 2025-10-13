@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "i.ibb.co.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.postimg.cc",
+        pathname: "/**",
+      },
     ],
   },
 };

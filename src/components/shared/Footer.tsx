@@ -23,15 +23,15 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-secondary">
-      <div className="container py-8 mx-auto px-5">
+    <footer className="bg-secondary border-t">
+      <div className="container mx-auto px-5 py-8">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           {/* Left Side: Your Name */}
           <div className="text-center md:text-left">
             <Link href="/" className="text-lg font-bold">
               Md Mezbah Uddin.
             </Link>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Full Stack Developer.
             </p>
           </div>
@@ -42,7 +42,7 @@ export const Footer = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium transition-colors text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
               >
                 {link.label}
               </a>
@@ -57,7 +57,7 @@ export const Footer = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <link.icon className="h-5 w-5" />
                 <span className="sr-only">{link.label}</span>
@@ -67,7 +67,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Copyright Text */}
-        <div className="mt-8 pt-8 flex gap-4 items-center justify-between md:flex-row border-t text-center text-sm text-muted-foreground">
+        <div className="text-muted-foreground mt-8 flex items-center justify-between gap-4 border-t pt-8 pb-14 text-center text-sm md:flex-row">
           <p>&copy; {currentYear} Mezbah.</p>
           <ThemeToggler />
         </div>
