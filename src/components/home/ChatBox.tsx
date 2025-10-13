@@ -7,7 +7,7 @@ import {
   useState,
   useTransition,
 } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, LoaderIcon } from "lucide-react";
 import { baseUrl } from "@/lib/baseUrl";
 
 export default function ChatBox() {
@@ -17,21 +17,20 @@ export default function ChatBox() {
   >([{ text: "Hi! How can I help you today?", sender: "bot" }]);
   const [input, setInput] = useState("");
   const [pending, startTransition] = useTransition();
-  const chatBoxRef = useRef<HTMLDivElement>(null);
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = useCallback(() => {
-    const chatContainer = chatBoxRef.current;
-    if (chatContainer) {
-      console.log("chat container found");
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
+    // const chatEnd = chatEndRef.current;
+    // if (chatEnd) {
+    //   chatEndRef?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    // }
   }, []);
 
   useEffect(() => {
-    const chatContainer = chatBoxRef.current;
+    const chatContainer = chatEndRef.current;
     if (chatContainer) {
       console.log("chat container found");
-      chatContainer.scrollIntoView({ behavior: "smooth", block: "end" });
+      chatContainer.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
@@ -114,34 +113,34 @@ export default function ChatBox() {
           </div>
 
           {/* Messages Area */}
-          <div
-            ref={chatBoxRef}
-            className="bg-background text-foreground flex-1 space-y-4 overflow-y-auto p-4"
-          >
+          <div className="bg-background text-foreground flex-1 space-y-4 overflow-y-auto p-4">
             {messages.map((msg, idx) => {
+              const isUser = msg.sender === "user";
               return (
                 <div
                   key={idx}
-                  className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex ${isUser ? "justify-end" : "justify-start"}`}
                 >
                   <div
                     className={`max-w-xs rounded-lg px-4 py-2 ${
-                      msg.sender === "user"
+                      isUser
                         ? "bg-accent rounded-br-none text-white"
-                        : "rounded-bl-none bg-white text-gray-800 shadow"
+                        : "bg-background text-foreground shadow-accent rounded-bl-none shadow-xs"
                     }`}
                   >
-                    {idx === messages.length - 1 &&
-                    pending &&
-                    msg.sender === "bot" ? (
-                      "Loading state is there."
-                    ) : (
-                      <p className="text-sm">{msg.text}</p>
-                    )}
+                    <p className="text-sm">{msg.text}</p>
                   </div>
                 </div>
               );
             })}
+
+            {pending && (
+              <div className="flex justify-start">
+                <LoaderIcon className="animate-spin" size={20} />
+              </div>
+            )}
+
+            <div ref={chatEndRef} />
           </div>
 
           {/* Input Area */}
