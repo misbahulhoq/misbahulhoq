@@ -19,10 +19,10 @@ const navLinks: { href: string; label: string }[] = [
     href: "#contact",
     label: "Contact",
   },
-  {
-    href: "/blogs",
-    label: "Blogs",
-  },
+  // {
+  //   href: "/blogs",
+  //   label: "Blogs",
+  // },
 ];
 
 const Navbar = () => {
@@ -68,22 +68,6 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-
-          {!user ? (
-            <Link
-              href={"/login"}
-              className="hover:text-foreground/80 text-foreground transition-colors"
-            >
-              Login
-            </Link>
-          ) : (
-            <Link
-              href={"/dashboard"}
-              className="hover:text-foreground/80 text-foreground transition-colors"
-            >
-              Dashboard
-            </Link>
-          )}
         </nav>
 
         {/* Mobile Navigation */}
@@ -107,21 +91,6 @@ const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
-                {!user ? (
-                  <Link
-                    href={"/login"}
-                    className="hover:text-foreground/80 text-foreground transition-colors"
-                  >
-                    Login
-                  </Link>
-                ) : (
-                  <Link
-                    href={"/dashboard"}
-                    className="hover:text-foreground/80 text-foreground transition-colors"
-                  >
-                    Dashboard
-                  </Link>
-                )}
                 <Button className="mt-4 rounded-full">
                   <Download />
                   <a
