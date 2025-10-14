@@ -1,13 +1,12 @@
 "use client";
 import {
   KeyboardEventHandler,
-  useCallback,
   useEffect,
   useRef,
   useState,
   useTransition,
 } from "react";
-import { MessageCircle, X, Send, Loader2, LoaderIcon } from "lucide-react";
+import { MessageCircle, X, Send, LoaderIcon } from "lucide-react";
 import { baseUrl } from "@/lib/baseUrl";
 
 export default function ChatBox() {
@@ -18,13 +17,6 @@ export default function ChatBox() {
   const [input, setInput] = useState("");
   const [pending, startTransition] = useTransition();
   const chatEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = useCallback(() => {
-    // const chatEnd = chatEndRef.current;
-    // if (chatEnd) {
-    //   chatEndRef?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-    // }
-  }, []);
 
   useEffect(() => {
     const chatContainer = chatEndRef.current;
@@ -42,14 +34,13 @@ export default function ChatBox() {
     if (input.trim()) {
       setMessages([...messages, { text: input, sender: "user" }]);
 
-      scrollToBottom();
       // API call
       startTransition(async () => {
         const response = await fetch(`${baseUrl}/chat`, {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: input }),
+          body: JSON.stringify({ question: input, context: messages }),
         });
 
         const data = await response.json();
@@ -70,7 +61,6 @@ export default function ChatBox() {
   const handleKeyPress: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === "Enter") {
       handleSend();
-      scrollToBottom();
     }
   };
 
