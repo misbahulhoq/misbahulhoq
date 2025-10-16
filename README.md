@@ -15,10 +15,9 @@ I'm a passionate **Full-Stack JavaScript Developer** from Bangladesh, specializi
 
 What makes my journey unique is my academic background—I'm also a final-year Honors student in **Soil Science** at National University. This dual perspective allows me to approach problem-solving with both technical precision and a deep understanding of natural systems.
 
-- 🔭 I’m currently building my personal portfolio with **Next.js, Shadcn UI, and Tailwind CSS**.
 - 🌱 I’m always learning and currently diving deeper into **TypeScript and system design principles**.
 - 👯 I’m looking to collaborate on exciting open-source MERN stack projects.
-- 💬 Ask me about **React, Node.js, Express, MongoDB**, or even the **soil tracts of Bangladesh**!
+- 💬 Ask me about **React, Node.js, Express, MongoDB,Mongoose, Typescript**.
 - 📫 How to reach me: mezbah.dev@gmail.com
 - 😄 Fun fact: I can tell you about the chemical composition of soil and the asynchronous nature of JavaScript in the same conversation!
 
