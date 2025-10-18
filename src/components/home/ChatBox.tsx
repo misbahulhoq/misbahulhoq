@@ -8,12 +8,13 @@ import {
 } from "react";
 import { MessageCircle, X, Send, LoaderIcon } from "lucide-react";
 import { baseUrl } from "@/lib/baseUrl";
+import Markdown from "react-markdown";
 
 export default function ChatBox() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<
-    { text: string; sender: "user" | "bot" }[]
-  >([{ text: "Hi! How can I help you today?", sender: "bot" }]);
+    { role: "user" | "model"; parts: { text: string }[] }[]
+  >([{ role: "model", parts: [{ text: "Hello, how can I help you?" }] }]);
   const [input, setInput] = useState("");
   const [pending, startTransition] = useTransition();
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -32,24 +33,23 @@ export default function ChatBox() {
 
   const handleSend = () => {
     if (input.trim()) {
-      setMessages([...messages, { text: input, sender: "user" }]);
-
+      setMessages([...messages, { parts: [{ text: input }], role: "user" }]);
       // API call
       startTransition(async () => {
         const response = await fetch(`${baseUrl}/chat`, {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: input, context: messages }),
+          body: JSON.stringify({ question: input, history: messages }),
         });
 
         const data = await response.json();
-        const { text } = data?.data;
+        const { parts } = data?.data;
         setMessages((prev) => [
           ...prev,
           {
-            text,
-            sender: "bot",
+            parts,
+            role: "model",
           },
         ]);
       });
@@ -105,7 +105,7 @@ export default function ChatBox() {
           {/* Messages Area */}
           <div className="bg-background text-foreground flex-1 space-y-4 overflow-y-auto p-4">
             {messages.map((msg, idx) => {
-              const isUser = msg.sender === "user";
+              const isUser = msg.role === "user";
               return (
                 <div
                   key={idx}
@@ -118,7 +118,7 @@ export default function ChatBox() {
                         : "bg-background text-foreground shadow-accent rounded-bl-none shadow-xs"
                     }`}
                   >
-                    <p className="text-sm">{msg.text}</p>
+                    <Markdown>{msg.parts[0].text}</Markdown>
                   </div>
                 </div>
               );
