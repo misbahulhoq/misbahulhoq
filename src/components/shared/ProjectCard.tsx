@@ -3,10 +3,13 @@ import { ExternalLink, Github, Star } from "lucide-react";
 import { Project } from "@/types/project";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const { thumbnail, title, description, repoLinks, liveSiteLink } = project;
-  console.log(thumbnail);
+  const pathName = usePathname();
+  const isDashboard = pathName.includes("dashboard");
+
   return (
     <div className="bg-card border-border group w-full max-w-sm overflow-hidden rounded-2xl border shadow-lg transition-all duration-300 hover:shadow-2xl">
       {/* Thumbnail */}
@@ -96,8 +99,16 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Footer */}
-        <div className="border-border flex items-center justify-end border-t pt-3">
+        <div className="border-border flex items-center justify-end gap-3 border-t pt-3">
           {/* Stats */}
+          {isDashboard && (
+            <Link
+              href={`/dashboard/projects/edit/${project._id}`}
+              className="mr-3 block underline"
+            >
+              Edit
+            </Link>
+          )}
           {/* Actions */}
           <Link
             href={`/projects/${project._id}`}

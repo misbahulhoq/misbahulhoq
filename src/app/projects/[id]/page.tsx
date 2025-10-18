@@ -65,6 +65,7 @@ export default function ProjectDetailsPage({
 
   const {
     title,
+    tagline,
     description,
     features,
     technologies,
@@ -112,10 +113,7 @@ export default function ProjectDetailsPage({
               <h1 className="text-foreground mb-3 text-4xl font-bold lg:text-5xl">
                 {title}
               </h1>
-              <p className="text-muted-foreground mb-6 text-xl">
-                {/* {project.tagline} */}
-                some titasldkfjlasdkj;lasdkj;asdj;akj;kj;laskdjflk
-              </p>
+              <p className="text-muted-foreground mb-6 text-xl">{tagline}</p>
             </div>
 
             {/* Action Buttons */}

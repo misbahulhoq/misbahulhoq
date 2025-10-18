@@ -15,6 +15,7 @@ export type FormData = {
 export type Project = {
   _id: string;
   title: string;
+  tagline: string;
   thumbnail: string[];
   repoLinks: {
     frontend: string;
