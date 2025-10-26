@@ -70,7 +70,7 @@ export default function ChatBox() {
       {!isOpen && (
         <button
           onClick={toggleChat}
-          className="bg-accent flex cursor-pointer items-center gap-1.5 rounded-full px-4 py-2.5 text-white shadow-lg transition-all duration-300 lg:gap-2"
+          className="bg-accent flex cursor-pointer items-center gap-1.5 rounded-full px-4 py-2.5 text-[#262121] shadow-lg transition-all duration-300 lg:gap-2"
         >
           <span>Ask AI Assistant</span>
           <MessageCircle size={20} />
