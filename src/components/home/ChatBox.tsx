@@ -22,7 +22,6 @@ export default function ChatBox() {
   useEffect(() => {
     const chatContainer = chatEndRef.current;
     if (chatContainer) {
-      console.log("chat container found");
       chatContainer.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);

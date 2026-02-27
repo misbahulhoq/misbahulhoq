@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useTransition } from "react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import React from "react";
 import { Menu, Download } from "lucide-react";
-import { Button } from "../ui/button";
 import Link from "next/link";
-import { DialogTitle } from "@radix-ui/react-dialog";
-import { usePathname } from "next/navigation";
-import { baseUrl } from "@/lib/baseUrl";
+
+import { DialogTitle } from "@/components/ui/dialog";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+
 const navLinks: { href: string; label: string }[] = [
   {
     href: "#about",
@@ -26,30 +26,6 @@ const navLinks: { href: string; label: string }[] = [
 ];
 
 const Navbar = () => {
-  const pathName = usePathname();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [user, setUser] = useState<null | any>(null);
-  const [pending, startTransition] = useTransition();
-
-  useEffect(() => {
-    startTransition(() => {
-      fetch(`${baseUrl}/auth/me`, {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          if (data?.success) {
-            setUser(data?.data);
-          }
-        });
-    });
-  }, []);
-  if (pending) return null;
-  if (pathName.includes("dashboard")) return null;
   return (
     <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-5">

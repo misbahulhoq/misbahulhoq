@@ -97,17 +97,15 @@ export default function HeroSection() {
                 </Button>
               </Link>
               {/* Download Resume Button */}
-              <Button size="lg" className="rounded-full">
-                <>
+              <Button size="lg" className="rounded-full" asChild>
+                <a
+                  href="https://docs.google.com/document/d/1pDQoLB5JTBV-Q_QNMCulFohbcLhJZSyA-fli2lDb2uc/export?format=pdf"
+                  target="_blank"
+                  className="rounded-full"
+                >
                   <Download />
-                  <a
-                    href="https://docs.google.com/document/d/1pDQoLB5JTBV-Q_QNMCulFohbcLhJZSyA-fli2lDb2uc/export?format=pdf"
-                    target="_blank"
-                    className="rounded-full"
-                  >
-                    Download Resume
-                  </a>
-                </>
+                  Download Resume
+                </a>
               </Button>
             </div>
           </div>
@@ -172,7 +170,7 @@ export default function HeroSection() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 transform animate-bounce flex-col items-center gap-2 lg:flex">
+        {/* <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 transform animate-bounce flex-col items-center gap-2 lg:flex">
           <span className="text-sm text-[#A0AEC0]">Scroll Down</span>
           <svg
             className="h-6 w-6 text-[#00D9FF]"
@@ -187,7 +185,7 @@ export default function HeroSection() {
               d="M19 14l-7 7m0 0l-7-7m7 7V3"
             />
           </svg>
-        </div>
+        </div> */}
       </div>
     </div>
   );
