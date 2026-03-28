@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       );
     }
     // Send email
-    mailTransporter
+    await mailTransporter
       .sendMail({
         from: process.env.EMAIL_USER,
         to: "extraordinarymisbah@gmail.com",
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
         </body>
       `,
       })
-      .then((res) => {})
+      .then(() => {})
       .catch((err) => {
         console.error("email error", err);
       });
