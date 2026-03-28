@@ -11,7 +11,7 @@ const sendMessage = async (body: {
   subject: string;
   message: string;
 }) => {
-  const res = await fetch(`${baseUrl}/contact`, {
+  const res = await fetch(`${baseUrl}/api/contact`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
