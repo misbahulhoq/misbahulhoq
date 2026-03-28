@@ -21,7 +21,8 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
     }
-    // Send email
+
+    // Send email must be awaited for serverless architecture
     await mailTransporter
       .sendMail({
         from: process.env.EMAIL_USER,
