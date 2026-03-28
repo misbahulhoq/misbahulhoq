@@ -1,9 +1,11 @@
 "use client";
+
 import React, { FormEvent, useState } from "react";
 import { Send, Loader } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
-import { baseUrl } from "@/lib/urls";
 import toast from "react-hot-toast";
+
+import { baseUrl } from "@/lib/urls";
 
 const sendMessage = async (body: {
   name: string;
