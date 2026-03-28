@@ -1,6 +1,6 @@
 "use client";
 import ProjectCard from "@/components/shared/ProjectCard";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import { Project } from "@/types/project";
 import React, { useEffect, useState, useTransition } from "react";
 import { Star } from "lucide-react";
@@ -11,7 +11,7 @@ const Projects = () => {
 
   useEffect(() => {
     startTransition(() => {
-      fetch(`${baseUrl}/projects`, {
+      fetch(`${apiUrl}/projects`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

@@ -1,6 +1,6 @@
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 
 export function useAuth() {
   const [loading, startTransition] = useTransition();
@@ -11,7 +11,7 @@ export function useAuth() {
 
   useEffect(() => {
     startTransition(() => {
-      fetch(`${baseUrl}/auth/me`, {
+      fetch(`${apiUrl}/auth/me`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

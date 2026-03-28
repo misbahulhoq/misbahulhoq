@@ -7,7 +7,7 @@ import {
   useTransition,
 } from "react";
 import { MessageCircle, X, Send, LoaderIcon } from "lucide-react";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import Markdown from "react-markdown";
 
 export default function ChatBox() {
@@ -35,7 +35,7 @@ export default function ChatBox() {
       setMessages([...messages, { parts: [{ text: input }], role: "user" }]);
       // API call
       startTransition(async () => {
-        const response = await fetch(`${baseUrl}/chat`, {
+        const response = await fetch(`${apiUrl}/chat`, {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },

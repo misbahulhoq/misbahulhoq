@@ -10,7 +10,7 @@ import {
   Sparkles,
   LoaderIcon,
 } from "lucide-react";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -34,7 +34,7 @@ export default function LoginPage() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     startLogin(() => {
-      fetch(`${baseUrl}/auth/login`, {
+      fetch(`${apiUrl}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -6,7 +6,7 @@ const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 import "react-quill-new/dist/quill.snow.css";
 import { FormData } from "@/types/project";
 import { Button } from "@/components/ui/button";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import toast from "react-hot-toast";
 
 const AddProjectPage = () => {
@@ -33,7 +33,7 @@ const AddProjectPage = () => {
       displayOrder: Number(data.displayOrder),
     };
 
-    fetch(`${baseUrl}/projects`, {
+    fetch(`${apiUrl}/projects`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

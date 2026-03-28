@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import toast from "react-hot-toast";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 const isEmptyRegex = /^(?:\s|<[^>]+>|&nbsp;|&#160;)*$/;
 
 function hasRealText(htmlString: string): boolean {
@@ -49,7 +49,7 @@ const AddBlog = () => {
     };
 
     try {
-      const response = await fetch(`${baseUrl}/blogs`, {
+      const response = await fetch(`${apiUrl}/blogs`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",

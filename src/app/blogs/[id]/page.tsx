@@ -1,4 +1,4 @@
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 
@@ -8,7 +8,7 @@ const BlogDetailsPage = async ({
   params: Promise<{ id: string }>;
 }) => {
   const res = await params;
-  const blogRes = await fetch(`${baseUrl}/blogs/${res.id}`, {
+  const blogRes = await fetch(`${apiUrl}/blogs/${res.id}`, {
     method: "GET",
     credentials: "include",
   });

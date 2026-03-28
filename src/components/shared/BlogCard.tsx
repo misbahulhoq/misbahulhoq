@@ -1,4 +1,4 @@
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import { BlogType } from "@/types/blog";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ArrowRight, Tag, Trash } from "lucide-react";
@@ -16,7 +16,7 @@ export default function BlogCard({
   const { _id, title, excerpt, tags } = blog;
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const res = await fetch(baseUrl + `/blogs/${id}`, {
+      const res = await fetch(apiUrl + `/blogs/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

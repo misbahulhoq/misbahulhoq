@@ -4,10 +4,10 @@ import { BookOpen, Search } from "lucide-react";
 import BlogCard from "@/components/shared/BlogCard";
 import { BlogType } from "@/types/blog";
 import { useQuery } from "@tanstack/react-query";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import { usePathname } from "next/navigation";
 const fetchProjects = async () => {
-  const res = await fetch(baseUrl + "/blogs", {
+  const res = await fetch(apiUrl + "/blogs", {
     credentials: "include",
   });
   return res.json();

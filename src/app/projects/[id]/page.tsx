@@ -11,7 +11,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import { Project } from "@/types/project";
 import { Spinner } from "@/components/ui/spinner";
 import Image from "next/image";
@@ -38,7 +38,7 @@ export default function ProjectDetailsPage({
       if (!projectId) {
         return;
       }
-      fetch(`${baseUrl}/projects/${projectId}`, {
+      fetch(`${apiUrl}/projects/${projectId}`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

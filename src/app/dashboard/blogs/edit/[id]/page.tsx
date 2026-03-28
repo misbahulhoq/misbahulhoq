@@ -1,5 +1,5 @@
 "use client";
-import { baseUrl } from "@/lib/baseUrl";
+import { apiUrl } from "@/lib/urls";
 import { BlogFormData } from "@/types/blog";
 import { useQuery } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
@@ -34,7 +34,7 @@ const BlogEditPage = ({ params }: { params: Promise<{ id: string }> }) => {
   const { data, isPending } = useQuery({
     queryKey: ["blog", blogId],
     queryFn: async () => {
-      const res = await fetch(`${baseUrl}/blogs/${blogId}`, {
+      const res = await fetch(`${apiUrl}/blogs/${blogId}`, {
         method: "GET",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -82,7 +82,7 @@ const BlogEditPage = ({ params }: { params: Promise<{ id: string }> }) => {
     console.log(payload);
 
     try {
-      const response = await fetch(`${baseUrl}/blogs`, {
+      const response = await fetch(`${apiUrl}/blogs`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
